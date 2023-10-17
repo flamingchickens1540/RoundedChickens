@@ -5,7 +5,7 @@
 </script>
 
 <div class="leaderstatHolder">
-  <div class="homeWidget">
+  <button class="homeWidget">
     <h1 class="standoutText">LEADERBOARD</h1>
     <div class="svgHolder">
       <svg class="widgetIcon" viewBox="0 0 108 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -14,8 +14,8 @@
         <path d="M101.49 38.848H75.6965C74.7192 38.848 73.782 39.2362 73.091 39.9273C72.3999 40.6183 72.0117 41.5556 72.0117 42.5328V97.8048H103.333C103.821 97.8048 104.29 97.6107 104.635 97.2652C104.981 96.9197 105.175 96.4511 105.175 95.9624V42.5328C105.175 41.5556 104.787 40.6183 104.096 39.9273C103.405 39.2362 102.467 38.848 101.49 38.848Z" stroke="white" stroke-width="3.72674" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
-  </div>
-  <div class="homeWidget">
+  </button>
+  <button class="homeWidget">
     <h1 class="standoutText">STATISTICS</h1>
     <div class="svgHolder">
       <svg class="widgetIcon" viewBox="0 0 120 90" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -23,7 +23,7 @@
         </svg>
         
     </div>
-  </div>
+  </button>
 </div>
 
 <RoundedButton>IMAGE UPLOAD</RoundedButton>

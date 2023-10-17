@@ -10,7 +10,7 @@
         padding: 1.25rem;
         width: 100%;
         border-radius: 1rem;
-        filter: drop-shadow(0px 0.3em 0.3em rgba(0, 0, 0, 0.25));
+        filter: drop-shadow(0px 0.5rem 0.5rem rgba(0, 0, 0, 0.25));
     }
     .text {
         color: #ffffff;
