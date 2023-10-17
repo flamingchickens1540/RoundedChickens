@@ -40,7 +40,7 @@
   .svgHolder {
     margin-top: 0.1rem;
     background-color: #1c1c1c;
-    height: 7em;
+    height: 7rem;
     border-radius: 1rem;
     width: 90%;
     display: flex;
@@ -49,8 +49,8 @@
   }
   .standoutText {
     color: #ffffff;
-    margin-top: 0.3em;
-    font-size: 1.3em;
+    margin-top: 0.4rem;
+    font-size: 1.3rem;
     text-align: center;
     width: 90%;
   }
@@ -64,14 +64,14 @@
     background-color: #2c2c2c;
     border-radius: 1rem;
     margin: 2%;
-    filter: drop-shadow(0px 0.3em 0.3em rgba(0, 0, 0, 0.25));
+    filter: drop-shadow(0px 0.5rem 0.5rem rgba(0, 0, 0, 0.25));
   }
   .leaderstatHolder {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 10em;
+    height: 10rem;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
   }

@@ -7,21 +7,18 @@
 <style>
     .bg {
         background: linear-gradient(145deg, #ffd42a 0%, #FF1616 100%);
-        padding-top: 0.1em;
-        padding-bottom: 0.1em;
-        padding-left: 0.1em;
-        padding-right: 0.1em;
+        padding: 1.25rem;
         width: 100%;
         border-radius: 1rem;
         filter: drop-shadow(0px 0.3em 0.3em rgba(0, 0, 0, 0.25));
     }
     .text {
         color: #ffffff;
-        font-size: 4em;
+        font-size: 4rem;
         text-align: center;
         text-wrap: wrap;
         text-shadow: 2px 1px 4px #565656;
-        line-height: 1em;
+        line-height: 4rem;
     }
     .btn {
         display: grid;
