@@ -3,11 +3,15 @@
 </script>
 
 <div class="app">
-  <slot />
+  <div class="boundingBox">
+    <slot />
+  </div>
 </div>
 
 <style>
-  .app {
-    
+  .boundingBox {
+    display: grid;
+    align-items: center;
+    justify-content: center;
   }
 </style>

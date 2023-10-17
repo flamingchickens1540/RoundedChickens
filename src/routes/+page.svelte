@@ -4,9 +4,8 @@
 </script>
 
 
-<div class="app">
-  <RoundedButton />
-</div>
+<RoundedButton>IMAGE UPLOAD</RoundedButton>
+<RoundedButton>PIT SCOUT</RoundedButton>
 
 <style>
 
