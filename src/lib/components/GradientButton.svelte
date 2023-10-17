@@ -6,18 +6,22 @@
 
 <style>
     .bg {
-        background-color: #2c2c2c;
-        padding: 0.5em;
+        background: linear-gradient(145deg, #ffd42a 0%, #FF1616 100%);
+        padding-top: 0.1em;
+        padding-bottom: 0.1em;
+        padding-left: 0.1em;
+        padding-right: 0.1em;
         width: 100%;
         border-radius: 1rem;
         filter: drop-shadow(0px 0.3em 0.3em rgba(0, 0, 0, 0.25));
     }
     .text {
         color: #ffffff;
-        font-size: 1.5em;
+        font-size: 4em;
         text-align: center;
         text-wrap: wrap;
-        text-shadow: 2px 1px 4px #000000;
+        text-shadow: 2px 1px 4px #565656;
+        line-height: 1em;
     }
     .btn {
         display: grid;
