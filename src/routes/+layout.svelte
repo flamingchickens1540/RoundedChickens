@@ -2,4 +2,12 @@
   import "../app.css";
 </script>
 
-<slot />
+<div class="app">
+  <slot />
+</div>
+
+<style>
+  .app {
+    
+  }
+</style>
