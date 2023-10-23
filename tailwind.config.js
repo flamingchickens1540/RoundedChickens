@@ -2,7 +2,15 @@
 export default {
   content: ['./src/**/*.{html,js,svelte,ts}'], 
   theme: {
-    extend: {},
+    extend: {
+      theme: {
+        /** colors to be added */
+        fontFamily: {
+          sans: ['Teko', 'sans-serif'],
+          sans: ['Poppins', 'sans-serif'],
+        },
+      }
+    },
   },
   plugins: [],
 }
