@@ -15,9 +15,3 @@
         <div>
     </nav>
 </header>
-<script>
-    
-</script>
-<style>
-
-</style>
