@@ -7,10 +7,9 @@ type FixedLengthArray<T extends any[]> =
     Pick<T, Exclude<keyof T, ArrayLengthMutationKeys>>
     & { [Symbol.iterator]: () => IterableIterator< ArrayItems<T> > }
 
-
 export type TeamKey = `frc${number}`
 
-export type MatchKey = `${'qm' | 'qf' | 'sf' | 'f'}${number}`
+export type MatchKey = `2023orbb_${'qm' | 'qf' | 'sf' | 'f'}${number}`
 
 export type Scout = {
     id: `${string}-${string}-${string}-${string}-${string}`,
@@ -85,7 +84,7 @@ export const defaultTeleData: TeleData = {
 
 export type TeamMatch = {
     team_key: TeamKey, // frc1540
-    match_key: string,
+    match_key: MatchKey,
     hybrid: HybridData,
     tele: TeleData,
     fielded: boolean,
@@ -99,7 +98,7 @@ export type TeamMatch = {
 
 export const defaultTeamMatch: TeamMatch = {
     team_key: "frc0", // frc1540
-    match_key: "",
+    match_key: "2023orbb_qm0",
     hybrid: defaultHybridData,
     tele: defaultTeleData,
     fielded: true,
