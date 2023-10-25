@@ -8,28 +8,77 @@ type FixedLengthArray<T extends any[]> =
     & { [Symbol.iterator]: () => IterableIterator< ArrayItems<T> > }
 
 
-type Match = {
-    key: string,
+export type TeamKey = `frc${number}`
+
+export type MatchKey = `${'qm' | 'qf' | 'sf' | 'f'}${number}`
+
+export type Scout = {
+    id: `${string}-${string}-${string}-${string}-${string}`,
+    name: string,
+    password: string, // hashed
+    coins: number,
+    // purchases: Purchases[]
+}
+
+
+export type Match = {
+    key: MatchKey,
     matches: FixedLengthArray<[TeamMatch, TeamMatch, TeamMatch, TeamMatch, TeamMatch, TeamMatch]>, // 6 
 }
 
-type Team = {
-    team_key: string,
+export type Team = {
+    team_key: TeamKey,
     nickname: string,
     bunnies: string // this is an id used to keep track of which bunnies this team uses
     // This is an inefficient system because a search is required to get all bunnies of a team
     // Although it does account for more 
 }
 
-type Bunny = {
+export type Bunny = {
     team_bunny_key: string,
     active: boolean,
     notes: string,
     scout_id: string
 }
 
-type TeamMatch = {
-    team_key: string, // frc1540
+export enum HybridLocation {
+    FAR,
+    MID,
+    CLOSE
+}
+
+export type HybridData = {
+    shots_hit: number,
+    shots_disabled: number,
+    bunnies_scored: number,
+    taxi: boolean,
+    hybrid_location: HybridLocation,
+}
+
+export const defaultHybridData: HybridData = {
+    shots_hit: 0,
+    shots_disabled: 0,
+    bunnies_scored: 0,
+    taxi: false,
+    hybrid_location: HybridLocation.CLOSE
+}
+
+export type TeleData = {
+    tele_shots_hit: number,
+    tele_shots_miss: number,
+    tele_bunnies_scored: number,
+    tele_bunnies_stolen: number,
+}
+
+export const defaultTeleData: TeleData = {
+    tele_shots_hit: 0,
+    tele_shots_miss: 0,
+    tele_bunnies_scored: 0,
+    tele_bunnies_stolen: 0,
+}
+
+export type TeamMatch = {
+    team_key: TeamKey, // frc1540
     match_key: string,
     hybrid: HybridData,
     tele: TeleData,
@@ -42,23 +91,53 @@ type TeamMatch = {
     scout_id: string
 }
 
-type HybridData = {
-    hots_hits: number,
-    shots_disabled: number,
-    bunnies_scored: number,
-    taxi: boolean,
-    hybrid_location: HybridLocation,
+export const defaultTeamMatch: TeamMatch = {
+    team_key: "frc0", // frc1540
+    match_key: "",
+    hybrid: defaultHybridData,
+    tele: defaultTeleData,
+    fielded: true,
+    skill: 0,
+    broke: false,
+    died: false,
+    notes: "",
+    parked: false,
+    scout_id: ""
 }
 
-type TeleData = {
-    tele_shots_hit: number,
-    tele_shots_miss: number,
-    tele_bunnies_scored: number,
-    tele_bunnies_stolen: number,
+// Pit scouting types
+
+export enum DriveTrain {
+    MECHANUM,
+    SWERVE,
+    TANK
 }
 
-enum HybridLocation {
-    FAR,
-    MID,
-    CLOSE
+export type PitData = {
+    team_key: TeamKey,
+    drivetrain: DriveTrain,
+    hybrid_type_auto: boolean,
+    hybrid_type_combo: boolean,
+    hybrid_type_none: boolean,
+    hybrid_location_far: boolean,
+    hybrid_location_mid: boolean,
+    hybrid_location_close: boolean,
+    notes: string,
+    // bunnies: Bunny[],
+    scout_id: `${string}-${string}-${string}-${string}-${string}`
 }
+
+export const defaultPitData: PitData = {
+    team_key: "frc0",
+    drivetrain: DriveTrain.TANK,
+    hybrid_type_auto: false,
+    hybrid_type_combo: false,
+    hybrid_type_none: false,
+    hybrid_location_far: false,
+    hybrid_location_mid: false,
+    hybrid_location_close: false,
+    notes: "",
+    scout_id: " - - - - "
+
+}
+
