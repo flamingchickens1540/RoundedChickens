@@ -20,6 +20,12 @@ export type Scout = {
     // purchases: Purchases[]
 }
 
+export const defaultScout: Scout = {
+    id: " - - - - ",
+    name: "",
+    password: "",
+    coins: 0
+}
 
 export type Match = {
     key: MatchKey,
