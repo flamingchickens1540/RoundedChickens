@@ -16,7 +16,10 @@ export type Scout = {
     name: string,
     password: string, // hashed
     coins: number,
-    // purchases: Purchases[]
+}
+
+export type ScoutConfig = {
+    color: "light" | "dark"
 }
 
 export const defaultScout: Scout = {
