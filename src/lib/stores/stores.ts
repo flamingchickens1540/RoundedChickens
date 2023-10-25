@@ -1,5 +1,5 @@
 import { writable, type Writable } from 'svelte/store';
-import { defaultPitData, defaultScout, defaultTeamMatch, PitData, TeamMatch, Scout } from '../types';
+import { defaultPitData, defaultScout, defaultTeamMatch, type PitData, type TeamMatch, type Scout } from '$lib/types';
 
 export const scout: Writable<Scout> = writable(defaultScout);
 
