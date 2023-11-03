@@ -1,5 +1,5 @@
 <script>
-    export let checked = false;
+    export let checked = false
   </script>
   <label class="switch">
     <input type="checkbox" bind:checked />
