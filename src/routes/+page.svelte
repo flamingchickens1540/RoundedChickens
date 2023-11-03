@@ -2,10 +2,7 @@
 <script>
   import RoundedButton from "$lib/components/RoundedButton.svelte";
   import GradientButton from "$lib/components/GradientButton.svelte";
-  import Header from "$lib/components/Header.svelte";
 </script>
-
-<Header></Header>
 
 <div class="leaderstatHolder">
   <button class="homeWidget">
