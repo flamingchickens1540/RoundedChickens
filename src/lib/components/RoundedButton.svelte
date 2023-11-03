@@ -1,5 +1,5 @@
 <button class="btn">
-    <div class="bg text">
+    <div class="bg text dark:bg-zinc-300">
         <h1><slot /></h1>
     </div>
 </button>
