@@ -1,23 +1,21 @@
 <button class="btn">
-    <div class="bg text dark:bg-zinc-300">
-        <h1><slot /></h1>
+    <div class="bg text bg-primaryLight dark:bg-primaryDark">
+        <h1 class="text-black dark:text-white"><slot /></h1>
     </div>
 </button>
 
 <style>
     .bg {
-        background-color: #2c2c2c;
         padding: 0.7rem;
         width: 100%;
         border-radius: 1rem;
-        filter: drop-shadow(0px 0.7rem 0.7rem rgba(0, 0, 0, 0.25));
+        filter: drop-shadow(0px 0.5rem 0.5rem rgba(0, 0, 0, 0.25));
     }
     .text {
-        color: #ffffff;
         font-size: 1.5rem;
         text-align: center;
         text-wrap: wrap;
-        text-shadow: 2px 1px 4px #000000;
+        text-shadow: 1px 0.5px 2px #34343400;
     }
     .btn {
         display: grid;

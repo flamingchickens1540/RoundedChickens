@@ -1,6 +1,6 @@
 <button class="btn">
     <div class="bg text">
-        <h1><slot /></h1>
+        <h1 class="text-black dark:text-white"><slot /></h1>
     </div>
 </button>
 
@@ -10,10 +10,9 @@
         padding: 1.25rem;
         width: 100%;
         border-radius: 1rem;
-        filter: drop-shadow(0px 0.5rem 0.5rem rgba(0, 0, 0, 0.25));
+        filter: drop-shadow(0px 0.7rem 0.7rem rgba(0, 0, 0, 0.25));
     }
     .text {
-        color: #ffffff;
         font-size: 4rem;
         text-align: center;
         text-wrap: wrap;
