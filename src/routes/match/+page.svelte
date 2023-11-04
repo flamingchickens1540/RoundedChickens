@@ -29,5 +29,5 @@
 <h4>Dead?</h4>
 <Switch bind:checked={dead}></Switch>
 <h4>Notes</h4>
-<textarea cols="30" rows="4"></textarea>
+<textarea cols="30" rows="4">enter notes here...</textarea>
 </div>
