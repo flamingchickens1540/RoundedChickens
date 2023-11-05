@@ -29,10 +29,10 @@
         bunstole -= 1
     }
     function yesscored(){
-        bunstole += 1
+        bunscore += 1
     }
     function noscored(){
-        bunstole -= 1
+        bunscore -= 1
     }
 </script>
 
