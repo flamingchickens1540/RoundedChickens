@@ -204,7 +204,7 @@
         </svg>
         </button>
         <h2>Bunnies Stolen</h2>
-        <button on:click={yesscored}><svg width="154" height="55" viewBox="0 0 154 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <button on:click={noscored}><svg width="154" height="55" viewBox="0 0 154 55" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g filter="url(#filter0_d_335_947)">
             <path d="M4 20C4 8.95431 12.9543 0 24 0H130C141.046 0 150 8.95431 150 20V27C150 38.0457 141.046 47 130 47H24C12.9543 47 4 38.0457 4 27V20Z" fill="#ED1C24"/>
             </g>
@@ -236,7 +236,7 @@
             </svg>
             </button>
         {bunscore}
-        <button on:click={noscored}><svg width="154" height="55" viewBox="0 0 154 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <button on:click={yesscored}><svg width="154" height="55" viewBox="0 0 154 55" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g filter="url(#filter0_d_335_950)">
             <path d="M4 20C4 8.95431 12.9543 0 24 0H130C141.046 0 150 8.95431 150 20V27C150 38.0457 141.046 47 130 47H24C12.9543 47 4 38.0457 4 27V20Z" fill="#49A078"/>
             </g>
