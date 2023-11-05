@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
     import { pit } from "../../../../lib/stores/stores";
     import { PitData } from "../../../../lib/types";
     import { MultipleChoices } from "flock-ui"
@@ -12,6 +12,6 @@
 
 <h2>{$pit.team_key}</h2>
 
-<!-- <MultipleChoices options={drivetrain_options}, name="Drivetrain" bind/> -->
+<MultipleChoices options={drivetrain_options}, name="Drivetrain" bind/>
 
-<!-- <MultipleChoices options={hybrid_options}, name="Hybrid Types", bind/> -->
+<MultipleChoices options={hybrid_options}, name="Hybrid Types", bind/> -->

@@ -7,7 +7,7 @@ export default {
         /** colors to be added */
         fontFamily: {
           sans: ['Teko', 'sans-serif'],
-          // sans: ['Poppins', 'sans-serif'],
+          sans: ['Poppins', 'sans-serif'],
         },
       }
     },
