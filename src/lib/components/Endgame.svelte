@@ -8,12 +8,21 @@
 
     function handlestar(i: number){
         selected = i
-        console.log(i)
         selected = selected
     }
 </script>
-<div class="content-center">
-<h1>{team}</h1><br>
+<div>
+    <header>
+        <nav>
+            <div class="header-background p-5 bg-zinc-900 flex justify-center items-center">
+                <button>
+                </button>
+                <h1 class="text-white text-4xl m-1 center"><strong>ENDGAME-{team}</strong></h1>            
+                <button>
+                </button>
+            <div>
+        </nav>
+    </header>
 <h4>Skill</h4><br>
 {#each {length: 5} as _, i}
 {#if selected >= i+1}
@@ -38,3 +47,13 @@
 <h4>Notes</h4>
 <textarea cols="30" rows="4">enter notes here...</textarea>
 </div>
+<style>
+    h1{
+    font-family: Teko;
+    font-size: 50px;
+    font-weight: 600;
+    line-height: 72px;
+    letter-spacing: 0em;
+    text-align: center;
+    }
+    </style>
