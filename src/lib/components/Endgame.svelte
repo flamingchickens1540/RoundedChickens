@@ -5,25 +5,24 @@
     let parked = false
     let broken = false
     let dead = false
+    let notes = "Write Here!"
 
     function handlestar(i: number){
         selected = i
         selected = selected
     }
 </script>
-<div>
     <header>
         <nav>
-            <div class="header-background p-5 bg-zinc-900 flex justify-center items-center">
-                <button>
-                </button>
-                <h1 class="text-white text-4xl m-1 center"><strong>ENDGAME-{team}</strong></h1>            
-                <button>
-                </button>
+            <div style="background-color: #D9D9D9;" class="header-background p-3 flex justify-center items-center">
+                <h1 style="color: #1C1C1C;" class=" text-6xl m-1 center"><strong>ENDGAME-{team}</strong></h1>
             <div>
         </nav>
     </header>
-<h4>Skill</h4><br>
+<div style="background-color: #C2C2C2; margin-top: 0rem">
+<br>
+<h3 style="margin: 1rem;"><strong>Driver Skill</strong></h3>
+<div  class="grid grid-cols-5 gap-4 background">
 {#each {length: 5} as _, i}
 {#if selected >= i+1}
 <button on:click={() => handlestar(i+1)}><svg width="54" height="53" viewBox="0 0 54 53" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -37,23 +36,57 @@
     </svg>
     </button>
 {/if}
-{/each}<br><br>
-<h4>Parked?</h4>
-<Switch bind:checked={parked}></Switch>
-<h4>Broken?</h4>
-<Switch bind:checked={broken}></Switch>
-<h4>Dead?</h4>
-<Switch bind:checked={dead}></Switch>
-<h4>Notes</h4>
-<textarea cols="30" rows="4">enter notes here...</textarea>
+{/each}
 </div>
+<div class="grid grid-cols-5 gap-4 background">
+<h5 class="col-span-4"><strong>Parked?</strong></h5>
+<Switch bind:checked={parked} style="float: right;"></Switch>
+</div>
+<div class="grid grid-cols-5 gap-4 background">
+<h5 class="col-span-4"><strong>Broken?</strong></h5>
+<Switch bind:checked={broken} style="float: right;"></Switch>
+</div>
+<div class="grid grid-cols-5 gap-4 background">
+<h5 class="col-span-4"><strong>Died on field?</strong></h5>
+<Switch bind:checked={dead} style="float: right;"></Switch>
+</div>
+<h3 style="margin: 1rem;" class="col-span-2"><strong>Notes</strong></h3>
+<div style="margin: 1rem" class="background">
+<textarea bind:value={notes} rows="3" style="background-color: #D9D9D9; width:100%;"></textarea>
+</div>
+<br>
+</div>
+
 <style>
-    h1{
-    font-family: Teko;
-    font-size: 50px;
-    font-weight: 600;
-    line-height: 72px;
-    letter-spacing: 0em;
-    text-align: center;
-    }
+h3{
+font-family: 'Poppins';
+font-style: bold;
+font-weight: 700;
+font-size: 40px;
+line-height: 91.5%;
+/* or 32px */
+display: flex;
+
+color: #1C1C1C;
+}
+h5{
+font-family: 'Poppins';
+font-style: bold;
+font-weight: 700;
+font-size: 30px;
+line-height: 91.5%;
+/* or 32px */
+display: flex;
+
+color: #1C1C1C;
+}
+.background{
+/* Rectangle 7 */
+background: #D9D9D9;
+mix-blend-mode: normal;
+box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
+border-radius: 20px;
+padding: 1rem;
+margin: 1rem;
+}
     </style>

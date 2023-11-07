@@ -1,10 +1,13 @@
 <script>
     export let checked = false
+    export let style = ""
   </script>
+  <div style={style}>
   <label class="switch">
     <input type="checkbox" bind:checked />
     <span class="slider" />
   </label>
+</div>
   <style>
     .switch {
       position: relative;
