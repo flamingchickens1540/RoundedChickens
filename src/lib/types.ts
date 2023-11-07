@@ -88,29 +88,26 @@ export const defaultTeleData: TeleData = {
 export type TeamMatch = {
     team_key: TeamKey, // frc1540
     match_key: MatchKey,
-    hybrid: HybridData,
-    tele: TeleData,
-    fielded: boolean,
-    skill: number,
-    broke: boolean,
-    died: boolean,
-    notes: string,
-    parked: boolean,
-    scout_id: string
+    scout_id: string, // do these need to be different things?
+    scout_name: string,
+    data: { 
+        hybrid: HybridData,
+        tele: TeleData,
+        fielded: boolean,
+        skill: number,
+        broke: boolean,
+        died: boolean,
+        notes: string,
+        parked: boolean,
+    } | null
 }
 
 export const defaultTeamMatch: TeamMatch = {
     team_key: "frc0", // frc1540
     match_key: "2023orbb_qm0",
-    hybrid: defaultHybridData,
-    tele: defaultTeleData,
-    fielded: true,
-    skill: 0,
-    broke: false,
-    died: false,
-    notes: "",
-    parked: false,
-    scout_id: ""
+    scout_id: "",
+    scout_name: "",
+    data: null
 }
 
 // Pit scouting types
@@ -147,10 +144,4 @@ export const defaultPitData: PitData = {
     notes: "",
     scout_id: " - - - - "
 
-}
-
-export type QueueTeamMatch = {
-    team_key: TeamKey, 
-    match_key: MatchKey, 
-    scout_name: string
 }
