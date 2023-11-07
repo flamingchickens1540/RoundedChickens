@@ -149,3 +149,8 @@ export const defaultPitData: PitData = {
 
 }
 
+export type QueueTeamMatch = {
+    team_key: TeamKey, 
+    match_key: MatchKey, 
+    scout_name: string
+}

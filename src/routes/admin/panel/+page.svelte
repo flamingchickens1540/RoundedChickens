@@ -1,9 +1,18 @@
 <script lang="ts">
-    import { type FixedLengthArray } from "$lib/types";
+    import type { FixedLengthArray, MatchKey, QueueTeamMatch, TeamKey } from "$lib/types";
+    import QueuedTeamMatches from "$lib/components/ui-components/admin/QueuedTeamMatches.svelte";
+    // import QueuedTeamMatch from "$lib/components/ui-components/admin/QueuedTeamMatch.svelte";
     let robots: FixedLengthArray<[
         [string, string, string], // red
         [string, string, string] // blue
     ]> = [["","",""],["","",""]]
+    let teamMatches: QueueTeamMatch[] = [
+            {team_key:"frc1425", match_key:"2023orbb_qm67", scout_name:"Crow"},
+            {team_key:"frc1425", match_key:"2023orbb_qm67", scout_name:"Crow"},
+            {team_key:"frc1425", match_key:"2023orbb_qm67", scout_name:"Crow"},
+            {team_key:"frc1425", match_key:"2023orbb_qm67", scout_name:"Crow"},
+            {team_key:"frc1425", match_key:"2023orbb_qm67", scout_name:"Crow"},
+            {team_key:"frc1425", match_key:"2023orbb_qm67", scout_name:"Crow"}];
 </script>
 
 <h1>Admin Panel</h1>
@@ -28,5 +37,6 @@
             <h3>Match Key</h3>
         </div>
     </div>
+    <QueuedTeamMatches teamMatches={teamMatches}/>
     <!-- Queued Team Matches -->
 </div>
