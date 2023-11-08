@@ -10,7 +10,7 @@
     mix-blend-mode: normal;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
-    padding: 1rem;
+    padding: 0.5rem;
     margin: 1rem;
     }
     div {
@@ -26,8 +26,8 @@ text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     </style>
 
 <ScoreCounter value={counterValue} let:change let:value>
-    <div class="background">
-        <button
+    <div class="background flex items-center">
+        <button style="margin: 10px;"
             on:click={() => {
                 change(-1);
             }}
@@ -131,7 +131,7 @@ text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
             </svg>
         </button>
         {value}
-        <button
+        <button style="margin: 10px;"
             on:click={() => {
                 change(1);
             }}

@@ -13,17 +13,13 @@
 <header>
     <nav>
         <div style="background-color: #D9D9D9;" class="header-background p-3 flex justify-center items-center">
-            <h1 style="color: #1C1C1C;" class=" text-6xl m-1 center"><strong>TELEOP-{team}</strong></h1>
+            <h1 style="color: #1C1C1C;" class="text-6xl center"><strong>TELEOP-{team}</strong></h1>
         <div>
     </nav>
 </header>
-
-<ScoreCounter counterValue={shotsmade}/>
-
-<br>
-<div style="background-color: #C2C2C2; margin-top: 0rem">
-<h2 style="margin: 1rem;">Shots</h2><br>
-<button on:click={() => {shotsmade-=1}}><svg width="200" height="200" viewBox="0 0 211 212" fill="none" xmlns="http://www.w3.org/2000/svg">
+<div style="background-color: #C2C2C2; margin-top: 0rem"><br>
+<h2 style="margin: 1rem; margin-top: 0rem">Shots</h2>
+<button style="margin: 5px;" on:click={() => {shotsfailed+=1}}><svg width="200" height="200" viewBox="0 0 211 212" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g filter="url(#filter0_d_153_764)">
     <rect x="4" y="4" width="195" height="196" rx="20" fill="#ED1C24"/>
     </g>
@@ -41,8 +37,8 @@
     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_153_764" result="shape"/>
     </filter>
     </defs>
-    </svg></button><br>
-    <button on:click={() => {shotsmade+=1}}><svg width="200" height="200" viewBox="0 0 211 212" fill="none" xmlns="http://www.w3.org/2000/svg">
+    </svg></button>
+    <button style="margin: 5px;" on:click={() => {shotsmade+=1}}><svg width="200" height="200" viewBox="0 0 211 212" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g filter="url(#filter0_d_152_3328)">
         <path d="M4 24C4 12.9543 12.9543 4 24 4H179C190.046 4 199 12.9543 199 24V180C199 191.046 190.046 200 179 200H24C12.9543 200 4 191.046 4 180V24Z" fill="#49A078"/>
         </g>
@@ -61,107 +57,11 @@
         </filter>
         </defs></svg></button>
     <h2 style="margin: 1rem;">Disables</h2>
-    <div class="background">
-
-{disables}
-<button on:click={() => {disables+=1}}><svg width="154" height="55" viewBox="0 0 154 55" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <g filter="url(#filter0_d_335_950)">
-    <path d="M4 20C4 8.95431 12.9543 0 24 0H130C141.046 0 150 8.95431 150 20V27C150 38.0457 141.046 47 130 47H24C12.9543 47 4 38.0457 4 27V20Z" fill="#49A078"/>
-    </g>
-    <g filter="url(#filter1_d_335_950)">
-    <path d="M78.6754 25.175H74.3254V29.625H70.2754V25.175H65.9254V21.35H70.2754V16.875H74.3254V21.35H78.6754V25.175ZM80.8236 17.725V13.75H87.7486V32H83.2986V17.725H80.8236Z" fill="white"/>
-    </g>
-    <defs>
-    <filter id="filter0_d_335_950" x="0" y="0" width="154" height="55" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-    <feOffset dy="4"/>
-    <feGaussianBlur stdDeviation="2"/>
-    <feComposite in2="hardAlpha" operator="out"/>
-    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_335_950"/>
-    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_335_950" result="shape"/>
-    </filter>
-    <filter id="filter1_d_335_950" x="61.9258" y="13.75" width="29.8223" height="26.25" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-    <feOffset dy="4"/>
-    <feGaussianBlur stdDeviation="2"/>
-    <feComposite in2="hardAlpha" operator="out"/>
-    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_335_950"/>
-    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_335_950" result="shape"/>
-    </filter>
-    </defs>
-    </svg>
-    </button></div>
+    <ScoreCounter counterValue={disables}/>
     <h2 style="margin: 1rem;">Bunnies Stolen</h2>
-    
+    <ScoreCounter counterValue={bunstole}/>
         <h2 style="margin: 1rem;">Bunnies Scored</h2>
-        <div class="background">
-        <button on:click={() => {bunscore-=1}}><svg width="154" height="55" viewBox="0 0 154 55" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g filter="url(#filter0_d_335_947)">
-            <path d="M4 20C4 8.95431 12.9543 0 24 0H130C141.046 0 150 8.95431 150 20V27C150 38.0457 141.046 47 130 47H24C12.9543 47 4 38.0457 4 27V20Z" fill="#ED1C24"/>
-            </g>
-            <g filter="url(#filter1_d_335_947)">
-            <path d="M77.3485 21.45V25H66.3485V21.45H77.3485ZM80.2255 17.725V13.75H87.1505V32H82.7005V17.725H80.2255Z" fill="white"/>
-            </g>
-            <defs>
-            <filter id="filter0_d_335_947" x="0" y="0" width="154" height="55" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-            <feOffset dy="4"/>
-            <feGaussianBlur stdDeviation="2"/>
-            <feComposite in2="hardAlpha" operator="out"/>
-            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_335_947"/>
-            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_335_947" result="shape"/>
-            </filter>
-            <filter id="filter1_d_335_947" x="62.3477" y="13.75" width="28.8027" height="26.25" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-            <feOffset dy="4"/>
-            <feGaussianBlur stdDeviation="2"/>
-            <feComposite in2="hardAlpha" operator="out"/>
-            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_335_947"/>
-            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_335_947" result="shape"/>
-            </filter>
-            </defs>
-            </svg>
-            </button>
-        {bunscore}
-        <button on:click={() => {bunscore+=1}}><svg width="154" height="55" viewBox="0 0 154 55" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g filter="url(#filter0_d_335_950)">
-            <path d="M4 20C4 8.95431 12.9543 0 24 0H130C141.046 0 150 8.95431 150 20V27C150 38.0457 141.046 47 130 47H24C12.9543 47 4 38.0457 4 27V20Z" fill="#49A078"/>
-            </g>
-            <g filter="url(#filter1_d_335_950)">
-            <path d="M78.6754 25.175H74.3254V29.625H70.2754V25.175H65.9254V21.35H70.2754V16.875H74.3254V21.35H78.6754V25.175ZM80.8236 17.725V13.75H87.7486V32H83.2986V17.725H80.8236Z" fill="white"/>
-            </g>
-            <defs>
-            <filter id="filter0_d_335_950" x="0" y="0" width="154" height="55" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-            <feOffset dy="4"/>
-            <feGaussianBlur stdDeviation="2"/>
-            <feComposite in2="hardAlpha" operator="out"/>
-            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_335_950"/>
-            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_335_950" result="shape"/>
-            </filter>
-            <filter id="filter1_d_335_950" x="61.9258" y="13.75" width="29.8223" height="26.25" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-            <feOffset dy="4"/>
-            <feGaussianBlur stdDeviation="2"/>
-            <feComposite in2="hardAlpha" operator="out"/>
-            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_335_950"/>
-            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_335_950" result="shape"/>
-            </filter>
-            </defs>
-            </svg>
-            </button></div>
+        <ScoreCounter counterValue={bunscore}/><br>
         </div>
 <style>
 
@@ -175,14 +75,5 @@ line-height: 91.5%;
 display: flex;
 
 color: #1C1C1C;
-}
-.background{
-/* Rectangle 7 */
-background: #D9D9D9;
-mix-blend-mode: normal;
-box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
-border-radius: 20px;
-padding: 1rem;
-margin: 1rem;
 }
 </style>
