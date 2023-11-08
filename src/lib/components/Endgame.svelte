@@ -5,7 +5,7 @@
     let parked = false
     let broken = false
     let dead = false
-    let notes = "Write Here!"
+    let notes = ""
 
     function handlestar(i: number){
         selected = i
@@ -52,7 +52,7 @@
 </div>
 <h3 style="margin: 1rem;" class="col-span-2"><strong>Notes</strong></h3>
 <div style="margin: 1rem" class="background">
-<textarea bind:value={notes} rows="3" style="background-color: #D9D9D9; width:100%;"></textarea>
+<textarea placeholder="Write Here"  bind:value={notes} rows="3" style="background-color: #D9D9D9; width:100%;"></textarea>
 </div>
 <br>
 </div>
