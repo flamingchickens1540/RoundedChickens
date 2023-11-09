@@ -3,7 +3,6 @@
     import TeamMatchesBacklog from "$lib/components/admin/backlog/TeamMatchesBacklog.svelte";
     import QueuedTeamMatches from "$lib/components/admin/queue/QueuedTeamMatches.svelte";
     import AdminRobots from "$lib/components/admin/AdminRobots.svelte";
-    import Matches from "$lib/components/IDK/Matches.svelte";
     import ScoutList from "$lib/components/admin/scouts/ScoutList.svelte";
     // todo: get all of these imported via api requests probably
     let teamMatches: TeamMatch[] = [
@@ -12,8 +11,9 @@
             {team_key:"frc1425", match_key:"2023orbb_qm67", scout_name:"Crow", scout_id:"", data: null},
             {team_key:"frc1425", match_key:"2023orbb_qm67", scout_name:"Crow", scout_id:"", data: null},
             {team_key:"frc1425", match_key:"2023orbb_qm67", scout_name:"Crow", scout_id:"", data: null},
-            {team_key:"frc1425", match_key:"2023orbb_qm67", scout_name:"Crow", scout_id:"", data: null}];
-    let robots: string[][] = [[], []]
+            {team_key:"frc1425", match_key:"2023orbb_qm67", scout_name:"Crow", scout_id:"", data: null}
+        ];
+    let robots: string[][];
     let activeScouts: Scout[] = [
         defaultScout,
         defaultScout,
