@@ -10,6 +10,12 @@ export default {
       backgroundDark: '#1C1C1C',
       primaryLight: '#D9D9D9',
       primaryDark: '#2C2C2C',
+    },
+    theme: {
+      /** colors to be added */
+      fontFamily: {
+        sans: ['Teko', 'sans-serif'],
+      },
     }
   },
   plugins: [],
