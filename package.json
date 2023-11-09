@@ -29,13 +29,9 @@
   },
   "type": "module",
   "dependencies": {
-<<<<<<< HEAD
-    "esbuild": "^0.19.5"
-=======
-    "@sveltejs/svelte-scroller": "^2.0.7",
+    "esbuild": "^0.19.5",
     "@types/bcrypt": "^5.0.1",
     "flock-ui": "^1.0.4",
     "tailwind": "^4.0.0"
->>>>>>> 6cb2d5f495cee5556f3069a82a1317d7ff753dab
   }
 }
