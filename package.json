@@ -28,7 +28,9 @@
   },
   "type": "module",
   "dependencies": {
+    "@sveltejs/svelte-scroller": "^2.0.7",
     "@types/bcrypt": "^5.0.1",
-    "flock-ui": "^1.0.4"
+    "flock-ui": "^1.0.4",
+    "tailwind": "^4.0.0"
   }
 }
