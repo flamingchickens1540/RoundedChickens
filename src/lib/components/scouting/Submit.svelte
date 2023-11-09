@@ -8,9 +8,10 @@
             },
             body: JSON.stringify($match),
         });
-        if (res.ok) location.reload()
-        else {
-            alert("Oops, looks like you forgot to fill out every data point")
+        if (res.status == 200) { 
+            location.reload()
+        } else {
+            alert("Oops, looks like you forgot to fill out the form")
         }
     }
 </script>
