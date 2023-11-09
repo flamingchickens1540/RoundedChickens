@@ -1,7 +1,6 @@
 <script lang=ts>
-    export let accounts
     import type { Scout } from "$lib/types";
-    let array: Scout[] = [];
+    export let array: Scout[] = [];
 </script>
 
 
