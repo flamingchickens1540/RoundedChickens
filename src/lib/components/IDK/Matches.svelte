@@ -1,20 +1,20 @@
 <script lang="ts">
-    // export let header: string;
+    export let header: string;
 
-    // export let subHeader: string[];
+    export let subHeader: string[];
 
     export let redAlliance: string[];
     export let blueAlliance: string[];
 </script>
 
 <div class="match darkTheme">
-    <!-- {#if header != undefined}
+    {#if header != undefined}
         <header class="header">
             {header}
         </header>
-    {/if} -->
+    {/if}
 
-    <!-- {#if typeof subHeader == "string"}
+    {#if typeof subHeader == "string"}
         <div class="subHeader">
             {subHeader}
         </div>
@@ -26,7 +26,7 @@
                 </div>
             {/each}
         </div>
-    {/if} -->
+    {/if}
 
     <div class="alliance">
         {#each redAlliance as teamNumber, index}

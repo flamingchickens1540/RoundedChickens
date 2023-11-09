@@ -16,6 +16,7 @@ export type Scout = {
     name: string,
     password: string, // hashed
     coins: number,
+    is_assigned: boolean
 }
 
 export type ScoutConfig = {
@@ -24,9 +25,10 @@ export type ScoutConfig = {
 
 export const defaultScout: Scout = {
     id: " - - - - ",
-    name: "",
+    name: "Crow",
     password: "",
-    coins: 0
+    coins: 0,
+    is_assigned: false
 }
 
 export type Match = {
