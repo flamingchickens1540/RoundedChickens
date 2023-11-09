@@ -1,0 +1,19 @@
+{
+	"name": "roundedchickens",
+	"version": "0.0.1",
+	"type": "module",
+	"private": true,
+	"main": "index.js",
+	"scripts": {
+		"start": "bun ./index.js"
+	},
+	"dependencies": {
+		"@sveltejs/svelte-scroller": "^2.0.7",
+		"@types/bcrypt": "^5.0.1",
+		"flock-ui": "^1.0.4",
+		"tailwind": "^4.0.0",
+		"cookie": "latest",
+		"devalue": "latest",
+		"set-cookie-parser": "latest"
+	}
+}

@@ -1,0 +1,16 @@
+{
+	"/": [],
+	"/admin": [],
+	"/admin/monitor": [],
+	"/admin/panel": [],
+	"/api/submit/match": [
+		"src/routes/api/submit/match/+server.ts"
+	],
+	"/scout/image": [],
+	"/scout/match": [],
+	"/scout/pit": [],
+	"/scout/pit/form": [],
+	"/user/leaderboard": [],
+	"/user/shop": [],
+	"/user/statistics": []
+}
