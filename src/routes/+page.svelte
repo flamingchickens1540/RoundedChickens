@@ -1,11 +1,8 @@
-<script lang="ts">
-</script>
-
 <style lang="postcss">
-
+/* 
   :global(html) {
     background-color: theme(colors.slate.600);
-  }
+  } */
 
 </style>
 
