@@ -56,6 +56,6 @@
               </defs>
               </svg></button>
 
-     <Confetti  colorArray={["url(https://cultofthepartyparrot.com/parrots/hd/parrot.gif)", "url(https://cultofthepartyparrot.com/parrots/hd/parrot.gif)"]} />
+     <Confetti amount=200 colorArray={["url(https://cultofthepartyparrot.com/parrots/hd/parrot.gif)", "url(https://cultofthepartyparrot.com/parrots/hd/parrot.gif)"]} />
 </ToggleConfetti>
 

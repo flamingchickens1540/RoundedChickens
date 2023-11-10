@@ -24,7 +24,7 @@
   position: relative; */
   position: fixed;
   left: 50%;
-  bottom: 20px;
+  bottom: 0.1rem;
   transform: translate(-50%, -50%);
   margin: 0 auto;
 }

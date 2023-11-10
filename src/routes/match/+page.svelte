@@ -1,10 +1,10 @@
 <script>
-import Endgame from "$lib/components/Endgame.svelte"
-import Teleop from "$lib/components/Teleop.svelte"
-import Leaderboard from "$lib/components/Leaderboard.svelte"
-import Thanks from "$lib/components/Thanks.svelte"
+
+import Pitscout from "$lib/components/Pitscout.svelte"
 </script>
 <!-- 
 <Endgame/>
 <Teleop/> -->
-<Thanks/>
+<!-- <Leaderboard/> -->
+<Pitscout/>
+
