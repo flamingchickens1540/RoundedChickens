@@ -1,6 +1,6 @@
 <script>
 
-import Thanks from "$lib/components/Thanks.svelte"
+import Thanks from "$lib/components/Imgupload.svelte"
 </script>
 
 <Thanks/>
