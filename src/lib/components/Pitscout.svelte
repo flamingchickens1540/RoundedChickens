@@ -68,7 +68,7 @@
     </nav>
 </header>
 
-<div style="background-color: #C2C2C2 margin-top: 0rem">
+<div style="background-color: #C2C2C2; margin-top: 0rem">
     <br />
     <h3 style="margin-top: 0rem">Team Number</h3>
     <label class="textareaContainer">
@@ -78,6 +78,7 @@
         class="background grid justify-center"
     />
 </label>
+<br>
     <h3>Drivetrain</h3>
     <div class="background grid grid-cols-2 gap-4 grid-rows-2">
         {#each Drivetrain as value}
@@ -92,7 +93,7 @@
                 {value.label}
             </label>
         {/each}
-    </div>
+    </div><br>
     <h3>Hybrid Type</h3>
     <div class="background grid grid-cols-2 gap-4 grid-rows-2">
         {#each Hybridtype as value}
@@ -107,7 +108,7 @@
                 {value.label}
             </label>
         {/each}
-    </div>
+    </div><br>
     <h3>Hybrid Location</h3>
     <div class="background grid grid-cols-2 gap-4 grid-rows-2">
         {#each Hybridplace as value}
@@ -121,7 +122,7 @@
                 {value.label}
             </label>
         {/each}
-    </div>
+    </div><br>
     <h3>Bunnies</h3>
     {#each bunnies as bunny, i}
     <BunnyScout bind:notes={bunny.notes} bind:mechstring={bunny.type} number = {i+1} /><br>
@@ -129,7 +130,7 @@
     <div class="grid grid-rows-2 grid-cols-1 justify-items-center">
         <button on:click={() => handleclick()}>
             <div style="width: 100%; height: 100%">
-        <svg width="416" height="78" viewBox="0 0 417 78" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg width="100%" height="100%" viewBox="0 0 417 78" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g filter="url(#filter0_d_151_2766)">
         <rect x="4" y="4" width="401" height="62" rx="20" fill="#D9D9D9"/>
         <g filter="url(#filter1_d_151_2766)">
@@ -161,9 +162,8 @@
         </svg>
         </div>
         </button>
-        <br>
         <button>
-            <svg width="416" height="78" viewBox="0 0 416 78" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="100%" height="100%" viewBox="0 0 416 78" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g filter="url(#filter0_d_151_2767)">
                 <rect x="4" y="4" width="400.003" height="62" rx="20" fill="url(#paint0_linear_151_2767)"/>
                 <g filter="url(#filter1_d_151_2767)">
@@ -241,6 +241,7 @@
 	display: block;
 	padding: 2rem;
     padding-left: 0%;
-    padding-top: 0.5rem;
+    padding-top: 0%;
+    padding-bottom:0%
   }
 </style>
