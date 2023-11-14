@@ -1,9 +1,8 @@
 <script>
 
-import Teleop from "$lib/components/Teleop.svelte"
+import Thanks from "$lib/components/Thanks.svelte"
 </script>
 
-<!-- <Endgame/> -->
-<Teleop/>
-<!-- <Leaderboard/> -->
+<Thanks/>
+
 

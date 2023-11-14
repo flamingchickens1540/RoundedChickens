@@ -68,15 +68,15 @@
             {/if}
         {/each}
     </div>
-    <div class="grid grid-cols-5 gap-4 background">
+    <div class="grid grid-cols-5 background">
         <h5 class="col-span-4"><strong>Parked?</strong></h5>
         <Switch bind:checked={parked} style="float: right;" />
     </div>
-    <div class="grid grid-cols-5 gap-4 background">
+    <div class="grid grid-cols-5 background">
         <h5 class="col-span-4"><strong>Broken?</strong></h5>
         <Switch bind:checked={broken} style="float: right;" />
     </div>
-    <div class="grid grid-cols-5 gap-4 background">
+    <div class="grid grid-cols-5 background">
         <h5 class="col-span-4"><strong>Died on field?</strong></h5>
         <Switch bind:checked={dead} style="float: right;" />
     </div>

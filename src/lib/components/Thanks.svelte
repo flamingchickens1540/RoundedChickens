@@ -3,7 +3,7 @@
 </script>
 
 <h3 class="flex justify-center">THANK YOU!</h3>
-<div class="center">
+<div class="flex justify-center items-end">
   <Submit />
 </div>
 
@@ -18,16 +18,6 @@
     display: flex;
     color: #1c1c1c;
     margin: 2rem;
-  }
-  .center {
-    /* display: grid;
-  place-items: center;
-  place-items: bottom;
-  position: relative; */
-    position: fixed;
-    left: 50%;
-    bottom: 0.1rem;
-    transform: translate(-50%, -50%);
-    margin: 0 auto;
+    margin-bottom: 90%;
   }
 </style>
