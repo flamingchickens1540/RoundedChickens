@@ -32,7 +32,7 @@
         {#each redAlliance as teamNumber, index}
             <div class="team" style="background-color: red;">
                 <!-- slot used so that the team numbers are changeable in admin dashboard -->
-                <slot alliance={"red"} teamNumber={teamNumber} index={index}/>
+                <slot alliance={"red"} {teamNumber} {index} />
             </div>
         {/each}
     </div>
@@ -40,7 +40,7 @@
     <div class="alliance">
         {#each blueAlliance as teamNumber, index}
             <div class="team" style="background-color: blue;">
-                <slot alliance={"blue"} teamNumber={teamNumber} index={index}/>
+                <slot alliance={"blue"} {teamNumber} {index} />
             </div>
         {/each}
     </div>

@@ -1,4 +1,4 @@
-<script lang="ts"> 
+<script lang="ts">
     export let team = "1540 A";
     import Switch from "$lib/components/Switch.svelte";
     let selected = 0;

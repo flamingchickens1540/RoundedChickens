@@ -3,31 +3,10 @@
     export let counterValue: number;
 </script>
 
-<style>
-    .background{
-    /* Rectangle 7 */
-    background: #D9D9D9;
-    mix-blend-mode: normal;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
-    border-radius: 20px;
-    padding: 0.5rem;
-    margin: 1rem;
-    }
-    div {
-font-family: 'Poppins';
-font-style: normal;
-font-weight: 700;
-font-size: 2.5rem;
-/* or 21px */
-color: #000000;
-text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
-    }
-    </style>
-
 <ScoreCounter value={counterValue} let:change let:value>
     <div class="background flex items-center">
-        <button style="margin: 10px;"
+        <button
+            style="margin: 10px;"
             on:click={() => {
                 change(-1);
             }}
@@ -131,7 +110,8 @@ text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
             </svg>
         </button>
         {value}
-        <button style="margin: 10px;"
+        <button
+            style="margin: 10px;"
             on:click={() => {
                 change(1);
             }}
@@ -236,3 +216,24 @@ text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         </button>
     </div>
 </ScoreCounter>
+
+<style>
+    .background {
+        /* Rectangle 7 */
+        background: #d9d9d9;
+        mix-blend-mode: normal;
+        box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
+        border-radius: 20px;
+        padding: 0.5rem;
+        margin: 1rem;
+    }
+    div {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 2.5rem;
+        /* or 21px */
+        color: #000000;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+</style>

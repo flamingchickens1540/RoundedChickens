@@ -1,10 +1,9 @@
 <script>
 
-import Pitscout from "$lib/components/Pitscout.svelte"
+import Teleop from "$lib/components/Teleop.svelte"
 </script>
-<!-- 
-<Endgame/>
-<Teleop/> -->
+
+<!-- <Endgame/> -->
+<Teleop/>
 <!-- <Leaderboard/> -->
-<Pitscout/>
 
