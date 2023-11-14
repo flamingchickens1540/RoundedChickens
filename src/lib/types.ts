@@ -3,44 +3,27 @@
 // This array type is safe, since you can't index out of bounds
 type ArrayLengthMutationKeys = 'splice' | 'push' | 'pop' | 'shift' | 'unshift' | number
 type ArrayItems<T extends Array<any>> = T extends Array<infer TItems> ? TItems : never
-export type FixedLengthArray<T extends any[]> =
+type FixedLengthArray<T extends any[]> =
     Pick<T, Exclude<keyof T, ArrayLengthMutationKeys>>
     & { [Symbol.iterator]: () => IterableIterator< ArrayItems<T> > }
 
 export type TeamKey = `frc${number}`
 
-// export type Nameandpoints = {
-//     name: string,
-//     points: number
-// }
-
 export type MatchKey = `2023orbb_${'qm' | 'qf' | 'sf' | 'f'}${number}`
-
-export type Scoutbunny = {
-    teamname: string
-    number: number
-    type: string
-    notes:string
-}
 
 export type Scout = {
     id: `${string}-${string}-${string}-${string}-${string}`,
     name: string,
     password: string, // hashed
     coins: number,
-    is_assigned: boolean
-}
-
-export type ScoutConfig = {
-    color: "light" | "dark"
+    // purchases: Purchases[]
 }
 
 export const defaultScout: Scout = {
     id: " - - - - ",
-    name: "Pesto",
+    name: "",
     password: "",
-    coins: 0,
-    is_assigned: false
+    coins: 0
 }
 
 export type Match = {
@@ -102,26 +85,29 @@ export const defaultTeleData: TeleData = {
 export type TeamMatch = {
     team_key: TeamKey, // frc1540
     match_key: MatchKey,
-    scout_id: string, // do these need to be different things?
-    scout_name: string,
-    data: { 
-        hybrid: HybridData,
-        tele: TeleData,
-        fielded: boolean,
-        skill: number,
-        broke: boolean,
-        died: boolean,
-        notes: string,
-        parked: boolean,
-    } | null
+    hybrid: HybridData,
+    tele: TeleData,
+    fielded: boolean,
+    skill: number,
+    broke: boolean,
+    died: boolean,
+    notes: string,
+    parked: boolean,
+    scout_id: string
 }
 
 export const defaultTeamMatch: TeamMatch = {
     team_key: "frc0", // frc1540
     match_key: "2023orbb_qm0",
-    scout_id: "",
-    scout_name: "",
-    data: null
+    hybrid: defaultHybridData,
+    tele: defaultTeleData,
+    fielded: true,
+    skill: 0,
+    broke: false,
+    died: false,
+    notes: "",
+    parked: false,
+    scout_id: ""
 }
 
 // Pit scouting types
@@ -159,3 +145,4 @@ export const defaultPitData: PitData = {
     scout_id: " - - - - "
 
 }
+
