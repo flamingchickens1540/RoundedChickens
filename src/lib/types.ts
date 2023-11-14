@@ -16,6 +16,13 @@ export type TeamKey = `frc${number}`
 
 export type MatchKey = `2023orbb_${'qm' | 'qf' | 'sf' | 'f'}${number}`
 
+export type Scoutbunny = {
+    teamname: string
+    number: number
+    type: string
+    notes:string
+}
+
 export type Scout = {
     id: `${string}-${string}-${string}-${string}-${string}`,
     name: string,
