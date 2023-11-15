@@ -1,10 +1,9 @@
-<head id="head">
-    <h1 id="heading">HYBRID - 1540A</h1>
-</head>
+<h1 id="heading">HYBRID - 1540A</h1>
 
-<body id="body">
+
+<div id="body" class="justify-center">
     <h1 style="color: white;">Shots</h1>
-    <div class="grid-cols-2 grid-rows-1 content-center">
+    <div class="grid grid-cols-2 grid-rows-1 place-content-center">
         <button>
             <center><img src="figmacheck.png" alt="" id="buttonimg"></center>
         </button>
@@ -12,23 +11,20 @@
             <center><img src="figmax.png" alt="" id="buttonimg"></center>
         </button>
     </div>
-    <div class="grid-cols-1 grid-rows-2 content-center">
+    <div class="grid grid-cols-1 grid-rows-2 place-content-center">
         <button id="switch">
-            <p id="buttontext">Disabled</p>
+            <p class="buttontext">Disabled</p>
             <img src="" alt="">
         </button>
         <button id="switch">
-            <p>Taxied</p>
-            <img src="" alt="">
+            <p class="buttontext"><img src="switchon.png" alt="" id="switchimg">Taxied</p>
         </button>
     </div>
-</body>
+</div>
   
 <style lang="postcss">
-    #head {
-        background-color: #2C2C2C;
-    }
     #heading {
+        background-color: #2C2C2C;
         color: white;
         font-size: 50px;
     }
@@ -37,9 +33,10 @@
       background: #1C1C1C;
       padding: 20px 50px 20px 50px;
       text-align: center;
+      color: white;
     }
     button {
-    display: inline-block;
+    /* display: inline-block; */
     height: 120px;
     padding: 0;
     margin: 0;
@@ -51,14 +48,22 @@
         height: 120px;
         width: 120px;
     }
-    #buttontext {
+    .buttontext {
         color: white;
+        padding: 3%;
+        text-align: left;
     }
     #switch {
         background-color: #2C2C2C;
         height: 50px;
         padding: 0;
         margin: 0px;
-        width: 245px;
+        display: flex;
+        flex-direction: row;
+    }
+    #switchimg {
+        width: 50px;
+        height: 25px;
+        float: right;
     }
 </style>

@@ -3,5 +3,5 @@
     import HybridShots from "$lib/components/HybridShots.svelte";
 
 </script>
-<HybridLocation></HybridLocation>
+<!-- <HybridLocation></HybridLocation> -->
 <HybridShots></HybridShots>
