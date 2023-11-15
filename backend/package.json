@@ -1,0 +1,35 @@
+{
+  "name": "roundedchickens",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "npm run updateTypes && node build.js",
+    "start": "npm run build && node index.cjs",
+    "dev": "node build.js watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/lodash.isequal": "^4.5.6",
+    "@types/node": "^20.3.1",
+    "esbuild": "^0.18.4",
+    "nodemon": "latest"
+  },
+  "dependencies": {
+    "@elysiajs/cors": "^0.7.1",
+    "@elysiajs/eden": "^0.7.4",
+    "@elysiajs/static": "^0.7.1",
+    "@elysiajs/swagger": "^0.7.4",
+    "@socket.io/admin-ui": "^0.5.1",
+    "axios": "^1.4.0",
+    "elysia": "^0.7.24",
+    "lodash.isequal": "^4.5.0",
+    "socket.io": "^4.6.2",
+    "zod": "^3.22.4"
+  },
+  "overrides": {
+    "semver": "7.5.2"
+  }
+}
