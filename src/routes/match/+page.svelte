@@ -1,6 +1,6 @@
 <script>
 
-import Teleop from "$lib/components/Teleop.svelte"
+import Teleop from "$lib/components/Leaderboard.svelte"
 </script>
 
 <Teleop/>
