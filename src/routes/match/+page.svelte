@@ -1,8 +1,8 @@
 <script>
 
-import Thanks from "$lib/components/Imgupload.svelte"
+import Teleop from "$lib/components/Teleop.svelte"
 </script>
 
-<Thanks/>
+<Teleop/>
 
 

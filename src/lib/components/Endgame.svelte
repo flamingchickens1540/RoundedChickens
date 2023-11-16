@@ -19,7 +19,7 @@
             style="background-color: #D9D9D9;"
             class="header-background p-3 flex justify-center items-center"
         >
-            <h1 style="color: #1C1C1C;" class=" text-6xl m-1 center">
+            <h1 style="color: #1C1C1C;" class="text-6xl center">
                 <strong>ENDGAME-{team}</strong>
             </h1>
             <div />
@@ -33,7 +33,7 @@
         {#each { length: 5 } as _, i}
             {#if selected >= i + 1}
                 <button on:click={() => handlestar(i + 1)}
-                    ><svg
+                    ><svg style="transition: 500ms;"
                         width="54"
                         height="53"
                         viewBox="0 0 54 53"
