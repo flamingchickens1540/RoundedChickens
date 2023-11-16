@@ -53,8 +53,8 @@
         <button>
             <div
             class="gridplace-content-center"
-            style="background-color: #9747FF; padding: 1.3rem; padding-left: 1.5rem; padding-right: 1.5rem; border-radius: 0.8rem">
-            <h4 style="font-size: 1rem"><strong>Scouting</strong></h4>
+            style="background-color: #9747FF; padding: 1rem; padding-left: 0.5rem; padding-right: 0.5rem; border-radius: 0.8rem">
+            <h4><strong>Scouting</strong></h4>
         </div>
         </button>
         <button>
@@ -121,7 +121,7 @@ h4{
 font-family: 'Poppins';
 font-style: normal;
 font-weight: 700;
-font-size: 1.5rem;
+font-size: 1.4rem;
 line-height: 84%;
 /* or 19px */
 align-items: center;
