@@ -1,8 +1,4 @@
-<script>
+<script lang="ts">
 
-import Thanks from "$lib/components/Imgupload.svelte"
 </script>
-
-<Thanks/>
-
 
