@@ -13,13 +13,12 @@
             {team_key:"frc1425", match_key:"2023orbb_qm67", scout_name:"Crow", scout_id:"", data: null},
             {team_key:"frc1425", match_key:"2023orbb_qm67", scout_name:"Crow", scout_id:"", data: null}
         ];
-    let robots: string[][];
+    let robots: string[][] = [[],[]];
     let activeScouts: Scout[] = [
         defaultScout,
         defaultScout,
         defaultScout
-    ]
-    
+    ]    
 </script>
 
 <h1 class="grid place-content-center text-3xl m-4">Admin Panel</h1>
