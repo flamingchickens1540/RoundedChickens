@@ -11,13 +11,14 @@
             <center><img src="figmax.png" alt="" id="buttonimg"></center>
         </button>
     </div>
-    <div class="grid grid-cols-1 grid-rows-2 place-content-center">
-        <button id="switch">
-            <p class="buttontext">Disabled</p>
-            <img src="" alt="">
+    <div class="grid grid-cols-6 grid-rows-2 place-content-center">
+        <button id="switch" class="grid col-end-7 col-start-1 content-center">
+            <p class="buttontext" style="padding: 5%;">Disabled</p>
+            <img src="switchon.png" alt="" id="switchimg" class="grid col-start-7">
         </button>
-        <button id="switch">
-            <p class="buttontext"><img src="switchon.png" alt="" id="switchimg">Taxied</p>
+        <button id="switch" class="col-start-1 row-start-2 grid col-end-7 content-center">
+            <p class="buttontext" style="padding: 5%;">Taxied</p>
+            <img src="switchon.png" alt="" id="switchimg" class="grid col-start-7">
         </button>
     </div>
 </div>
@@ -36,17 +37,16 @@
       color: white;
     }
     button {
-    /* display: inline-block; */
-    height: 120px;
+    /* height: 130px; */
     padding: 0;
     margin: 0;
     vertical-align: top;
-    width: 120px;
+    /* width: 130px; */
     border-radius: 12px;
     }
     #buttonimg {
-        height: 120px;
-        width: 120px;
+        height: 100%;
+        width: 100%;
     }
     .buttontext {
         color: white;
@@ -58,8 +58,7 @@
         height: 50px;
         padding: 0;
         margin: 0px;
-        display: flex;
-        flex-direction: row;
+        width: 100%;
     }
     #switchimg {
         width: 50px;

@@ -1,7 +1,5 @@
 <script>
   import "../app.css";
-  import "@fontsource/poppins"
-  import "@fontsource/teko"
 </script>
 
 <slot />
