@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import "../app.css";
 </script>
 
@@ -12,4 +12,5 @@
   :global(h1, h2, h3, h4, h5, h6) {
     font-family: teko, sans-serif;
   }
+  
 </style>
