@@ -6,24 +6,23 @@
 
 <h1 id="heading">HYBRID - 1540A</h1>
 
-
-<div id="body" class="justify-center">
-    <h1 style="color: white;">Shots</h1>
-    <div class="grid grid-cols-2 grid-rows-1 place-content-center">
-        <button>
-            <center><img src={figmacheck} alt="" class="buttonimg"></center>
+<div id="body" class="justify-center" unselectable="on">
+    <h1 style="color: white;" unselectable="on">Shots</h1>
+    <div class="grid grid-cols-2 grid-rows-1 place-content-center" unselectable="on">
+        <button unselectable="on">
+            <center><img src={figmacheck} alt="" class="buttonimg" unselectable="on"></center>
         </button>
-        <button>
-            <center><img src={figmax} alt="" class="buttonimg"></center>
+        <button unselectable="on">
+            <center><img src={figmax} alt="" class="buttonimg" unselectable="on"></center>
         </button>
     </div>
-    <div class="grid grid-cols-1 grid-rows-2 place-content-center">
-        <button id="switch">
+    <div class="grid grid-cols-1 grid-rows-2 place-content-center" unselectable="on">
+        <button id="switch" unselectable="on">
             <p class="buttontext">Disabled</p>
-            <img src="" alt="">
+            <img src="" alt="" unselectable="on">
         </button>
-        <button id="switch">
-            <p class="buttontext"><img src={switchon} alt="" id="switchimg">Taxied</p>
+        <button id="switch" unselectable="on">
+            <p class="buttontext"><img src={switchon} alt="" id="switchimg" unselectable="on">Taxied</p>
         </button>
     </div>
 </div>
