@@ -1,3 +1,6 @@
+<script lang="ts">
+    import Switch from "./ui-components/switch.svelte";
+</script>
 <h1 id="heading">HYBRID - 1540A</h1>
 
 
@@ -14,13 +17,16 @@
     <div class="grid grid-cols-6 grid-rows-2 place-content-center">
         <button id="switch" class="grid col-end-7 col-start-1 content-center">
             <p class="buttontext" style="padding: 5%;">Disabled</p>
-            <img src="switchon.png" alt="" id="switchimg" class="grid col-start-7">
+            <div class="grid col-start-7"><Switch></Switch></div>
         </button>
         <button id="switch" class="col-start-1 row-start-2 grid col-end-7 content-center">
             <p class="buttontext" style="padding: 5%;">Taxied</p>
-            <img src="switchon.png" alt="" id="switchimg" class="grid col-start-7">
+            <!-- <img src="switchon.png" alt="" id="switchimg" class="grid col-start-7"> -->
+            <div class="grid col-start-7"><Switch></Switch></div>
+            
         </button>
     </div>
+    <img src="aussieparrot.gif" alt="pretent this is a parrot" id="parrot1">
 </div>
   
 <style lang="postcss">
@@ -35,6 +41,7 @@
       padding: 20px 50px 20px 50px;
       text-align: center;
       color: white;
+      height: 100%;
     }
     button {
     /* height: 130px; */
@@ -64,5 +71,9 @@
         width: 50px;
         height: 25px;
         float: right;
+    }
+    #parrot1 {
+        height: 5%;
+        width: 5%;
     }
 </style>
