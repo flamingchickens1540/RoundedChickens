@@ -2,6 +2,7 @@
 export default {
   content: ['./src/**/*.{html,js,svelte,ts}'], 
   theme: {
+    darkMode: 'class',
     extend: {
       'mainShadow' : '0px 0.5rem 0.5rem rgba(0, 0, 0, 0.25)',
     },
