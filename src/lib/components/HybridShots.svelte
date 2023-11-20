@@ -3,6 +3,12 @@ import Switch from "./ui-components/switch.svelte";
     var taxied:boolean = false
     var disabled:boolean = false
     var bunnycount:number = 0
+    function bunnyadd() {
+        bunnycount += 1
+    }
+    function bunnyremove() {
+        bunnycount -= 1
+    }
 </script>
 <h1 id="heading">HYBRID - 1540A</h1>
 
@@ -38,8 +44,8 @@ import Switch from "./ui-components/switch.svelte";
     <div id="bunnybg">
         <div style="padding: 3%" class="grid grid-cols-3 grid-rows-1 content-center">
             <center class="grid col-start-2 row-start-2"><p>{bunnycount}</p></center>
-            <button class="grid col-start-1 row-start-2" id="bunnyleftbtn"><div>-1</div></button>
-            <button class="grid col-start-3 row-start-2" id="bunnyrightbtn"><div>+1</div></button>
+            <button class="grid col-start-1 row-start-2" id="bunnyleftbtn" on:click={bunnyremove}><div>-1</div></button>
+            <button class="grid col-start-3 row-start-2" id="bunnyrightbtn" on:click={bunnyadd}><div>+1</div></button>
         </div>
     </div>     
     <img src="aussieparrot.gif" alt="pretent this is a parrot" id="parrot1">
