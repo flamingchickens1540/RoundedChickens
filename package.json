@@ -30,8 +30,10 @@
   "dependencies": {
     "@sveltejs/svelte-scroller": "^2.0.7",
     "@types/bcrypt": "^5.0.1",
+    "elysia": "^0.7.29",
     "flock-ui": "^1.0.4",
     "socket.io": "^4.7.2",
+    "socket.io-client": "^4.7.2",
     "tailwind": "^4.0.0"
   }
 }
