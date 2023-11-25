@@ -23,6 +23,10 @@
 	});
 </script>
 
+<svelte:head>
+	<title>Rounded Chickens</title>
+</svelte:head>
+
 <slot />
 
 <style>

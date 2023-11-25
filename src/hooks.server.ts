@@ -1,5 +1,6 @@
 import { PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_URL } from '$env/static/public';
 import { createSupabaseServerClient } from '@supabase/auth-helpers-sveltekit';
+import { redirect } from '@sveltejs/kit';
 
 export const handle = async ({ event, resolve }) => {
 	const supabaseServer = createSupabaseServerClient({
@@ -21,6 +22,10 @@ export const handle = async ({ event, resolve }) => {
 		} = await supabaseServer.auth.getSession();
 		return session;
 	};
+
+	let session = await event.locals.getSession();
+
+	if (event.url.pathname != "/" && !session) throw redirect(301, "/");
 
 	return resolve(event, {
 		filterSerializedResponseHeaders(name) {

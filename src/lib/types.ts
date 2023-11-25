@@ -143,6 +143,4 @@ export const defaultPitData: PitData = {
     hybrid_location_close: false,
     notes: "",
     scout_id: " - - - - "
-
 }
-
