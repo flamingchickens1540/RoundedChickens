@@ -1,3 +1,5 @@
+import { BACKEND_URL } from ".env"
+
 // export const plugin = {
 //     name: 'sveltekit-socket-io',
 //     configureServer(server) {
@@ -24,7 +26,7 @@
 //             // });
 //         });
 
-        
+
 
 //         console.log('SocketIO injected');
 //     }
@@ -43,11 +45,15 @@ import { Server } from "socket.io"
 // 				}))`;
 //   }
 export const ioServerPlugin = {
-	name: "webSocketServer",
-	configureServer(server) {
-		const io = new Server(server.httpServer)
-		io.on('connect', (socket => {
-			socket.emit('eventFromServer', "Hello World")
-		}))
-	}
+    name: "webSocketServer",
+    configureServer(server) {
+        const io = new Server(server.httpServer, {
+            cors: {
+                origin: BACKEND_URL
+            }
+        })
+        io.on('connect', (socket => {
+            socket.emit('eventFromServer', "Hello World")
+        }))
+    }
 }
