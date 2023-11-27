@@ -5,8 +5,9 @@
     import Teleop from "$lib/components/Leaderboard.svelte"
 </script>
 
+
 <!-- <Teleop/> -->
-<!-- <HybridLocation></HybridLocation> -->
-<HybridShots></HybridShots>
+<HybridLocation></HybridLocation>
+<!-- <HybridShots></HybridShots> -->
 
 
