@@ -26,7 +26,7 @@
 			on:click={logout}>Logout</button
 		>
 		<div class="flex flex-wrap items-center justify-center my-4">
-			<img class="w-10 h-10 rounded-full" src={session.user?.user_metadata.avatar_url} alt="avatar" />
+			<img class="w-10 h-10 rounded-full" src={session.user?.user_metadata.avatar_url} alt="avatar" referrerpolicy="no-referrer"/>
 			<p class="text-3xl text-white pl-2">
 				{session.user?.user_metadata.name}</p>
 		</div>
