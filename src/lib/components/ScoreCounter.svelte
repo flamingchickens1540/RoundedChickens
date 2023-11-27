@@ -116,8 +116,13 @@
                 change(1);
             }}
             ><svg
+<<<<<<< HEAD
                 width="100%"
                 height="100%"
+=======
+                width="154"
+                height="55"
+>>>>>>> parent of 7c288ee (Revert "Rex/components")
                 viewBox="0 0 154 55"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"

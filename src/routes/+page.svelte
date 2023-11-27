@@ -1,5 +1,6 @@
-<script lang="ts">
-</script>
+<h1 class="text-3xl text-amber-300 font-bold underline text-center p-4">
+  RoundedChickens
+</h1>
 
 <style lang="postcss">
 
