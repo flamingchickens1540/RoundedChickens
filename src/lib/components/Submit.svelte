@@ -3,24 +3,10 @@
     import { Confetti } from "svelte-confetti";
     import ToggleConfetti from "./ToggleConfetti.svelte";
     import ConfettiOnClick from "./ConfettiOnClick.svelte";
-    async function submit() {
-        const res = await fetch("/api/submit/match", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json;charset=UTF-8",
-            },
-            body: JSON.stringify($match),
-        });
-        if (res.status == 200) {
-            location.reload();
-        } else {
-            alert("Oops, looks like you forgot to fill out the form");
-        }
-    }
 </script>
 
 <ToggleConfetti>
-    <button on:click={submit} style="margin: auto;" slot="label">
+    <button style="margin: auto;" slot="label">
         <svg width="100%" height="100%" viewBox="0 0 416 207" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g filter="url(#filter0_d_153_1818)">
             <rect x="4" y="4" width="400.003" height="191" rx="20" fill="url(#paint0_linear_153_1818)"/>

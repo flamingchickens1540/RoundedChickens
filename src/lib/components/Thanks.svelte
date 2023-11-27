@@ -3,7 +3,7 @@
 </script>
 
 <h3 class="flex justify-center">THANK YOU!</h3>
-<div class="flex justify-center items-end">
+<div class="hi">
   <Submit />
 </div>
 
@@ -17,7 +17,13 @@
     /* or 32px */
     display: flex;
     color: #1c1c1c;
-    margin: 2rem;
     margin-bottom: 90%;
+    margin-top: 2rem;
+  }
+  .hi{
+    position: absolute;
+    bottom: 0%;
+    left: 15%;
+    right:15%
   }
 </style>

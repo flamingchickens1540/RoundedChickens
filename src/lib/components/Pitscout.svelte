@@ -117,7 +117,7 @@
         {#each Hybridplace as value}
             <label>
                 <input
-                    type="checkbox"
+                    type="radio"
                     bind:group={hybridplace}
                     name="amount"
                     {value}
