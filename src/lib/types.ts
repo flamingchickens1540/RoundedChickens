@@ -146,3 +146,13 @@ export const defaultPitData: PitData = {
 
 }
 
+export enum Positions {
+    Far,
+    Mid,
+    Close
+};
+
+export enum ImgType {
+    Bunny,
+    Robot
+};

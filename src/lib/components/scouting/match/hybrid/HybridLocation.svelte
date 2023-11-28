@@ -1,25 +1,9 @@
-<script>
-  var far = false
-  var mid = false
-  var close = false
-  function setfar() {
-    far = true
-    mid = false
-    close = false
-  }
-  function setmid() {
-    far = false
-    mid = true
-    close = false
-  }
-  function setclose() {
-    far = false
-    mid = false
-    close = true
-  }
+<script lang="ts">
+  import { Positions } from "$lib/types";
+
+  export let position: Positions;
 </script>
 
-<div style="background-color: #2C2C2C;"><img src="60fpsparrot.gif" alt="party parrot!" id="parrot"></div>
 <h1 id="head">PREGAME</h1>
 
 <div id="maindiv">
@@ -28,9 +12,9 @@
     </svg>
 
   <div class="grid grid-cols-1 grid-rows-3 content-center">
-    <button id="farbtn" class="grid row-start-1 text-center" on:click={setfar}>FAR</button>
-    <button id="midbtn" class="grid row-start-2 text-center" on:click={setmid}>MID</button>
-    <button id="closebtn" class="grid row-start-3 text-center" on:click={setclose}>CLOSE</button>
+    <button id="farbtn" class="grid row-start-1 text-center" on:click={() => position = Positions.Far}>FAR</button>
+    <button id="midbtn" class="grid row-start-2 text-center" on:click={() => position = Positions.Mid}>MID</button>
+    <button id="closebtn" class="grid row-start-3 text-center" on:click={() => position = Positions.Close}>CLOSE</button>
   </div>
 </div>
 

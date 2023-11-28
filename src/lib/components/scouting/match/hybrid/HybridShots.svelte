@@ -1,8 +1,10 @@
 <script lang="ts">
-import Switch from "./ui-components/switch.svelte";
-    var taxied:boolean = false
-    var disabled:boolean = false
-    var bunnycount:number = 0
+import Switch from "$lib/components/ui-components/Switch.svelte";
+
+    export let taxied: boolean = false
+    export let disabled: boolean = false
+    export let bunnycount: number = 0
+
     function bunnyadd() {
         bunnycount += 1
     }
@@ -49,7 +51,6 @@ import Switch from "./ui-components/switch.svelte";
             <button class="grid col-start-3 row-start-2" id="bunnyrightbtn" on:click={bunnyadd}><div>+1</div></button>
         </div>
     </div>     
-    <img src="aussieparrot.gif" alt="pretent this is a parrot" id="parrot1">
 </div>
   
 <style lang="postcss">
