@@ -159,3 +159,14 @@ export const defaultPitData: PitData = {
     scout_id: " - - - - "
 
 }
+
+export enum Positions {
+    Far,
+    Mid,
+    Close
+};
+
+export enum ImgType {
+    Bunny,
+    Robot
+};

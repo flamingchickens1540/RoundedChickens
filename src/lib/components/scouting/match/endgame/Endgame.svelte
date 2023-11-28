@@ -1,15 +1,16 @@
 <script lang="ts">
+    
+    import Switch from "$lib/components/ui-components/Switch.svelte";
     export let team = "1540 A";
-    import Switch from "$lib/components/switch.svelte";
-    let selected = 0;
-    let parked = false;
-    let broken = false;
-    let dead = false;
-    let notes = "";
+    export let rating = 0;
+    export let parked = false;
+    export let broken = false;
+    export let dead = false;
+    export let notes = "";
 
     function handlestar(i: number) {
-        selected = i;
-        selected = selected;
+        rating = i;
+        rating = rating;
     }
 </script>
 
@@ -31,7 +32,7 @@
     <h3 style="margin: 1rem;"><strong>Driver Skill</strong></h3>
     <div class="grid grid-cols-5 gap-4 background">
         {#each { length: 5 } as _, i}
-            {#if selected >= i + 1}
+            {#if rating >= i + 1}
                 <button on:click={() => handlestar(i + 1)}
                     ><svg style="transition: 500ms;"
                         width="54"

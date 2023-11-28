@@ -1,13 +1,7 @@
 <script lang="ts">
+    import { ImgType } from "$lib/types"
     let team = "";
-    const options = [
-        {
-            value: "Robot",
-        },
-        {
-            value: "Bunny",
-        },
-    ];
+    export let options: ImgType;
     let robot = "";
     let imgsrcs = [];
     let length = 0;
