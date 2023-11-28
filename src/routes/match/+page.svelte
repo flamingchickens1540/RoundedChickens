@@ -1,8 +1,6 @@
 <script lang="ts">
 
-import Teleop from "$lib/components/Leaderboard.svelte"
+import Thanks from "$lib/components/Thanks.svelte"
 </script>
 
-<Teleop/>
-
-
+<Thanks/>
