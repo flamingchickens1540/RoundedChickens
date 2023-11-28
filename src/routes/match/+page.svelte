@@ -7,7 +7,7 @@
 
 
 <!-- <Teleop/> -->
-<HybridLocation></HybridLocation>
-<!-- <HybridShots></HybridShots> -->
+<!-- <HybridLocation></HybridLocation> -->
+<HybridShots></HybridShots>
 
 
