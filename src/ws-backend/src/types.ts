@@ -1,6 +1,8 @@
 import { Socket } from "socket.io"
+import { Scout } from "../src/types"
+import Elysia from "elysia"
 
-export interface TypedRequestBody<T> extends Express.Request {
+export interface TypedRequestBody<T> extends Elysia.Request {
     body: T
 }
 
@@ -22,24 +24,11 @@ export interface TypedRequestQueryWithParams<Params> extends Express.Request {
     params: Params
 }
 
-export interface User {
-    id: string;
-    username: string;
-    created_at: string;
-}
-
-export interface Conversation {
-    id: string;
-    name: string;
-    user_owner_id: string;
-    created_at: string;
-}
-
 export interface SocketConnectedUsers {
     [key: string]: {
         socketId: string;
         socket: Socket;
-        user: User;
+        user: Scout;
     }
 }
 

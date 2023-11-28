@@ -1,4 +1,4 @@
-import { BACKEND_URL } from ".env"
+import { BACKEND_URL } from "./.env"
 
 // export const plugin = {
 //     name: 'sveltekit-socket-io',
@@ -46,7 +46,7 @@ import { Server } from "socket.io"
 //   }
 export const ioServerPlugin = {
     name: "webSocketServer",
-    configureServer(server) {
+    configureServer(server: any) {
         const io = new Server(server.httpServer, {
             cors: {
                 origin: BACKEND_URL
