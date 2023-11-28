@@ -1,6 +1,7 @@
 <script lang="ts">
-    export let team = "1540 A";
+    
     import Switch from "$lib/components/ui-components/Switch.svelte";
+    export let team = "1540 A";
     export let rating = 0;
     export let parked = false;
     export let broken = false;

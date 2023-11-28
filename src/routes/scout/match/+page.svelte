@@ -5,9 +5,3 @@
     import type { Positions } from "$lib/types";
     let hybrid_position: Positions;
 </script>
-
-
-<!-- <Teleop/> -->
-<HybridShots></HybridShots>
-
-
