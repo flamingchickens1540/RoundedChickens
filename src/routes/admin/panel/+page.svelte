@@ -21,13 +21,34 @@
     ]
     
 </script>
-
-<h1 class="grid place-content-center text-3xl m-4">Admin Panel</h1>
-
-<div class="grid grid-cols-2 grid-rows-2 gap-3 m-4">
-    <AdminRobots bind:robots={robots}/>
-    <QueuedTeamMatches teamMatches={teamMatches}/>
-    <!-- Queued Team Matches -->
-    <TeamMatchesBacklog team_match_backlog={teamMatches}/>
-    <ScoutList activeScouts={activeScouts}/>
+<div class="mainContainer">
+    <div class="grid grid-cols-2 grid-rows-2 gap-3 h-screen">
+        <AdminRobots bind:robots={robots}/>
+        <QueuedTeamMatches teamMatches={teamMatches}/>
+        <!-- Queued Team Matches -->
+        <div class="teamMatchesBacklogHolder">
+            <TeamMatchesBacklog team_match_backlog={teamMatches}/>
+        </div>
+        <div class="grid grid-cols-2 grid-rows-1 gap-3 scoutListButtonHolder">
+            <ScoutList activeScouts={activeScouts}/>
+            <ScoutList activeScouts={activeScouts}/>
+        </div>
+    </div>
 </div>
+
+<style>
+    .teamMatchesBacklogHolder {
+        height:50%;
+    }
+    .scoutListButtonHolder {
+        height: 92%;
+    }
+    .mainContainer {
+        margin: 1rem;
+        margin-top: 1vh;
+        margin-bottom: 1vh;
+        height: 96vh;
+        width: auto;
+        place-content: center;
+    }
+</style>
