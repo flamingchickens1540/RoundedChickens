@@ -1,13 +1,10 @@
 <script lang="ts">
+<<<<<<< HEAD:src/lib/components/Imgupload.svelte
+=======
+    import { ImgType } from "$lib/types"
+>>>>>>> f6ba2158ea86986650dc2fe1e84d4c2ea9ba2a9d:src/lib/components/scouting/image/ImgUpload.svelte
     let team = "";
-    const options = [
-        {
-            value: "Robot",
-        },
-        {
-            value: "Bunny",
-        },
-    ];
+    export let options: ImgType;
     let robot = "";
     let imgsrcs = [];
     let length = 0;
