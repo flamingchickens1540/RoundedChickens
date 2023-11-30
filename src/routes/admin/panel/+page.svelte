@@ -4,6 +4,7 @@
     import QueuedTeamMatches from "$lib/components/admin/queue/QueuedTeamMatches.svelte";
     import AdminRobots from "$lib/components/admin/AdminRobots.svelte";
     import ScoutList from "$lib/components/admin/scouts/ScoutList.svelte";
+    import NavOptions from "$lib/components/admin/NavOptions.svelte";
     // todo: get all of these imported via api requests probably
     let teamMatches: TeamMatch[] = [
             {team_key:"frc1425", match_key:"2023orbb_qm67", scout_name:"Crow", scout_id:"", data: null},
@@ -26,27 +27,22 @@
         <AdminRobots bind:robots={robots}/>
         <QueuedTeamMatches teamMatches={teamMatches}/>
         <!-- Queued Team Matches -->
-        <div class="teamMatchesBacklogHolder">
+        <div class="scoutListButtonHolder">
             <TeamMatchesBacklog team_match_backlog={teamMatches}/>
         </div>
         <div class="grid grid-cols-2 grid-rows-1 gap-3 scoutListButtonHolder">
             <ScoutList activeScouts={activeScouts}/>
-            <ScoutList activeScouts={activeScouts}/>
+            <NavOptions/>
         </div>
     </div>
 </div>
 
 <style>
-    .teamMatchesBacklogHolder {
-        height:50%;
-    }
     .scoutListButtonHolder {
         height: 92%;
     }
     .mainContainer {
         margin: 1rem;
-        margin-top: 1vh;
-        margin-bottom: 1vh;
         height: 96vh;
         width: auto;
         place-content: center;

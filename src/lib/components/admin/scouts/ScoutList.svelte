@@ -4,7 +4,7 @@
     export let activeScouts: Scout[];
 </script>
 
-<div class="grid grid-col-1 grid-flow-row place-items-center outline rounded">
+<div class="grid grid-col-1 grid-flow-row place-items-center dark:bg-[#2C2C2C] bg-[#D9D9D9] rounded-lg">
     {#each activeScouts as scout}
         <div class="grid grid-rows-1 grid-cols-2 outline rounded p-2">
             <div>{scout.name}</div>

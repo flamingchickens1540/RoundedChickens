@@ -7,10 +7,12 @@
             robots = [Array(3).fill(''), Array(3).fill('')];
         }
     }
+
+    import Button from "$lib/components/utils/Button.svelte";
 </script>
 
 
-<div class="grid grid-cols-2, grid-rows-2 rounded outline">
+<div class="grid grid-cols-2 grid-rows-2 dark:bg-[#2C2C2C] bg-[#D9D9D9] rounded-lg">
     <div class="grid grid-cols-1 grid-rows-4 content-center bg-red-500 bg-opacity-10 outline rounded m-3">
         <div class="grid place-content-center">Red Robots</div>
         <input class="outline m-2 rounded" type="text" name="" id="red1" bind:value={robots[0][0]}>
@@ -26,12 +28,12 @@
     </div>
     
     <div class="bg-slate-500 bg-opacity-10 col-span-2 outline rounded m-3">
-        <div class="grid place-content-center">Match Key</div>
+        <p class="grid place-content-center">Match Key</p>
     </div>
 
-    <button class="bg-slate-500 bg-opacity-10 col-span-2 outline rounded m-3">
-        <div class="grid place-content-center">Create Match</div>
-    </button>
+    <div class="col-span-2 m-3 h-14 text-3xl font-black" >
+        <Button>Create Match</Button>
+    </div>
 </div>
 
 <style>
