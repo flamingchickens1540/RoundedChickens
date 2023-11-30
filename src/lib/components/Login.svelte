@@ -1,6 +1,6 @@
 
 <div class="grid place-items-center">
-    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" viewBox="0 0 430 735" fill="none">
+    <svg class="margin: -10%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" viewBox="0 0 430 735" fill="none">
         <g clip-path="url(#clip0_153_1133)">
         <rect width="430px" height="735px" fill="#1C1C1C"/>
         <mask id="mask0_153_1133" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="-26" y="0" width="499px" height="622px">
@@ -127,5 +127,9 @@
     #loginbtn {
         width: 95%;
         height: fit-content;
+        position: absolute;
+        right: 3%;
+        left: 3%;
+        top: 68%;
     }
 </style>
