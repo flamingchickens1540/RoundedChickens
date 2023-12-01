@@ -2,10 +2,7 @@
     import type { PitscoutTodo } from "$lib/types";
     import { createClient } from '@supabase/supabase-js'
     let teams: PitscoutTodo[] = [];
-    teams.push({
-        teamname: "1540",
-        done: true,
-    });
+
 </script>
 <header>
     <nav>
