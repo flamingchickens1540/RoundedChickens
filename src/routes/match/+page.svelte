@@ -1,13 +1,13 @@
-<!-- <script src="/socket.io/socket.io.js"></script> -->
 <script lang="ts">
 
 import Thanks from "$lib/components/Thanks.svelte"
-import { onMount, beforeDestroy } from 'svelte'
+import { onMount, onDestroy } from 'svelte'
 import { scout } from "$lib/stores/stores" // path to scout store
 import { io } from "socket.io-client"
+    import type { TeamKey } from "$lib/types";
 
 let team_key: TeamKey;
-let socket;
+let socket: any;
 
 onMount(() => {
     socket = io()
@@ -16,20 +16,20 @@ onMount(() => {
         console.log("heyo")
     })
 
-    socket.on('assign_team_match', (data) => {
-        team = data.team
+    socket.on('assign_team_match', (data: { team: TeamKey }) => {
+        team_key = data.team
     })
 
 })
 
-beforeDestroy(() => {
+onDestroy(() => {
     if (socket) {
         socket.disconnect();
     }
   });
 
 function request_match() {
-    socket.emit('scout_req_match', { ($scout).id })
+    socket.emit('scout_req_match', { scout_id: $scout.id })
 }
 
 // Submission via ws can be done with a different connection from the Submit.svelte element

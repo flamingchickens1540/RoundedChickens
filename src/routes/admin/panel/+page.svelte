@@ -11,13 +11,7 @@
     import QueuedTeamMatches from "$lib/components/admin/queue/QueuedTeamMatches.svelte";
     import AdminRobots from "$lib/components/admin/AdminRobots.svelte";
     import ScoutList from "$lib/components/admin/scouts/ScoutList.svelte";
-    import { io } from "socket.io-client";
 
-    const socket = io();
-
-    socket.on("eventFromServer", (message: string) => {
-        console.log(message);
-    });
     // todo: get all of these imported via api requests probably
     let teamMatches: TeamMatch[] = [
         {
@@ -67,6 +61,7 @@
     let activeScouts: Scout[] = [defaultScout, defaultScout, defaultScout];
 
     // Reactive blocks can be used for sending io events from the client
+
 </script>
 
 <h1 class="grid place-content-center text-3xl m-4">Admin Panel</h1>
