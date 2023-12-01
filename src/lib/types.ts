@@ -60,7 +60,6 @@ export type Bunny = {
     team_bunny_key: string,
     active: boolean,
     notes: string,
-    scout_id: string
 }
 
 export enum HybridLocation {
@@ -147,8 +146,7 @@ export type PitData = {
     hybrid_location_mid: boolean,
     hybrid_location_close: boolean,
     notes: string,
-    // bunnies: Bunny[],
-    scout_id: `${string}-${string}-${string}-${string}-${string}`
+    bunnies: Bunny[] | null,
 }
 
 export const defaultPitData: PitData = {
@@ -161,7 +159,7 @@ export const defaultPitData: PitData = {
     hybrid_location_mid: false,
     hybrid_location_close: false,
     notes: "",
-    scout_id: " - - - - "
+    bunnies: null
 
 }
 
