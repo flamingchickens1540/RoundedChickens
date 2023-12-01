@@ -9,11 +9,6 @@ export type FixedLengthArray<T extends any[]> =
 
 export type TeamKey = `frc${number}`
 
-// export type Nameandpoints = {
-//     name: string,
-//     points: number
-// }
-
 export type MatchKey = `2023orbb_${'qm' | 'qf' | 'sf' | 'f'}${number}`
 
 export type Scoutbunny = {
@@ -168,3 +163,8 @@ export enum ImgType {
     Bunny,
     Robot
 };
+
+export type PitscoutTodo = {
+    teamname: string,
+    done: boolean,
+}

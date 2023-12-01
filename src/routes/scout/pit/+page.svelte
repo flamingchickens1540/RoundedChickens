@@ -1,5 +1,7 @@
 <script lang="ts">
   import { enhance } from "$app/forms";
+  import Pitscout from "$lib/components/Pitscout.svelte"
+
 
   function handleSubmit(formData: FormData) {
     formData.append("team_key", "frc1540");
@@ -16,7 +18,7 @@
   }
 </script>
 
-<h1>Pit Scout</h1>
+<Pitscout/>
 
 <!-- TODO: add components here -->
 

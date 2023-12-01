@@ -1,8 +1,13 @@
-<!-- <script lang="ts">
+<script lang="ts">
     import type { PitscoutTodo } from "$lib/types";
+    import { createClient } from '@supabase/supabase-js'
     let teams: PitscoutTodo[] = [];
-</script> -->
-<!-- <header>
+    teams.push({
+        teamname: "1540",
+        done: false,
+    });
+</script>
+<header>
     <nav>
         <div
             style="background-color: #D9D9D9;"
@@ -32,8 +37,8 @@
     </div>
     {/if}
 {/each}
-</div> -->
-<!-- <style>
+</div>
+<style>
     h3 {
        
 font-family: 'Poppins';
@@ -64,4 +69,4 @@ color: #FFFFFF;
         padding: 1rem;
         margin: 1rem;
     }
-</style> -->
+</style>
