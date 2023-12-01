@@ -1,4 +1,6 @@
-
+<script>
+    export let login;
+</script>
 <div class="grid place-items-center">
     <svg class="margin: -10%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" viewBox="0 0 430 735" fill="none">
         <g clip-path="url(#clip0_153_1133)">
@@ -74,7 +76,7 @@
     
 </div>
 <center>
-    <button id="loginbtn">
+    <button id="loginbtn" on:click={login}>
         <svg width="100%" height="100%" viewBox="0 0 416 78" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <g filter="url(#filter0_d_153_1158)">
             <rect x="4" y="4" width="400.003" height="62" rx="20" fill="url(#paint0_linear_153_1158)"/>

@@ -1,4 +1,6 @@
 <script lang="ts">
+    import Login from "$lib/components/Login.svelte";
+
 	export let data;
 
 	let { supabase, session } = data;
@@ -16,9 +18,6 @@
 </script>
 
 <center>
-	<h1 class="text-6xl text-amber-300 font-bold underline text-center p-4">
-		RoundedChickens
-	</h1>
 
 	{#if session}
 		<button
@@ -30,11 +29,9 @@
 			<p class="text-3xl text-white pl-2">
 				{session.user?.user_metadata.name}</p>
 		</div>
+
 	{:else}
-		<button
-			class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 text-2xl rounded"
-			on:click={login}>Login</button
-		>
+		<Login {login}></Login>
 	{/if}
 </center>
 
