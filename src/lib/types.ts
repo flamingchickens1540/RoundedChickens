@@ -5,7 +5,7 @@ type ArrayLengthMutationKeys = 'splice' | 'push' | 'pop' | 'shift' | 'unshift' |
 type ArrayItems<T extends Array<any>> = T extends Array<infer TItems> ? TItems : never
 export type FixedLengthArray<T extends any[]> =
     Pick<T, Exclude<keyof T, ArrayLengthMutationKeys>>
-    & { [Symbol.iterator]: () => IterableIterator< ArrayItems<T> > }
+    & { [Symbol.iterator]: () => IterableIterator<ArrayItems<T>> }
 
 export type TeamKey = `frc${number}`
 
@@ -20,7 +20,7 @@ export type Scoutbunny = {
     teamname: string
     number: number
     type: string
-    notes:string
+    notes: string
 }
 
 export type Scout = {
@@ -103,7 +103,7 @@ export type TeamMatch = {
     match_key: MatchKey,
     scout_id: string, // do these need to be different things?
     scout_name: string,
-    data: { 
+    data: {
         hybrid: HybridData,
         tele: TeleData,
         fielded: boolean,
