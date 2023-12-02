@@ -9,11 +9,6 @@ export type FixedLengthArray<T extends any[]> =
 
 export type TeamKey = `frc${number}`
 
-// export type Nameandpoints = {
-//     name: string,
-//     points: number
-// }
-
 export type MatchKey = `2023orbb_${'qm' | 'qf' | 'sf' | 'f'}${number}`
 
 export type Scoutbunny = {
@@ -45,7 +40,7 @@ export const defaultScout: Scout = {
 
 export type Match = {
     key: MatchKey,
-    matches: FixedLengthArray<[TeamMatch, TeamMatch, TeamMatch, TeamMatch, TeamMatch, TeamMatch]>, // 6 
+    matches: FixedLengthArray<[TeamMatch, TeamMatch, TeamMatch, TeamMatch, TeamMatch, TeamMatch]>, // the first 3 are red
 }
 
 export type Team = {
@@ -101,8 +96,10 @@ export const defaultTeleData: TeleData = {
 export type TeamMatch = {
     team_key: TeamKey, // frc1540
     match_key: MatchKey,
-    scout_id: string, // do these need to be different things?
-    scout_name: string,
+    scout_data: {
+        scout_id: string,
+        scout_name: string
+    } | null
     data: {
         hybrid: HybridData,
         tele: TeleData,
@@ -118,8 +115,7 @@ export type TeamMatch = {
 export const defaultTeamMatch: TeamMatch = {
     team_key: "frc0", // frc1540
     match_key: "2023orbb_qm0",
-    scout_id: "",
-    scout_name: "",
+    scout_data: null,
     data: null
 }
 

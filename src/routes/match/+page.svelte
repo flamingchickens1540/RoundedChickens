@@ -4,7 +4,7 @@ import Thanks from "$lib/components/Thanks.svelte"
 import { onMount, onDestroy } from 'svelte'
 import { scout } from "$lib/stores/stores" // path to scout store
 import { io } from "socket.io-client"
-    import type { TeamKey } from "$lib/types";
+import type { TeamKey } from "$lib/types";
 
 let team_key: TeamKey;
 let socket: any;
