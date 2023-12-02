@@ -16,7 +16,7 @@ onMount(() => {
         console.log("heyo")
     })
 
-    socket.on('assign_team_match', (data: { team: TeamKey }) => {
+    socket.on('assign_team', (data: { team: TeamKey }) => {
         team_key = data.team
     })
 
