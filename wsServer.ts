@@ -1,14 +1,18 @@
+import express, { Express, Request, Response } from 'express';
 import { Server } from "socket.io"
-import type { TeamKey } from "../../lib/types"
+import type { TeamKey } from "./src/lib/types"
+import http from 'http';
 
-const PORT = 8001
-const io = new Server(PORT)
+const PORT: number = 8001;
+
+const app: Express = express();
+const server = http.createServer(app);
+const io = new Server(server)
 
 enum Result {
     Success,
     Failure
 }
-
 
 /// TODO: Refactor to use scout rooms instead of arrays, safer and more effective for communication
 class ScoutManager {
@@ -111,4 +115,6 @@ io.on('connection', (socket) => { // io refers to the ws server, socket refers t
     });
 
 });
-io.listen(PORT);
+server.listen(PORT, () => {
+    console.log("listening on port: " + PORT)
+});

@@ -7,6 +7,7 @@
     "build": "vite build",
     "_start_comment": "starts io Elysia server for production",
     "start": "bun run build && node ./server",
+    "ws_server_start": "bun run wsServer.ts",
     "preview": "vite preview",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"

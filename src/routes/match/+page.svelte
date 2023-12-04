@@ -10,7 +10,7 @@ let team_key: TeamKey;
 let socket: any;
 
 onMount(() => {
-    socket = io()
+    socket = io("ws://localhost:8001/")
 
     socket.on('hiFromServer', () => {
         console.log("heyo")
