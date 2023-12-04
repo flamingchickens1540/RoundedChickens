@@ -19,6 +19,7 @@
     // TODO: Should the teammatches be created by the admin?
     
     let socket: any;
+    let teamMatches: TeamMatch[] = []
 
     onMount(() => {
         socket = io()
@@ -34,6 +35,7 @@
     let activeScouts: Scout[] = [defaultScout, defaultScout, defaultScout]
 
     function handleMessage(event: any) {
+        teamMatches = event.detail.teamMatches as TeamMatch[]
         teamMatches.forEach((team_match) => 
             team_match.match_key = event.detail.key)
         
@@ -54,7 +56,7 @@
 
 <div class="grid grid-cols-2 grid-rows-2 gap-3 m-4">
     <AdminRobots on:message={handleMessage} />
-    <QueuedTeamMatches {teamMatches} />
+    <QueuedTeamMatches bind:teamMatches={teamMatches} />
     <!-- Queued Team Matches -->
     <TeamMatchesBacklog bind:team_match_backlog={teamMatches} />
     <ScoutList {activeScouts} />

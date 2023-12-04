@@ -1,13 +1,16 @@
-import express, { Express, Request, Response } from 'express';
+import express, { type Express } from 'express';
 import { Server } from "socket.io"
-import type { TeamKey } from "./src/lib/types"
+import type { TeamKey } from "./lib/types"
 import http from 'http';
-
-const PORT: number = 8001;
+import { PUBLIC_FRONTEND_URL } from "$env/static/public"
 
 const app: Express = express();
 const server = http.createServer(app);
-const io = new Server(server)
+const io = new Server(server, {
+    cors: {
+        origin: PUBLIC_FRONTEND_URL
+    }
+})
 
 enum Result {
     Success,
@@ -115,6 +118,6 @@ io.on('connection', (socket) => { // io refers to the ws server, socket refers t
     });
 
 });
-server.listen(PORT, () => {
-    console.log("listening on port: " + PORT)
+server.listen(PUBLIC_FRONTEND_URL.slice(-4), () => {
+    console.log("listening on port: " + PUBLIC_FRONTEND_URL.slice(-4))
 });

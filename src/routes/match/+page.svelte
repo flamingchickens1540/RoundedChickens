@@ -10,7 +10,12 @@ let team_key: TeamKey;
 let socket: any;
 
 onMount(() => {
-    socket = io("ws://localhost:8001/")
+    socket = io("ws://localhost:8001/", {
+        withCredentials: true,
+        extraHeaders: {
+            "client-header": "client"
+        }
+    })
 
     socket.on('hiFromServer', () => {
         console.log("heyo")
@@ -40,4 +45,4 @@ function request_match() {
 
 <button on:click={request_match}>Scout Match</button>
 <!-- TODO: Here we need the carousel, which I don't think works yet -->
-<Thanks/>
+<!-- <Thanks/>/ -->
