@@ -15,36 +15,34 @@
     import ScoutList from "$lib/components/admin/scouts/ScoutList.svelte";
     import { io } from "socket.io-client"
     import { onMount } from "svelte";
+    import { PUBLIC_WS_PORT } from "$env/static/public";
     // todo: get all of these imported via api requests probably
-    // TODO: Should the teammatches be created by the admin?
+    // TODO: Should the currentTeamMatches be created by the admin?
     
     let socket: any;
-    let teamMatches: TeamMatch[] = []
+    let queuedTeamMatches: TeamMatch[] = []
+    let currentTeamMatches: TeamMatch[]  = []
+    let completedTeamMatches: TeamMatch[] = []
+    let activeScouts: Scout[] = [defaultScout, defaultScout, defaultScout]
 
     onMount(() => {
-        socket = io()
+        socket = io('ws://localhost:' + PUBLIC_WS_PORT)
 
         socket.on('connection', () => {
             socket.on('completed_team_match_to_admin', (team_match: TeamMatch) => {
-
+                let index = currentTeamMatches.indexOf(team_match);
+                currentTeamMatches.splice(index, 1)
+                completedTeamMatches.push(team_match)
             })
         })
+
+        socket.on('hiFromServer', console.log("admin connected to socket server"))
     })
 
-    let completedTeamMatches: TeamMatch[] = [defaultTeamMatch, defaultTeamMatch, defaultTeamMatch, defaultTeamMatch, defaultTeamMatch, defaultTeamMatch]
-    let activeScouts: Scout[] = [defaultScout, defaultScout, defaultScout]
-
     function handleMessage(event: any) {
-        teamMatches = event.detail.teamMatches as TeamMatch[]
-        teamMatches.forEach((team_match) => 
-            team_match.match_key = event.detail.key)
-        
-        teamMatches[0].team_key = event.detail.red_robots[0]
-        teamMatches[1].team_key = event.detail.red_robots[1]
-        teamMatches[2].team_key = event.detail.red_robots[2]
-        teamMatches[3].team_key = event.detail.blue_robots[0]
-        teamMatches[4].team_key = event.detail.blue_robots[1]
-        teamMatches[5].team_key = event.detail.blue_robots[2]
+        (event.detail.currentTeamMatches as TeamMatch[]).forEach(team_match => {
+            currentTeamMatches.push(team_match)
+        });
     }
 
     
@@ -56,8 +54,8 @@
 
 <div class="grid grid-cols-2 grid-rows-2 gap-3 m-4">
     <AdminRobots on:message={handleMessage} />
-    <QueuedTeamMatches bind:teamMatches={teamMatches} />
+    <QueuedTeamMatches bind:teamMatches={currentTeamMatches} />
     <!-- Queued Team Matches -->
-    <TeamMatchesBacklog bind:team_match_backlog={teamMatches} />
+    <TeamMatchesBacklog bind:team_match_backlog={completedTeamMatches} />
     <ScoutList {activeScouts} />
 </div>

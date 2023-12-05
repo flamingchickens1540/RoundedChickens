@@ -5,17 +5,14 @@ import { onMount, onDestroy } from 'svelte'
 import { scout } from "$lib/stores/stores" // path to scout store
 import { io } from "socket.io-client"
 import type { TeamKey } from "$lib/types";
+    import { PUBLIC_WS_PORT } from "$env/static/public";
 
 let team_key: TeamKey;
 let socket: any;
 
 onMount(() => {
-    socket = io("ws://localhost:8001/", {
-        withCredentials: true,
-        extraHeaders: {
-            "client-header": "client"
-        }
-    })
+    console.log("here") 
+    socket = io("ws://localhost:" + PUBLIC_WS_PORT)
 
     socket.on('hiFromServer', () => {
         console.log("heyo")
@@ -34,7 +31,7 @@ onDestroy(() => {
   });
 
 function request_match() {
-    socket.emit('scout_req_match', { scout_id: $scout.id })
+    socket.emit('scout_req_team', $scout.id)
 }
 
 // Submission via ws can be done with a different connection from the Submit.svelte element
@@ -43,6 +40,8 @@ function request_match() {
 
 </script>
 
-<button on:click={request_match}>Scout Match</button>
+<div class="grid grid-rows-1 grid-cols-1 place-items-center">
+    <button on:click={request_match} class="outline text-white">WS</button>
+</div>
 <!-- TODO: Here we need the carousel, which I don't think works yet -->
 <!-- <Thanks/>/ -->

@@ -1,14 +1,21 @@
 import express, { type Express } from 'express';
 import { Server } from "socket.io"
-import type { TeamKey } from "./lib/types"
+import type { TeamKey } from "./src/lib/types"
 import http from 'http';
-import { PUBLIC_FRONTEND_URL } from "$env/static/public"
+
+let frontend_url = process.env.PUBLIC_FRONTEND_URL as string;
+let ws_port = process.env.PUBLIC_WS_PORT || 8001;
+
+console.log("FRONTEND: " + frontend_url)
 
 const app: Express = express();
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: PUBLIC_FRONTEND_URL
+        origin: "*",
+        // allowedHeaders: ["client-header"],
+        credentials: true,
+        methods: ["GET", "POST"]
     }
 })
 
@@ -86,7 +93,7 @@ let manager = new ScoutManager();
 // When a match is submitted, the manager checks if scouts are waiting, if they are, it sends a the teams back to each of the scouts, otherwise, it puts the robots in a queue
 io.on('connection', (socket) => { // io refers to the ws server, socket refers to the specific connection between a client and the server
     console.log("a user connected")
-    socket.emit('hiFromServer', "hello");
+    socket.emit('hiFromServer')
     
     socket.on('scout_req_team', (scout_id) => { // scout_id is not the same as client_id
         socket.join('pending_scouts')
@@ -110,14 +117,18 @@ io.on('connection', (socket) => { // io refers to the ws server, socket refers t
             socket.broadcast.to(id)
             socket.broadcast.to(id).emit('assign_team', scout_match.team) 
         })
-
     });
+
+    // { team_match, scout_id }
+    socket.on('scout_submit_team' (data) => {
+
+    })
 
     socket.on('disconnect', () => {
         console.log("a user disconnected");
     });
 
 });
-server.listen(PUBLIC_FRONTEND_URL.slice(-4), () => {
-    console.log("listening on port: " + PUBLIC_FRONTEND_URL.slice(-4))
+server.listen(ws_port, () => {
+    console.log("listening on port: " + ws_port)
 });

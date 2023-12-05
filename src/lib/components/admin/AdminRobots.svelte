@@ -1,21 +1,22 @@
 <script lang="ts">
+    import { PUBLIC_WS_PORT } from "$env/static/public";
     import type { MatchKey, TeamKey } from "$lib/types";
-    import { match } from "assert";
     import { io } from "socket.io-client"
     import { createEventDispatcher, onDestroy, onMount } from "svelte";
 
-    let red_robots: TeamKey[]
-    let blue_robots: TeamKey[]
+    let red_robots: TeamKey[] = []
+    let blue_robots: TeamKey[] = []
     let match_key: MatchKey
     let socket: any
 
     const dispatch = createEventDispatcher()
     
     onMount(() => {
-        socket = io()
+        console.log('here')
+        socket = io("ws://localhost:" + PUBLIC_WS_PORT)
         
         socket.on('hiFromServer', () => {
-            console.log("heyo")
+            console.log("Admin robots connected to server")
         })
     })
 

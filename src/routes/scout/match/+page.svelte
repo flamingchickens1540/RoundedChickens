@@ -32,7 +32,6 @@
   method="post"
   use:enhance={({ formData }) => {
     handleSubmit(formData);
-  }}
->
+  }}>
   <button type="submit">Submit</button>
 </form>
