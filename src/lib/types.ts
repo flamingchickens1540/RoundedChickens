@@ -169,7 +169,7 @@ export enum Positions {
     Close
 };
 
-export enum ImgType {
-    Bunny,
+export type ImgType {
+    Bunny: 
     Robot
 };

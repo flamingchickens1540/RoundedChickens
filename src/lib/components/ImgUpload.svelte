@@ -1,11 +1,8 @@
 <script lang="ts">
-    import { ImgType } from "$lib/types"
     let team = "";
-    export let options: ImgType;
-    let robot = "";
-    let imgsrcs = [];
-    let length = 0;
-    $: length = imgsrcs.length;
+    let options = ["Robot", "Bunny"]
+    export let type = ""; //either robot or bunny
+    let length = 0
 </script>
 
 <header>
@@ -14,6 +11,7 @@
             class="header-background p-5 bg-zinc-900 flex justify-center items-center"
         >
             <button>
+                <a href="/homepage">
                 <svg
                     class=" absolute fill-slate-50 h-10 m-1 left-10 top-4"
                     viewBox="0 0 45 45"
@@ -29,15 +27,6 @@
                 <strong>Image Upload</strong>
             </h1>
             <button>
-                <svg
-                    class=" absolute fill-slate-50 h-9 m-1 right-10 top-4"
-                    viewBox="0 0 45 39"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <path
-                        d="M0 0V5.55784H44.4627V0H0ZM0 16.5068V22.0646H44.4627V16.5068H0ZM0 33.1803V38.7382H44.4627V33.1803H0Z"
-                    />
-                </svg>
             </button>
             <div />
         </div>
@@ -60,11 +49,11 @@
                 <input
                     class="accent-purple-500"
                     type="radio"
-                    bind:group={robot}
+                    bind:group={type}
                     name="amount"
                     {value}
                 />
-                {value.value}
+                {value}
             </label>
         {/each}
     </div>
