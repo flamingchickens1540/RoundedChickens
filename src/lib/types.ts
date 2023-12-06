@@ -96,10 +96,6 @@ export const defaultTeleData: TeleData = {
 export type TeamMatch = {
     team_key: TeamKey, // frc1540
     match_key: MatchKey,
-    scout_data: {
-        scout_id: string,
-        scout_name: string
-    } | null
     data: {
         hybrid: HybridData,
         tele: TeleData,
@@ -115,7 +111,6 @@ export type TeamMatch = {
 export const defaultTeamMatch: TeamMatch = {
     team_key: "frc0", // frc1540
     match_key: "2023orbb_qm0",
-    scout_data: null,
     data: null
 }
 

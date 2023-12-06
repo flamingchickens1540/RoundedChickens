@@ -15,7 +15,7 @@
     import ScoutList from "$lib/components/admin/scouts/ScoutList.svelte";
     import { io } from "socket.io-client"
     import { onMount } from "svelte";
-    import { PUBLIC_WS_PORT } from "$env/static/public";
+    import { PUBLIC_WS_URL } from "$env/static/public";
     // todo: get all of these imported via api requests probably
     // TODO: Should the currentTeamMatches be created by the admin?
     
@@ -26,7 +26,7 @@
     let activeScouts: Scout[] = [defaultScout, defaultScout, defaultScout]
 
     onMount(() => {
-        socket = io('ws://localhost:' + PUBLIC_WS_PORT)
+        socket = io(PUBLIC_WS_URL)
 
         socket.on('connection', () => {
             socket.on('completed_team_match_to_admin', (team_match: TeamMatch) => {
