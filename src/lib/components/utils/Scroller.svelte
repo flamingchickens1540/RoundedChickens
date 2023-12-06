@@ -58,7 +58,7 @@
 			}
 		};
 	}
-
+	// two script tags?
     import { onMount } from 'svelte';
 
 	// config

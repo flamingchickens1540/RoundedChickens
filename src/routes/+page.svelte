@@ -38,7 +38,7 @@
 </center>
 
 <style lang="postcss">
-	:global(html) {
+ 	:global(html) {
 		background-color: theme(colors.slate.600);
 	}
 </style>

@@ -27,7 +27,17 @@
 	<title>Rounded Chickens</title>
 </svelte:head>
 
-<slot />
+<svelte:head>
+	<title>Rounded Chickens</title>
+</svelte:head>
+
+<div class="app">
+	<div class="boundingBox">
+		<slot />
+	</div>
+</div>
+
+<!-- <slot /> -->
 
 <style>
 	:global(html) {
@@ -36,5 +46,10 @@
 
 	:global(h1, h2, h3, h4, h5, h6) {
 		font-family: teko, sans-serif;
+	}
+	.boundingBox {
+		display: grid;
+		align-items: center;
+		justify-content: center;
 	}
 </style>
