@@ -11,7 +11,7 @@
             class="header-background p-5 flex justify-center items-center"
         >
             <button>
-                <a href="/homepage">
+                <a href="/">
                 <svg
                     class=" absolute fill-slate-50 h-9 m-1 left-8 top-5"
                     viewBox="0 0 45 39"

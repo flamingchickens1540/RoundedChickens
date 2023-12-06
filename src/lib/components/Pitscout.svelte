@@ -52,7 +52,7 @@
             style="background-color: #D9D9D9;"
             class="header-background p-5 flex justify-center items-center">
             <button>
-            <a href="/homepage">
+            <a href="/">
                 
                 <svg
                     class=" absolute fill-slate-50 h-9 m-1 left-10 top-5"

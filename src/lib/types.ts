@@ -168,8 +168,3 @@ export enum Positions {
     Mid,
     Close
 };
-
-export type ImgType {
-    Bunny: 
-    Robot
-};
