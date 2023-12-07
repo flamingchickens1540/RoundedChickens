@@ -1,6 +1,7 @@
 <script lang="ts">
     import Login from "$lib/components/Login.svelte";
-
+    import Mainhomepage from "$lib/components/homepage/mainhomepage.svelte";
+	
 	export let data;
 
 	let { supabase, session } = data;
@@ -20,7 +21,7 @@
 <center>
 
 	{#if session}
-		<button
+		<!-- <button
 			class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 text-2xl rounded"
 			on:click={logout}>Logout</button
 		>
@@ -30,15 +31,10 @@
 				{session.user?.user_metadata.name}</p>
 
 		</div>
-		<img src="60fpsparrot.gif" alt="">
+		<img src="60fpsparrot.gif" alt=""> -->
+		<Mainhomepage></Mainhomepage>
 
 	{:else}
 		<Login {login}></Login>
 	{/if}
 </center>
-
-<style lang="postcss">
- 	:global(html) {
-		background-color: theme(colors.slate.600);
-	}
-</style>

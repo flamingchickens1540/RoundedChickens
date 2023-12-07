@@ -1,12 +1,13 @@
 <script lang="ts">
     export let onclick: () => void
+    import { PUBLIC_FRONTEND_URL } from "$env/static/public"; 
 </script>
 
-<button on:click={onclick} class="btn" unselectable="on">
+<a href={PUBLIC_FRONTEND_URL} class="btn" unselectable="on">
     <div class="bg text">
         <h1 class="text-black dark:text-white"><slot /></h1>
     </div>
-</button>
+</a>
 
 <style>
     .bg {

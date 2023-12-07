@@ -27,9 +27,6 @@
 	<title>Rounded Chickens</title>
 </svelte:head>
 
-<svelte:head>
-	<title>Rounded Chickens</title>
-</svelte:head>
 
 <div class="app">
 	<div class="boundingBox">
