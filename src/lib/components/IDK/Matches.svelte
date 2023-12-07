@@ -18,7 +18,7 @@
         <div class="subHeader">
             {subHeader}
         </div>
-    {:else if typeof subHeader != "undefined"}
+    {:else if typeof asubHeader != "undefined"}
         <div class="tags">
             {#each subHeader as tag}
                 <div class="tag">
