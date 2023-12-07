@@ -1,4 +1,8 @@
 <script lang="ts">
+    import { redirect } from '@sveltejs/kit';
+    export function load() {
+	throw redirect(307, '/homepage')
+}
     export let team = "";
     let drivetrain = "";
     let hybridtype = "";
@@ -46,9 +50,10 @@
     <nav>
         <div
             style="background-color: #D9D9D9;"
-            class="header-background p-5 flex justify-center items-center"
-        >
+            class="header-background p-5 flex justify-center items-center">
             <button>
+            <a href="/">
+                
                 <svg
                     class=" absolute fill-slate-50 h-9 m-1 left-10 top-5"
                     viewBox="0 0 45 39"
@@ -59,11 +64,11 @@
                         fill="#1C1C1C"
                     />
                 </svg>
+            </a>
             </button>
             <h1 style="color: #1C1C1C;" class="text-4xl center">
                 <strong>PIT SCOUTING</strong>
             </h1>
-            <button />
             <div />
         </div>
     </nav>

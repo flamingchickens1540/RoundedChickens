@@ -11,6 +11,7 @@
             class="header-background p-5 flex justify-center items-center"
         >
             <button>
+                <a href="/">
                 <svg
                     class=" absolute fill-slate-50 h-9 m-1 left-8 top-5"
                     viewBox="0 0 45 39"
@@ -26,16 +27,6 @@
                 <strong>LEADERBOARD</strong>
             </h1>
             <button>
-                <svg
-                    class=" absolute fill-slate-50 h-10 m-1 right-6 top-4"
-                    viewBox="0 0 45 45"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <path
-                        d="M0 0V5.55784H44.4627V0H0ZM0 16.5068V22.0646H44.4627V16.5068H0ZM0 33.1803V38.7382H44.4627V33.1803H0Z"
-                        fill="#1C1C1C"
-                    />
-                </svg>
             </button>
             <div />
         </div>

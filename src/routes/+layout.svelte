@@ -27,6 +27,8 @@
 	<title>Rounded Chickens</title>
 </svelte:head>
 
+<!-- <slot /> -->
+
 
 <div class="app">
 	<div class="boundingBox">

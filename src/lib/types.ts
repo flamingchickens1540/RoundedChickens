@@ -115,6 +115,11 @@ export type TeamMatch = {
     } | null
 }
 
+export type PitscoutTodo = {
+    teamname: string
+    done: boolean
+}
+
 export const defaultTeamMatch: TeamMatch = {
     team_key: "frc0", // frc1540
     match_key: "2023orbb_qm0",
