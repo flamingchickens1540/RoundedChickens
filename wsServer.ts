@@ -110,18 +110,18 @@ io.on('connection', (socket) => { // io refers to the ws server, socket refers t
     });
 
     // { team_match, scout_id }
-    socket.on('scout_submit_team', (data: { team_match: TeamMatch, client_id: `${string}-${string}-${string}-${string}-${string}` }) => {
-        socket.leave('assigned_scouts')
-        let team_match = data.team_match
-        if (team_match.data == null) {
-            socket.emit('completed_match_needed')
-        }
-        console.log(team_match)
-        // Submit match to database here
-    })
+    // socket.on('scout_submit_team', (data: { team_match: TeamMatch, client_id: `${string}-${string}-${string}-${string}-${string}` }) => {
+    //     socket.leave('assigned_scouts')
+    //     let team_match = data.team_match
+    //     if (team_match.data == null) {
+    //         socket.emit('completed_match_needed')
+    //     }
+    //     console.log(team_match)
+    //     // Submit match to database here
+    // })
 
     socket.on('disconnect', () => {
-        console.log("a user disconnected");
+        console.log("client: " + socket.id + "disconnected");
     });
 
 });

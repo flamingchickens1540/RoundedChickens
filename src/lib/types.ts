@@ -65,32 +65,38 @@ export enum HybridLocation {
 
 export type HybridData = {
     shots_hit: number,
-    shots_disabled: number,
+    shots_missed: number,
+    disabled: boolean,
     bunnies_scored: number,
+    bunies_stolen: number,
     taxi: boolean,
     hybrid_location: HybridLocation,
 }
 
 export const defaultHybridData: HybridData = {
     shots_hit: 0,
-    shots_disabled: 0,
+    shots_missed: 0,
+    disabled: false,
     bunnies_scored: 0,
+    bunies_stolen: 0,
     taxi: false,
     hybrid_location: HybridLocation.CLOSE
 }
 
 export type TeleData = {
-    tele_shots_hit: number,
-    tele_shots_miss: number,
-    tele_bunnies_scored: number,
-    tele_bunnies_stolen: number,
+    shots_hit: number,
+    shots_missed: number,
+    bunnies_scored: number,
+    bunnies_stolen: number,
+    times_disabled: number
 }
 
 export const defaultTeleData: TeleData = {
-    tele_shots_hit: 0,
-    tele_shots_miss: 0,
-    tele_bunnies_scored: 0,
-    tele_bunnies_stolen: 0,
+    shots_hit: 0,
+    shots_missed: 0,
+    bunnies_scored: 0,
+    bunnies_stolen: 0,
+    times_disabled: 0
 }
 
 export type TeamMatch = {

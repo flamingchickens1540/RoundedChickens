@@ -1,14 +1,9 @@
-<script lang="ts">
-    export let data
+<!-- <script lang="ts">
 
-    let { session } = data
 
     import Thanks from "$lib/components/Thanks.svelte"
-    import { onMount, onDestroy } from 'svelte'
     import { scout } from "$lib/stores/stores" // path to scout store
-    import { io } from "socket.io-client"
-    import { defaultTeamMatch, type TeamKey } from "$lib/types";
-        import { PUBLIC_WS_URL } from "$env/static/public";
+    
 
     let team_key: TeamKey;
     let socket: any;
@@ -54,4 +49,4 @@
     <button on:click={submit_match} class="outline text-white">SUBMIT</button>
 </div>
 <!-- TODO: Here we need the carousel, which I don't think works yet -->
-<!-- <Thanks/>/ -->
+<Thanks/>/ -->
