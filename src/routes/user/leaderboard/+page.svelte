@@ -1,1 +1,5 @@
-<h1>Leaderboard</h1>
+<script>
+    import Pitscout from "$lib/components/Leaderboard.svelte";
+</script>
+
+<Pitscout/>

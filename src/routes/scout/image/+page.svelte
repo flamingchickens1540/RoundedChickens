@@ -5,23 +5,12 @@
   function handleSubmit(formData: FormData) {
     team = "frc "+team
     formData.append("team_key", team);
-    formData.append("isRobot", bool);
-    //TODO: bunny ids
-    //TODO: attach images
+    formData.append("isRobot", type);
   }
   let team = "";
     let options = ["Robot", "Bunny"]
     let type = "Bunny"; 
-    let bool = true
     let length = 0
-    $: if (type == "Bunny"){
-    bool = false
-    bool = bool
-    }
-    $: if (type == "Robot"){
-    bool = true
-    bool = bool
-    }
 </script>
 <form
   method="post"
