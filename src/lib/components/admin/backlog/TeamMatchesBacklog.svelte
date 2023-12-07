@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { TeamMatch } from "$lib/types";
-    import TeamMachLogged from "./TeamMachLogged.svelte";
+    import TeamMatchLogged from "./TeamMatchLogged.svelte";
     import Scroller from "$lib/components/utils/Scroller.svelte";
 
     export let team_match_backlog: TeamMatch[];
@@ -13,7 +13,7 @@
 <Scroller {top} {threshold} {bottom} bind:index bind:offset bind:progress>
     <div class="grid gap-3" slot="foreground">
         {#each team_match_backlog as team_match}
-            <TeamMachLogged team_match={team_match}/>
+            <TeamMatchLogged team_match={team_match}/>
         {/each}
     </div>
 </Scroller>
