@@ -1,5 +1,5 @@
 <script>
-    import Pitscout from "$lib/components/ImgUpload.svelte";
+    import Pitscout from "$lib/components/Pitscout.svelte";
 </script>
 
 <Pitscout/>

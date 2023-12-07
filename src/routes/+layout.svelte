@@ -31,7 +31,7 @@
 
 
 <div class="app">
-	<div class="boundingBox">
+	<div>
 		<slot />
 	</div>
 </div>
