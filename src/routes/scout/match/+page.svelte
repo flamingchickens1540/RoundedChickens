@@ -12,6 +12,9 @@
     let socket: any;
 
     onMount(() => {
+        console.log("here")
+        socket = io(PUBLIC_WS_URL)
+        
         socket.emit('scout_req_team', session?.user.id as string)
         console.log("here")
         socket = io(PUBLIC_WS_URL)
