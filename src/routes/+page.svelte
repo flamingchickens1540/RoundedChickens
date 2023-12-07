@@ -1,4 +1,7 @@
 <script lang="ts">
+    import Login from "$lib/components/Login.svelte";
+    import Mainhomepage from "$lib/components/homepage/mainhomepage.svelte";
+	
 	export let data;
 
 	let { supabase, session } = data;

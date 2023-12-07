@@ -158,6 +158,9 @@ export const defaultPitData: PitData = {
     notes: "",
     bunnies: null
 
+<<<<<<< HEAD
+}
+=======
 }
 
 export enum Positions {
@@ -169,4 +172,9 @@ export enum Positions {
 export enum ImgType {
     Bunny,
     Robot
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> f6ba2158ea86986650dc2fe1e84d4c2ea9ba2a9d
+>>>>>>> 8bb211e7399ec05ed1da074728a174e28b5f103d
