@@ -5,11 +5,18 @@ type ArrayLengthMutationKeys = 'splice' | 'push' | 'pop' | 'shift' | 'unshift' |
 type ArrayItems<T extends Array<any>> = T extends Array<infer TItems> ? TItems : never
 export type FixedLengthArray<T extends any[]> =
     Pick<T, Exclude<keyof T, ArrayLengthMutationKeys>>
-    & { [Symbol.iterator]: () => IterableIterator< ArrayItems<T> > }
+    & { [Symbol.iterator]: () => IterableIterator<ArrayItems<T>> }
 
 export type TeamKey = `frc${number}`
 
 export type MatchKey = `2023orbb_${'qm' | 'qf' | 'sf' | 'f'}${number}`
+
+export type Scoutbunny = {
+    teamname: string
+    number: number
+    type: string
+    notes: string
+}
 
 export type Scout = {
     id: `${string}-${string}-${string}-${string}-${string}`,
@@ -25,7 +32,7 @@ export type ScoutConfig = {
 
 export const defaultScout: Scout = {
     id: " - - - - ",
-    name: "Crow",
+    name: "Pesto",
     password: "",
     coins: 0,
     is_assigned: false
@@ -33,7 +40,7 @@ export const defaultScout: Scout = {
 
 export type Match = {
     key: MatchKey,
-    matches: FixedLengthArray<[TeamMatch, TeamMatch, TeamMatch, TeamMatch, TeamMatch, TeamMatch]>, // 6 
+    matches: FixedLengthArray<[TeamMatch, TeamMatch, TeamMatch, TeamMatch, TeamMatch, TeamMatch]>, // the first 3 are red
 }
 
 export type Team = {
@@ -48,7 +55,6 @@ export type Bunny = {
     team_bunny_key: string,
     active: boolean,
     notes: string,
-    scout_id: string
 }
 
 export enum HybridLocation {
@@ -59,40 +65,44 @@ export enum HybridLocation {
 
 export type HybridData = {
     shots_hit: number,
-    shots_disabled: number,
+    shots_missed: number,
+    disabled: boolean,
     bunnies_scored: number,
+    bunies_stolen: number,
     taxi: boolean,
     hybrid_location: HybridLocation,
 }
 
 export const defaultHybridData: HybridData = {
     shots_hit: 0,
-    shots_disabled: 0,
+    shots_missed: 0,
+    disabled: false,
     bunnies_scored: 0,
+    bunies_stolen: 0,
     taxi: false,
     hybrid_location: HybridLocation.CLOSE
 }
 
 export type TeleData = {
-    tele_shots_hit: number,
-    tele_shots_miss: number,
-    tele_bunnies_scored: number,
-    tele_bunnies_stolen: number,
+    shots_hit: number,
+    shots_missed: number,
+    bunnies_scored: number,
+    bunnies_stolen: number,
+    times_disabled: number
 }
 
 export const defaultTeleData: TeleData = {
-    tele_shots_hit: 0,
-    tele_shots_miss: 0,
-    tele_bunnies_scored: 0,
-    tele_bunnies_stolen: 0,
+    shots_hit: 0,
+    shots_missed: 0,
+    bunnies_scored: 0,
+    bunnies_stolen: 0,
+    times_disabled: 0
 }
 
 export type TeamMatch = {
     team_key: TeamKey, // frc1540
     match_key: MatchKey,
-    scout_id: string, // do these need to be different things?
-    scout_name: string,
-    data: { 
+    data: {
         hybrid: HybridData,
         tele: TeleData,
         fielded: boolean,
@@ -107,8 +117,6 @@ export type TeamMatch = {
 export const defaultTeamMatch: TeamMatch = {
     team_key: "frc0", // frc1540
     match_key: "2023orbb_qm0",
-    scout_id: "",
-    scout_name: "",
     data: null
 }
 
@@ -130,8 +138,7 @@ export type PitData = {
     hybrid_location_mid: boolean,
     hybrid_location_close: boolean,
     notes: string,
-    // bunnies: Bunny[],
-    scout_id: `${string}-${string}-${string}-${string}-${string}`
+    bunnies: Bunny[] | null,
 }
 
 export const defaultPitData: PitData = {
@@ -144,6 +151,17 @@ export const defaultPitData: PitData = {
     hybrid_location_mid: false,
     hybrid_location_close: false,
     notes: "",
-    scout_id: " - - - - "
+    bunnies: null
 
 }
+
+export enum Positions {
+    Far,
+    Mid,
+    Close
+};
+
+export enum ImgType {
+    Bunny,
+    Robot
+};
