@@ -23,9 +23,11 @@
     let activeScouts: Scout[] = [defaultScout, defaultScout, defaultScout]
 
     onMount(() => {
+        
         socket = io(PUBLIC_WS_URL)
 
-        socket.on('connection', () => {
+        socket.on('connect', () => {
+            console.log('Admin connected to server')
             socket.on('completed_team_match_to_admin', (team_match: TeamMatch) => {
                 let index = currentTeamMatches.indexOf(team_match);
                 currentTeamMatches.splice(index, 1)
@@ -33,23 +35,25 @@
             })
         })
 
-        socket.on('hiFromServer', console.log("admin connected to socket server"))
     })
 
-    function handleMessage(event: any) {
-        (event.detail.currentTeamMatches as TeamMatch[]).forEach(team_match => {
+    function handleNewRobots(event: any) {
+        let red_robots = event.detail.red_robots
+        let blue_robots = event.deetail.blue_robots
+        socket.emit('admin_create_match', { red_robots, blue_robots});
+        (event.detail.red_robots as TeamMatch[]).forEach(team_match => {
+            currentTeamMatches.push(team_match)
+        });
+        (event.detail.blue_robots as TeamMatch[]).forEach(team_match => {
             currentTeamMatches.push(team_match)
         });
     }
 
-    
-
-    // Reactive blocks can be used for sending io events from the client
 </script>
 <div class="mainContainer">
     <h1 class="grid place-content-center text-3xl m-4">Admin Panel</h1>
     <div class="grid grid-cols-2 grid-rows-2 gap-3 h-screen">
-        <AdminRobots on:message={handleMessage}/>
+        <AdminRobots on:message={handleNewRobots}/>
         <QueuedTeamMatches teamMatches={queuedTeamMatches}/>
         <!-- Queued Team Matches -->
         <div class="scoutListButtonHolder">

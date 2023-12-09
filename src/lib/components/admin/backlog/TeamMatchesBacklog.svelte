@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { TeamMatch } from "$lib/types";
-    import TeamMachLogged from "./TeamMachLogged.svelte";
+    import TeamMachLogged from "./TeamMatchLogged.svelte";
 
     export let team_match_backlog: TeamMatch[];
 

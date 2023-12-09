@@ -1,32 +1,39 @@
 <script lang="ts">
     export let data
     let { session } = data
-
+    
     import { enhance } from "$app/forms";
     import { onMount, onDestroy } from 'svelte'
-    import { io } from "socket.io-client"
+    import { Socket, io } from "socket.io-client"
     import type { TeamKey } from "$lib/types";
     import { PUBLIC_WS_URL } from "$env/static/public";
     import { match } from "$lib/stores/stores";
+    import type { DefaultEventsMap } from "socket.io/dist/typed-events.js";
     
-    let socket: any;
+    let socket: Socket<DefaultEventsMap, DefaultEventsMap>
 
     onMount(() => {
-        console.log("here")
-        socket = io(PUBLIC_WS_URL)
-        
-        socket.emit('scout_req_team', session?.user.id as string)
-        console.log("here")
         socket = io(PUBLIC_WS_URL)
 
-        socket.on('hiFromServer', () => {
+        socket.on('connect', () => {
             console.log("Client connected to ws server")
         })
 
         socket.on('assign_team', (team: TeamKey ) => {
             $match.team_key = team
-            console.log(team)
+            console.log("Assigned to team: " + team)
         })
+        
+        // supabase id
+        socket.emit('scout_req_team', session?.user.id as string)
+        
+        const beforeUnloadHandler = (event: any) => {
+            event.preventDefault()
+            event.returnVaue = true
+            alert("Please scout your match before reloading")
+            return "Bad Scout"
+        }
+        window.addEventListener("beforeunload", beforeUnloadHandler)
     })
 
     onDestroy(() => {
@@ -34,6 +41,9 @@
             socket.disconnect();
         }
     });
+
+    
+
 
     function handleSubmit(formData: FormData) {
         formData.append("team_key", $match.team_key);
@@ -58,7 +68,7 @@
     }
 </script>
 
-<h1>Match Scout</h1>
+<h1 class="text-white">Match Scout</h1>
 
 <!-- TODO: add components here -->
 
@@ -68,5 +78,5 @@
         handleSubmit(formData);
     }}
 >
-    <button type="submit">Submit</button>
+    <button class="text-white" type="submit">Submit</button>
 </form>

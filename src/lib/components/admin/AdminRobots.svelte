@@ -1,9 +1,9 @@
 <script lang="ts">
     import { PUBLIC_WS_URL } from "$env/static/public";
     import type { MatchKey, TeamKey } from "$lib/types";
-    import { io } from "socket.io-client"
     import { createEventDispatcher, onDestroy, onMount } from "svelte";
     import Button from "$lib/components/utils/Button.svelte";
+    import type { DefaultEventsMap } from "socket.io/dist/typed-events";
 
 
     // export let robots: string[][] = [[]];
@@ -11,33 +11,20 @@
     let red_robots: TeamKey[] = []
     let blue_robots: TeamKey[] = []
     let match_key: MatchKey
-    let socket: any
 
     const dispatch = createEventDispatcher()
-    
-    onMount(() => {
-        console.log('here')
-        socket = io(PUBLIC_WS_URL)
-        
-        socket.on('hiFromServer', () => {
-            console.log("Admin robots connected to server")
-        })
-    })
-
-    onDestroy(() => {
-        if (socket) {
-            socket.disconnect();
-        }
-    });
 
     function createMatch() {
-        socket.emit('admin_create_match', { red_robots, blue_robots })
-
-        dispatch('new_match', {
-            key: match_key,
-            red_robots: red_robots,
-            blue_robots: blue_robots
-        })
+        console.log("match created function called" )
+        if (red_robots.length == 3 && blue_robots.length == 3) {
+            dispatch('new_match', {
+                key: match_key,
+                red_robots: red_robots,
+                blue_robots: blue_robots
+            })
+        } else {
+            alert("Three robots on each side needed for a match")
+        }
     }
 </script>
 
