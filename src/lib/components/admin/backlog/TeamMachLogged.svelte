@@ -8,8 +8,8 @@
     <div class="dark:text-white text-black text-2xl font-black">{team_match.match_key}</div>
     <div class="dark:text-white text-black text-2xl font-black">{team_match.team_key}</div>
     {#if team_match != null}
-        <div class="grid place-items-end bg-[#49A078] rounded-3xl p-1 dark:text-white text-black text-xl font-black">Complete</div>
+        <div class="grid place-items-end bg-[#49A078] rounded-3xl p-2 dark:text-white text-black text-xl font-black">Complete</div>
     {:else}
-        <div class="grid place-items-end bg-[#ED1C24] rounded-3xl p-1 dark:text-white text-black text-xl font-black">Waiting</div>
+        <div class="grid place-items-end bg-[#ED1C24] rounded-3xl p-2 dark:text-white text-black text-xl font-black">Waiting</div>
     {/if}
 </div>
