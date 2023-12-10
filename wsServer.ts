@@ -16,6 +16,8 @@ const io = new Server(server, {
     }
 })
 
+
+// TODO: Functionally, every scout in scout_map is active, the infrastructure doesn't utilize this yet though
 class ScoutManager {
     /// A list of robots to be scouted
     robot_queue: TeamKey[]
@@ -119,7 +121,7 @@ io.on('connect', (socket) => { // io refers to the ws server, socket refers to t
             socket.join('pending_scouts')
             console.log("Added " + server_scout.id + " Aka " + server_scout.name + " to the pending_scouts room");
             let robot: TeamKey | undefined = manager.get_next_robot()
-            if (robot != undefined) {
+            if (robot !== undefined) {
                 console.log("Robot avaliable")
                 console.log("Removed " + server_scout.id + " Aka " + server_scout.name + " from the pending_scouts room")
                 
@@ -167,9 +169,10 @@ io.on('connect', (socket) => { // io refers to the ws server, socket refers to t
 
     // if a scout submits a match it must be in the scout map
     socket.on('scout_submitted_match', () => {
-        let server_scout = manager.scout_map.get(socket.id)
-        server_scout!.is_assigned = false
-        manager.scout_map.set(socket.id, server_scout!)
+        let server_scout = manager.scout_map.get(socket.id) as Scout
+        server_scout.is_assigned = false
+        manager.scout_map.set(socket.id, server_scout)
+        // socket.emit('scout_update', server_scout)
     })
 
     // TODO: FIX, DISCONENCTION CANNOT BE SUBMISSIOn

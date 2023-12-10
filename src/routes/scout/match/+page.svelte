@@ -48,10 +48,9 @@
         }
     });
 
-    
-
-
     function handleSubmit(formData: FormData) {
+        console.log("submit data")
+        socket.emit('scout_submitted_match')
         formData.append("team_key", $match.team_key);
         formData.append("match_key", $match.match_key);
         formData.append("fielded", `${($match.data?.fielded)}`); //must be string due to formdata limitations

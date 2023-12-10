@@ -11,9 +11,21 @@
     import NavOptions from "$lib/components/admin/NavOptions.svelte";
     import { Socket, io } from "socket.io-client"
     import { onMount } from "svelte";
-    import { PUBLIC_WS_URL } from "$env/static/public";
+    import { PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_URL, PUBLIC_WS_URL } from "$env/static/public";
+    
     // todo: get all of these imported via api requests probably
     // TODO: Should the currentTeamMatches be created by the admin?
+    export let data;
+
+    let { supabase, session  } = data;
+    $: ({ supabase, session } = data);
+    const subscribe = supabase
+        .from('TeamMatches')
+        .on('INSERT', payload => {
+            completedTeamMatches.push(payload as TeamMatch)
+            console.log('New insert into TeamMatches: ', payload)
+        })
+        .subscribe()
     
     let socket: any//: Socket<ServerToClientEvents, ClientToServerEvents>
     let queuedTeamMatches: TeamMatch[] = []
@@ -53,6 +65,10 @@
                 if (!scout_exists) {
                     activeScouts.push(new_scout)
                 }
+            })
+            // when scout submits match
+            socket.on('scout_finished', (scout: Scout) => {
+                completedTeamMatches.push()
             })
         })
 
