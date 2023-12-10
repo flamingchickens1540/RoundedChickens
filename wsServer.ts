@@ -28,17 +28,9 @@ class ScoutManager {
         this.scout_map = new Map<string, Scout>
     }
 
-    /// Returns a scout for the robot or null
-    async get_next_scout(): Promise<string | undefined> {
-        let scouts = await io.in('pending_scouts').fetchSockets()
-        let scout = scouts.pop()
-        return scout?.id
-    }
-
     /// Returns a robot for this scout or null
     get_next_robot(): TeamKey | undefined {
-        let robot = this.robot_queue.pop()
-        return robot ? robot : undefined
+        return this.robot_queue.pop()
     }
 
     // Removes the client_id if it exists
@@ -53,22 +45,36 @@ class ScoutManager {
     /// Returns a corresponding team and scout for each currently avaliable scout
     /// Puts the remaining teams in the robot queue
     async create_match(robots: { red_robots: TeamKey[], blue_robots: TeamKey[] }): Promise<{ team: TeamKey, clientId: string }[]> {
+        console.log('here')
         let ret: { team: TeamKey, clientId: string }[] = []
+        console.log(io.sockets.adapter.rooms)
+
         // This is just being used to check if there are avaliable scouts
-        let scouts: string[] = (await io.in('pending_scouts').fetchSockets()).map(val => { return val.id });
+        // This fails sometimes
+        let scouts: string[] = (await io.in('pending_scouts').fetchSockets()).map(value => value.id)
+        console.log(scouts.length)
+        if (scouts.length == 0) {
+            console.log("No avaliable scouts")
+        }
+        // scouts.forEach((value) => {
+            // console.log(value)
+        // })
+
         if (scouts.length > 0) {
+            let scouts = await io.in('pending_scouts').fetchSockets()
             robots.red_robots.forEach(async (team) => {
-                let scout = await this.get_next_scout()
-                if (scout == undefined)
+                let scout_id = scouts.pop()?.id
+                if (scout_id === undefined)
                     this.robot_queue.push(team)
                 else {
+                    console.log("Scout " + scout_id + " assigned to team " + team)
                     // The scout needs to be moved to assigned scouts
-                    ret.push({ team, clientId: scout })
+                    ret.push({ team, clientId: scout_id })
                 }
             })
 
             robots.blue_robots.forEach(async (team) => {
-                let scout = await this.get_next_scout()
+                let scout = scouts.pop()?.id
                 if (scout == undefined)
                     this.robot_queue.push(team)
                 else {
@@ -95,6 +101,8 @@ io.on('connect', (socket) => { // io refers to the ws server, socket refers to t
             console.log("Assigned Scout Requested Match")
             return
         }
+        console.log(client_scout.name)
+
         // Syncs scouts between server and client
         // Assume server_scout is always the correct one
         let server_scout: Scout | undefined = manager.scout_map.get(socket.id)
@@ -123,7 +131,7 @@ io.on('connect', (socket) => { // io refers to the ws server, socket refers to t
             } else {
                 console.log("No Robot avaliable")
                 console.log("Scout added to queue");
-
+                
                 server_scout.is_assigned = false // attempted to assign readonly property happens here
             }
             // manager.scout_map.set(socket.id, scout)
@@ -139,6 +147,10 @@ io.on('connect', (socket) => { // io refers to the ws server, socket refers to t
         let scout_matches = await manager.create_match(robots)
         
         scout_matches.forEach((scout_match) => {
+            console.log(scout_match.team)
+            console.log(scout_match.clientId)
+            console.log("\n")
+
             let id: string = scout_match.clientId
             // server_scout will never be undefined because then scout_matches would be empty, because create_match would be running before any scouts have logged in   
             let server_scout = manager.scout_map.get(id)!;

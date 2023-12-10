@@ -5,12 +5,18 @@
     import { enhance } from "$app/forms";
     import { onMount, onDestroy } from 'svelte'
     import { Socket, io } from "socket.io-client"
-    import type { TeamKey } from "$lib/types";
+    import type { Scout, TeamKey } from "$lib/types";
     import { PUBLIC_WS_URL } from "$env/static/public";
     import { match } from "$lib/stores/stores";
     import type { DefaultEventsMap } from "socket.io/dist/typed-events.js";
     
     let socket: Socket<DefaultEventsMap, DefaultEventsMap>
+
+    let scout: Scout = {
+        id: session?.user.id! as `${string}-${string}-${string}-${string}-${string}`,
+        name: session?.user.user_metadata.name,
+        is_assigned: false
+    }
 
     onMount(() => {
         socket = io(PUBLIC_WS_URL)
@@ -19,13 +25,13 @@
             console.log("Client connected to ws server")
         })
 
-        socket.on('assign_team', (team: TeamKey ) => {
+        socket.on('assign_team', (team: TeamKey) => {
             $match.team_key = team
             console.log("Assigned to team: " + team)
         })
         
         // supabase id
-        socket.emit('scout_req_team', session?.user.id as string)
+        socket.emit('scout_req_team', scout)
         
         const beforeUnloadHandler = (_event: any) => {
             // event.preventDefault()

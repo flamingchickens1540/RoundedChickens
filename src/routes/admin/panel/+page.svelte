@@ -58,9 +58,10 @@
 
     })
 
-    function handleNewRobots(event: any) {
+    async function handleNewMatch(event: any) {
+        console.log("handle new match called")
         let red_robots: TeamMatch[] = event.detail.red_robots
-        let blue_robots: TeamMatch[] = event.deetail.blue_robots
+        let blue_robots: TeamMatch[] = event.detail.blue_robots
         socket.emit('admin_create_match', { red_robots, blue_robots })
         red_robots.forEach(team_match => {
             currentTeamMatches.push(team_match)
@@ -74,7 +75,7 @@
 <div class="mainContainer">
     <h1 class="grid place-content-center text-3xl m-4">Admin Panel</h1>
     <div class="grid grid-cols-2 grid-rows-2 gap-3 h-screen">
-        <AdminRobots on:message={handleNewRobots}/>
+        <AdminRobots on:new_match={handleNewMatch}/>
         <QueuedTeamMatches bind:teamMatches={queuedTeamMatches}/>
         <!-- Queued Team Matches -->
         <div class="scoutListButtonHolder">

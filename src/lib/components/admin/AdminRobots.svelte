@@ -15,7 +15,6 @@
     const dispatch = createEventDispatcher()
 
     function createMatch() {
-        console.log("match created function called" )
         if (red_robots.length == 3 && blue_robots.length == 3) {
             dispatch('new_match', {
                 key: match_key,
