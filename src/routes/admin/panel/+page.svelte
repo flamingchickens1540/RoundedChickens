@@ -1,9 +1,8 @@
 <script lang="ts">
     // TODO: Figure out if we want to keep a backlog 
-    import {
-        type TeamMatch,
-        type Scout,
-        defaultScout,
+    import type {
+        TeamMatch,
+        Scout,
     } from "$lib/types";
     import TeamMatchesBacklog from "$lib/components/admin/backlog/TeamMatchesBacklog.svelte";
     import QueuedTeamMatches from "$lib/components/admin/queue/QueuedTeamMatches.svelte";
@@ -20,18 +19,40 @@
     let queuedTeamMatches: TeamMatch[] = []
     let currentTeamMatches: TeamMatch[]  = []
     let completedTeamMatches: TeamMatch[] = []
-    let activeScouts: Scout[] = [defaultScout, defaultScout, defaultScout]
+    let activeScouts: Scout[] = []  
 
     onMount(() => {
-        
         socket = io(PUBLIC_WS_URL)
 
         socket.on('connect', () => {
             console.log('Admin connected to server')
+
             socket.on('completed_team_match_to_admin', (team_match: TeamMatch) => {
                 let index = currentTeamMatches.indexOf(team_match);
                 currentTeamMatches.splice(index, 1)
                 completedTeamMatches.push(team_match)
+            })
+            // triggered when a scout disconnects
+            socket.on('scout_remove', (scout_id: `${string}-${string}-${string}-${string}-${string}`) => {
+                for (let i = 0; i < activeScouts.length; i++) {
+                    if (activeScouts[i].id == scout_id) {
+                        activeScouts.splice(i, 1)
+                    }
+                }
+            })
+            // Probably triggered too much
+            socket.on('scout_update', (new_scout: Scout) => {
+                let scout_exists = false
+                for (let i = 0; i < activeScouts.length; i++) {
+                    if (activeScouts[i].id == new_scout.id) {
+                        scout_exists = true
+                        activeScouts[i] = new_scout
+                        break;
+                    }
+                }
+                if (!scout_exists) {
+                    activeScouts.push(new_scout)
+                }
             })
         })
 
@@ -54,13 +75,13 @@
     <h1 class="grid place-content-center text-3xl m-4">Admin Panel</h1>
     <div class="grid grid-cols-2 grid-rows-2 gap-3 h-screen">
         <AdminRobots on:message={handleNewRobots}/>
-        <QueuedTeamMatches teamMatches={queuedTeamMatches}/>
+        <QueuedTeamMatches bind:teamMatches={queuedTeamMatches}/>
         <!-- Queued Team Matches -->
         <div class="scoutListButtonHolder">
-            <TeamMatchesBacklog team_match_backlog={completedTeamMatches}/>
+            <TeamMatchesBacklog bind:team_match_backlog={completedTeamMatches}/>
         </div>
         <div class="grid grid-cols-2 grid-rows-1 gap-3 scoutListButtonHolder">
-            <ScoutList activeScouts={activeScouts}/>
+            <ScoutList bind:activeScouts={activeScouts}/>
             <NavOptions/>
         </div>
     </div>

@@ -25,7 +25,7 @@ export const handle = async ({ event, resolve }) => {
 
 	let session = await event.locals.getSession();
 	if (event.url.pathname != "/" && !session) {
-		alert("Not logged in")
+		// alert("Not logged in")
 		throw redirect(301, "/");
 	}
 	return resolve(event, {

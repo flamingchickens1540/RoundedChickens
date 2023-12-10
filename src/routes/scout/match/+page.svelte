@@ -27,11 +27,11 @@
         // supabase id
         socket.emit('scout_req_team', session?.user.id as string)
         
-        const beforeUnloadHandler = (event: any) => {
-            event.preventDefault()
-            event.returnVaue = true
-            alert("Please scout your match before reloading")
-            return "Bad Scout"
+        const beforeUnloadHandler = (_event: any) => {
+            // event.preventDefault()
+            // event.returnVaue = true
+            alert("Please scout your match")
+            // return "Bad Scout"
         }
         window.addEventListener("beforeunload", beforeUnloadHandler)
     })
