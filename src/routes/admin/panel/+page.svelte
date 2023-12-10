@@ -9,13 +9,13 @@
     import AdminRobots from "$lib/components/admin/AdminRobots.svelte";
     import ScoutList from "$lib/components/admin/scouts/ScoutList.svelte";
     import NavOptions from "$lib/components/admin/NavOptions.svelte";
-    import { io } from "socket.io-client"
+    import { Socket, io } from "socket.io-client"
     import { onMount } from "svelte";
     import { PUBLIC_WS_URL } from "$env/static/public";
     // todo: get all of these imported via api requests probably
     // TODO: Should the currentTeamMatches be created by the admin?
     
-    let socket: any;
+    let socket: any//: Socket<ServerToClientEvents, ClientToServerEvents>
     let queuedTeamMatches: TeamMatch[] = []
     let currentTeamMatches: TeamMatch[]  = []
     let completedTeamMatches: TeamMatch[] = []
@@ -59,13 +59,13 @@
     })
 
     function handleNewRobots(event: any) {
-        let red_robots = event.detail.red_robots
-        let blue_robots = event.deetail.blue_robots
-        socket.emit('admin_create_match', { red_robots, blue_robots});
-        (event.detail.red_robots as TeamMatch[]).forEach(team_match => {
+        let red_robots: TeamMatch[] = event.detail.red_robots
+        let blue_robots: TeamMatch[] = event.deetail.blue_robots
+        socket.emit('admin_create_match', { red_robots, blue_robots })
+        red_robots.forEach(team_match => {
             currentTeamMatches.push(team_match)
         });
-        (event.detail.blue_robots as TeamMatch[]).forEach(team_match => {
+        blue_robots.forEach(team_match => {
             currentTeamMatches.push(team_match)
         });
     }

@@ -97,16 +97,17 @@ io.on('connect', (socket) => { // io refers to the ws server, socket refers to t
         }
         // Syncs scouts between server and client
         // Assume server_scout is always the correct one
-        let server_scout = manager.scout_map.get(socket.id)
+        let server_scout: Scout | undefined = manager.scout_map.get(socket.id)
         // this includes data not being synced and the scout not being in the map yet
-        if (server_scout == undefined) {
+        if (server_scout === undefined) {
+            console.log("here")
             manager.scout_map.set(socket.id, client_scout)
             server_scout = client_scout
-        } else if (server_scout != client_scout) { // client_scout is not updated
+        } else if (server_scout !== client_scout) { // client_scout is not updated
             socket.emit('scout_update', server_scout)
         } 
         
-        if (!socket.rooms.has('pending_scouts') && !socket.rooms.has('assigned_scouts')) {
+        if (!socket.rooms.has('pending_scouts') && !socket.rooms.has('assigned_scouts') && server_scout) {
             socket.join('pending_scouts')
             console.log("Added " + server_scout.id + " Aka " + server_scout.name + " to the pending_scouts room");
             let robot: TeamKey | undefined = manager.get_next_robot()
@@ -121,13 +122,13 @@ io.on('connect', (socket) => { // io refers to the ws server, socket refers to t
                 server_scout.is_assigned = true
             } else {
                 console.log("No Robot avaliable")
-                console.log("Scout added to queue")
+                console.log("Scout added to queue");
 
-                server_scout.is_assigned = false // attempted to assign readonly property
+                server_scout.is_assigned = false // attempted to assign readonly property happens here
             }
             // manager.scout_map.set(socket.id, scout)
             socket.broadcast.emit('scout_update', server_scout)
-            manager.scout_map.set(socket.id, server_scout)
+            manager.scout_map.set(socket.id, server_scout    )
         } else {
             console.log("Assigned Scout Requested Match 2")
         }
