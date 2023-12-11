@@ -20,9 +20,10 @@
     let { supabase, session  } = data;
     $: ({ supabase, session } = data);
     const subscribe = supabase
-        .from('TeamMatches')
-        .on('INSERT', payload => {
-            completedTeamMatches.push(payload as TeamMatch)
+        .channel('admin_panel')
+        .on('postgres_changes',{ event: 'INSERT', schema: 'public', table: 'TeamMatches', }, payload => {
+            let team_match: TeamMatch = payload.new as TeamMatch;
+            completedTeamMatches.push(team_match)
             console.log('New insert into TeamMatches: ', payload)
         })
         .subscribe()
