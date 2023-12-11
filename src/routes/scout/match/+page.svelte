@@ -33,13 +33,13 @@
         // supabase id
         socket.emit('scout_req_team', scout)
         
-        const beforeUnloadHandler = (_event: any) => {
-            // event.preventDefault()
-            // event.returnVaue = true
-            alert("Please scout your match")
-            // return "Bad Scout"
-        }
-        window.addEventListener("beforeunload", beforeUnloadHandler)
+        // const beforeUnloadHandler = (event: any) => {
+        //     event.preventDefault()
+        //     event.returnVaue = true
+        //     alert("Please scout your match")
+        //     return "Bad Scout"
+        // }
+        // window.addEventListener("beforeunload", beforeUnloadHandler)
     })
 
     onDestroy(() => {
@@ -49,6 +49,7 @@
     });
 
     function handleSubmit(formData: FormData) {
+        $match.team_key = "frc0" // this is the default nothing value ig
         console.log("submit data")
         socket.emit('scout_submitted_match')
         formData.append("team_key", $match.team_key);
@@ -70,18 +71,27 @@
         formData.append("broke", `${$match.data?.broke}`); //must be string due to formdata limitations
         formData.append("died", `${$match.data?.died}`); //must be string due to formdata limitations
         formData.append("notes", `${$match.data?.notes}`);
+        location.reload()
     }
 </script>
 
 <h1 class="text-white">Match Scout</h1>
+<div class="grid place-items-center border text-white">
+    {#if $match.team_key == "frc0"}
+        <div class="grid place-items-center border">
+            Match Not Avaliable
+        </div>
+    {:else}
+        <!-- TODO: add components here -->
+    {/if}
 
-<!-- TODO: add components here -->
+    <form
+        method="post"
+        use:enhance={({ formData }) => {
+            handleSubmit(formData);
+        }}
+    >
+        <button class="border" type="submit">Submit</button>
+    </form>
+</div>
 
-<form
-    method="post"
-    use:enhance={({ formData }) => {
-        handleSubmit(formData);
-    }}
->
-    <button class="text-white" type="submit">Submit</button>
-</form>
