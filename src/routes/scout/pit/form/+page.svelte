@@ -1,17 +1,30 @@
-<!-- <script lang="ts">
-    import { pit } from "../../../../lib/stores/stores";
-    import { PitData } from "../../../../lib/types";
-    import { MultipleChoices } from "flock-ui"
+<script lang="ts">
+  import { enhance } from "$app/forms";
 
-    let drivetrain_options: string[] = ["Swerve", "Tank", "Other"]
-    let hybrid_options: string[] = ["Fully Auto", "Hybrid", "No Hybrid"]
-    
+  function handleSubmit(formData: FormData) {
+    formData.append("team_key", "frc1540");
+    formData.append("drivetrain", "swerve");
+    formData.append("hybrid_type_auto", "true"); //must be string due to formdata limitations
+    formData.append("hybrid_type_combo", "false"); //must be string due to formdata limitations
+    formData.append("hybrid_type_none", "false"); //must be string due to formdata limitations
+    formData.append("hybrid_location_far", "true"); //must be string due to formdata limitations
+    formData.append("hybrid_location_mid", "true"); //must be string due to formdata limitations
+    formData.append("hybrid_location_close", "false"); //must be string due to formdata limitations
+    formData.append("notes", "great notes about what happened");
+    // formData.append('bunny_id', ""); //must be string due to formdata limitations
+    //TODO: proper bunny logging
+  }
 </script>
 
-<h1>Pit Scouting - Form</h1>
+<h1>Pit Scout</h1>
 
-<h2>{$pit.team_key}</h2>
+<!-- TODO: add components here -->
 
-<MultipleChoices options={drivetrain_options}, name="Drivetrain" bind/>
-
-<MultipleChoices options={hybrid_options}, name="Hybrid Types", bind/> -->
+<form
+  method="post"
+  use:enhance={({ formData }) => {
+    handleSubmit(formData);
+  }}
+>
+  <button type="submit">Submit</button>
+</form>

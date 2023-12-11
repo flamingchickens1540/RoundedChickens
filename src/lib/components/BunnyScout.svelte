@@ -45,7 +45,7 @@
 <style>
     .background {
         /* Rectangle 7 */
-        background: #d9d9d9;
+        background: #2c2c2c;
         mix-blend-mode: normal;
         box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
         border-radius: 20px;
@@ -54,7 +54,7 @@
     }
     .backgroundreal {
         /* Rectangle 7 */
-        background: #c2c2c2;
+        background: #1c1c1c;
         mix-blend-mode: normal;
         box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
         border-radius: 20px;
@@ -68,7 +68,7 @@
         font-size: 40px;
         line-height: 91.5%;
         /* or 32px */
-        color: #1c1c1c;
+        color: white;
         margin: 1rem;
     }
     h5 {
@@ -78,7 +78,7 @@
         font-size: 25px;
         line-height: 91.5%;
         /* or 32px */
-        color: #1c1c1c;
+        color: white;
         margin: 1rem;
     }
     textarea {
