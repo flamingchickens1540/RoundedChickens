@@ -1,32 +1,45 @@
 <script lang="ts">
     export let data
     let { session } = data
-
+    
     import { enhance } from "$app/forms";
     import { onMount, onDestroy } from 'svelte'
-    import { io } from "socket.io-client"
-    import type { TeamKey } from "$lib/types";
+    import { Socket, io } from "socket.io-client"
+    import type { Scout, TeamKey } from "$lib/types";
     import { PUBLIC_WS_URL } from "$env/static/public";
     import { match } from "$lib/stores/stores";
+    import type { DefaultEventsMap } from "socket.io/dist/typed-events.js";
     
-    let socket: any;
+    let socket: Socket<DefaultEventsMap, DefaultEventsMap>
+
+    let scout: Scout = {
+        id: session?.user.id! as `${string}-${string}-${string}-${string}-${string}`,
+        name: session?.user.user_metadata.name,
+        is_assigned: false
+    }
 
     onMount(() => {
-        console.log("here")
-        socket = io(PUBLIC_WS_URL)
-        
-        socket.emit('scout_req_team', session?.user.id as string)
-        console.log("here")
         socket = io(PUBLIC_WS_URL)
 
-        socket.on('hiFromServer', () => {
+        socket.on('connect', () => {
             console.log("Client connected to ws server")
         })
 
-        socket.on('assign_team', (team: TeamKey ) => {
+        socket.on('assign_team', (team: TeamKey) => {
             $match.team_key = team
-            console.log(team)
+            console.log("Assigned to team: " + team)
         })
+        
+        // supabase id
+        socket.emit('scout_req_team', scout)
+        
+        // const beforeUnloadHandler = (event: any) => {
+        //     event.preventDefault()
+        //     event.returnVaue = true
+        //     alert("Please scout your match")
+        //     return "Bad Scout"
+        // }
+        // window.addEventListener("beforeunload", beforeUnloadHandler)
     })
 
     onDestroy(() => {
@@ -36,6 +49,9 @@
     });
 
     function handleSubmit(formData: FormData) {
+        $match.team_key = "frc0" // this is the default nothing value ig
+        console.log("submit data")
+        socket.emit('scout_submitted_match')
         formData.append("team_key", $match.team_key);
         formData.append("match_key", $match.match_key);
         formData.append("fielded", `${($match.data?.fielded)}`); //must be string due to formdata limitations
@@ -55,33 +71,27 @@
         formData.append("broke", `${$match.data?.broke}`); //must be string due to formdata limitations
         formData.append("died", `${$match.data?.died}`); //must be string due to formdata limitations
         formData.append("notes", `${$match.data?.notes}`);
+        location.reload()
     }
 </script>
 
-<h1>Match Scout</h1>
+<h1 class="text-white">Match Scout</h1>
+<div class="grid place-items-center border text-white">
+    {#if $match.team_key == "frc0"}
+        <div class="grid place-items-center border">
+            Match Not Avaliable
+        </div>
+    {:else}
+        <!-- TODO: add components here -->
+    {/if}
 
-<<<<<<< HEAD
-<CatlystCarousel style="height:200px" speed={2} snapSeconds={0.2} shouldSnap={true}>
-    <div>test 1</div>
-    <div>test 2</div>
-</CatlystCarousel> 
-=======
-    import HybridLocation from "$lib/components/scouting/match/hybrid/HybridLocation.svelte";
-    import HybridShots from "$lib/components/scouting/match/hybrid/HybridShots.svelte";
-    import Teleop from "$lib/components/Leaderboard.svelte"
-    import type { Positions } from "$lib/types";
-    let hybrid_position: Positions;
-</script>
->>>>>>> f6ba2158ea86986650dc2fe1e84d4c2ea9ba2a9d
-=======
-<!-- TODO: add components here -->
+    <form
+        method="post"
+        use:enhance={({ formData }) => {
+            handleSubmit(formData);
+        }}
+    >
+        <button class="border" type="submit">Submit</button>
+    </form>
+</div>
 
-<form
-    method="post"
-    use:enhance={({ formData }) => {
-        handleSubmit(formData);
-    }}
->
-    <button type="submit">Submit</button>
-</form>
->>>>>>> e78f3225c56d15ce3aab9fa4dc2420575c05381c
