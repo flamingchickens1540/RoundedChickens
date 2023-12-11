@@ -1,12 +1,7 @@
 <script lang="ts">
-    import { PUBLIC_WS_URL } from "$env/static/public";
     import type { MatchKey, TeamKey } from "$lib/types";
-    import { createEventDispatcher, onDestroy, onMount } from "svelte";
+    import { createEventDispatcher } from "svelte";
     import Button from "$lib/components/utils/Button.svelte";
-    import type { DefaultEventsMap } from "socket.io/dist/typed-events";
-
-
-    // export let robots: string[][] = [[]];
     
     let red_robots: TeamKey[] = []
     let blue_robots: TeamKey[] = []
@@ -51,7 +46,7 @@
             <p>rp = replay</p>
             <p>pm = practice</p>
         </div>
-        <input class="grid text-center dark:bg-[#2C2C2C] bg-[#D9D9D9] rounded-2xl text-2xl font-black mb-2 ml-3" />
+        <input class="grid text-center dark:bg-[#2C2C2C] bg-[#D9D9D9] rounded-2xl text-2xl font-black mb-2 ml-3" bind:value={match_key}/>
     </div>
 
     <div class="col-span-2 ml-3 mr-3 mb-3 h-14 text-3xl font-black" >

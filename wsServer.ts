@@ -1,6 +1,6 @@
 import express, { type Express } from 'express';
 import { Server } from "socket.io"
-import type { Scout, TeamKey, TeamMatch } from "./src/lib/types"
+import type { Scout, TeamKey } from "./src/lib/types"
 import http from 'http';
 
 let ws_port = process.env.PUBLIC_WS_PORT || 8001;
@@ -16,13 +16,8 @@ const io = new Server(server, {
     }
 })
 
-
-// PROBLEMS:
-// 1. for the admin, current matches are sometimes loggin twice(see documented functions below)
-// 2. scouts can currently not submit matches but get new ones
-
-
 // TODO: Functionally, every scout in scout_map is active, the infrastructure doesn't utilize this yet though
+// It's a mess, probably don't touch it
 class ScoutManager {
     /// A list of robots to be scouted
     robot_queue: TeamKey[]
@@ -61,44 +56,35 @@ class ScoutManager {
     /// Returns a corresponding team and scout for each currently avaliable scout
     /// Puts the remaining teams in the robot queue
     async create_match(robots: { red_robots: TeamKey[], blue_robots: TeamKey[] }): Promise<{ team: TeamKey, clientId: string }[]> {
-        console.log('here')
         let ret: { team: TeamKey, clientId: string }[] = []
-        console.log(io.sockets.adapter.rooms)
+        console.log("Rooms: " + io.sockets.adapter.rooms)
 
         // This is just being used to check if there are avaliable scouts
         // This fails sometimes
         let scouts: string[] = (await io.in('pending_scouts').fetchSockets()).map(value => value.id)
         console.log(scouts.length)
-        if (scouts.length == 0) {
-            console.log("No avaliable scouts")
-        }
-        // scouts.forEach((value) => {
-            // console.log(value)
-        // })
 
-        if (scouts.length > 0) {
-            let scouts = await io.in('pending_scouts').fetchSockets()
-            robots.red_robots.forEach(async (team) => {
-                let scout_id = scouts.pop()?.id
-                if (scout_id === undefined)
-                    this.robot_queue.push(team)
-                else {
-                    console.log("Scout " + scout_id + " assigned to team " + team)
-                    // The scout needs to be moved to assigned scouts
-                    ret.push({ team, clientId: scout_id })
-                }
-            })
+        // if (scouts.length > 0) {
+        robots.red_robots.forEach(async (team) => {
+            let scout_id = scouts.pop()
+            if (scout_id === undefined)
+                this.robot_queue.push(team)
+            else {
+                console.log("Scout " + scout_id + " assigned to team " + team)
+                // The scout needs to be moved to assigned scouts
+                ret.push({ team, clientId: scout_id })
+            }
+        })
 
-            robots.blue_robots.forEach(async (team) => {
-                let scout = scouts.pop()?.id
-                if (scout == undefined)
-                    this.robot_queue.push(team)
-                else {
-                    // The scout needs to be moved to assigned scouts
-                    ret.push({ team, clientId: scout })
-                }
-            })
-        }
+        robots.blue_robots.forEach(async (team) => {
+            let scout = scouts.pop()
+            if (scout == undefined)
+                this.robot_queue.push(team)
+            else {
+                // The scout needs to be moved to assigned scouts
+                ret.push({ team, clientId: scout })
+            }
+        })
         
         return ret
     }
@@ -106,7 +92,6 @@ class ScoutManager {
 
 let manager = new ScoutManager();
 
-// TODO: FIGURE OUT HOW TO MAKE IS_ASSIGNED  = FALSE WHEN THE CLIENT SUBMITS DATA(THIS IS WHY I WANTED THE WS_SERVER TO HANDLE SUBMISSION)
 // The scout requests a team, if no teams are in the queue, exist, null is returned and the client knows that it is logged in waiting for a team
 // When a match is submitted, the manager checks if scouts are waiting, if they are, it sends a the teams back to each of the scouts, otherwise, it puts the robots in a queue
 io.on('connect', (socket) => { // io refers to the ws server, socket refers to the specific connection between a client and the server
@@ -133,12 +118,10 @@ io.on('connect', (socket) => { // io refers to the ws server, socket refers to t
             manager.scout_map.set(socket.id, client_scout)
             server_scout = client_scout
         } else if (server_scout !== client_scout) { // client_scout is not updated
-            socket.emit('scout_update', server_scout)
-        } else {
-            if (server_scout.is_assigned == true) {
-                console.log("Assigned Scout Requested Match 2")
-                return
-            }
+            socket.emit('scout_update', server_scout) 
+        } else if (server_scout.is_assigned == true) {
+            console.log("Assigned Scout Requested Match")
+            return
         } 
 
         if (!socket.rooms.has('pending_scouts') && !socket.rooms.has('assigned_scouts') && server_scout) {
@@ -152,8 +135,7 @@ io.on('connect', (socket) => { // io refers to the ws server, socket refers to t
                 socket.leave('pending_scouts')
                 socket.join('assigned_scouts')
                 socket.emit('assign_team', robot)
-                // problem here, this causes it to trigger twice on if the scout logs in first
-                // but removing this triggeres it no times if the admin is frist
+               
                 io.emit('team_match_assigned_admin', robot, server_scout.name)
 
                 server_scout.is_assigned = true
@@ -206,19 +188,10 @@ io.on('connect', (socket) => { // io refers to the ws server, socket refers to t
         io.emit('team_match_done_admin', server_scout.name) // yes, name is passed here so it can be searched by the admin_dash and removed when needed, infrastructure really should be planned before UI
     })
 
-    // TODO: FIX, DISCONENCTION CANNOT BE SUBMISSIOn
-    // 
-    socket.on('disconnecting', () => { // TODO: research what this means exactly
+    // TODO: Make sure disconnecting is handled right
+    socket.on('disconnecting', () => {
         manager.scout_map.delete(socket.id)
-        // This i when they submit a match
-        // socket.emit('scout_update', null)
-        // if (socket.in('pending_scouts')) {
-        //     console.log("Pending scout disconnected")
-        // } else if (socket.in('assigned_scouts')) {
-        //     console.log("Assigned scout disconnected")
-        // } else {
-        //     console.log("Admin or useless scout disconnected")
-        // }
+        io.emit('scout_remove', manager.scout_map.get(socket.id))
     })
 
     socket.on('disconnect', () => {

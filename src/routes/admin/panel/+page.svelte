@@ -1,5 +1,4 @@
 <script lang="ts">
-    // TODO: Figure out if we want to keep a backlog 
     import type {
         TeamMatch,
         Scout,
@@ -15,8 +14,7 @@
     import { PUBLIC_WS_URL } from "$env/static/public";
     import CurrentTeamMatches from "$lib/components/admin/current/CurrentTeamMatches.svelte";
     
-    // todo: get all of these imported via api requests probably
-    // TODO: Should the current_team_matches be created by the admin?
+    // TODO: make sure the supabase stuff works
     export let data;
 
     let { supabase, session  } = data;
@@ -30,7 +28,7 @@
         })
         .subscribe()
     
-    let socket: any//: Socket<ServerToClientEvents, ClientToServerEvents>
+    let socket: any //: Socket<ServerToClientEvents, ClientToServerEvents>
     let current_team_matches: {team_match: TeamMatch, scout_name: string }[]  = [] // not working
     let completed_team_matches: TeamMatch[] = []
     let activeScouts: Scout[] = []
@@ -78,6 +76,12 @@
             // exists so the admin knows what robot is currently assigned to the robot 
             socket.on('team_match_assigned_admin', (robot: TeamKey, scout_name: string) => {
                 console.log('team match assigned admin')
+                let searchable_team_matches = current_team_matches.map(value => value.team_match.team_key)
+                searchable_team_matches.forEach(value => {
+                    if (value == robot) {
+                        return; // returns if the team is already being scouted; this should remove the doubling-up bug because I don't know what is causing it(probably async hell stuff)
+                    }
+                })
                 current_team_matches.push(
                     {
                         team_match: {

@@ -11,7 +11,7 @@
     <div
         class="col-span-7 grid place-content-center dark:text-white text-black"
     >
-        Key: {match_key}
+        Match: {match_key}
     </div>
     <!-- <button class="grid place-content-center outline m-2 bg-red-600 rounded">X</button> -->
     <div
