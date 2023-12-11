@@ -1,9 +1,8 @@
 <script lang="ts">
     export let onclick: () => void
-    import { PUBLIC_FRONTEND_URL } from "$env/static/public"; 
 </script>
 
-<a href={PUBLIC_FRONTEND_URL} class="btn" unselectable="on">
+<a href="/scout/match" class="btn" unselectable="on">
     <div class="bg text">
         <h1 class="text-black dark:text-white"><slot /></h1>
     </div>
