@@ -38,37 +38,37 @@
     color: white;
   }
   #farbtn {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),linear-gradient(0deg, #9747FF, #9747FF);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),linear-gradient(0deg, #FF8B00, #FF8B00);
     border-radius: 12px;
     /* height: 100%; */
     padding: 10%;
     margin: 5%;
   }
   #midbtn {
-    background: #9747FF;
+    background: #FF8B00;
     border-radius: 12px;
     /* height: 100%; */
     padding: 10%;
     margin: 5%;
   }
   #closebtn {
-    background: linear-gradient(0deg, #9747FF, #9747FF),linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
+    background: linear-gradient(0deg, #FF8B00, #FF8B00),linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
     border-radius: 12px;
     /* height: 100%; */
     padding: 10%;
     margin: 5%;
   }
   #farbtn:hover {
-    border: 3px solid orange;
-    color: orange;
+    border: 3px solid #9747FF;
+    color: #9747FF;
   }
   #midbtn:hover {
-    border: 3px solid orange;
-    color: orange;
+    border: 3px solid #9747FF;
+    color: #9747FF;
   }
   #closebtn:hover {
-    border: 3px solid orange;
-    color: orange;
+    border: 3px solid #9747FF;
+    color: #9747FF;
   }
 
   #parrot {

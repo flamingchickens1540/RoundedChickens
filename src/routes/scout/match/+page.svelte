@@ -9,6 +9,7 @@
     import { PUBLIC_WS_URL } from "$env/static/public";
     import { match } from "$lib/stores/stores";
     import type { DefaultEventsMap } from "socket.io/dist/typed-events.js";
+    import { CatlystCarousel } from "flock-ui";
     
     let socket: Socket<DefaultEventsMap, DefaultEventsMap>
 
@@ -26,7 +27,7 @@
         })
 
         socket.on('assign_team', (team: TeamKey) => {
-            $match.team_key = team
+            $match.keys.team_key = team
             console.log("Assigned to team: " + team)
         })
         
@@ -49,11 +50,11 @@
     });
 
     function handleSubmit(formData: FormData) {
-        $match.team_key = "frc0" // this is the default nothing value ig
+        $match.keys.team_key = "frc0" // this is the default nothing value ig
         console.log("submit data")
         socket.emit('scout_submitted_match')
-        formData.append("team_key", $match.team_key);
-        formData.append("match_key", $match.match_key);
+        formData.append("team_key", $match.keys.team_key);
+        formData.append("match_key", $match.keys.match_key);
         formData.append("fielded", `${($match.data?.fielded)}`); //must be string due to formdata limitations
         formData.append("hybrid_start_location", `${$match.data?.hybrid.hybrid_location}`); //must be string due to formdata limitations
         formData.append("hybrid_shots_hit", `${$match.data?.hybrid.shots_hit}`); //must be string due to formdata limitations

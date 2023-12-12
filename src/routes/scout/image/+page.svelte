@@ -2,7 +2,8 @@
 
 <script lang="ts">
   import { enhance } from "$app/forms";
-  import ImgUpload from "$lib/components/ImgUpload.svelte";
+  import ImgUpload from "$lib/components/scouting/image/ImgUpload.svelte";
+  
   function handleSubmit(formData: FormData) {
     formData.append("team_key", "frc1540");
     formData.append("isRobot", "true");
@@ -17,5 +18,5 @@
     handleSubmit(formData);
   }}
 >
- <ImgUpload/>
+ <!-- <ImgUpload options={}/> -->
 </form>

@@ -4,6 +4,7 @@
         Scout,
         TeamKey,
         MatchKey,
+        TeamMatchKeys,
     } from "$lib/types";
     import TeamMatchesBacklog from "$lib/components/admin/backlog/TeamMatchesBacklog.svelte";
     import AdminRobots from "$lib/components/admin/AdminRobots.svelte";
@@ -19,18 +20,18 @@
 
     let { supabase, session  } = data;
     $: ({ supabase, session } = data);
-    const subscribe = supabase // might need to remove the variable
+    supabase // might need to remove the variable
         .channel('admin_panel')
         .on('postgres_changes',{ event: 'INSERT', schema: 'public', table: 'TeamMatches', }, payload => {
-            let team_match: TeamMatch = payload.new as TeamMatch;
+            let team_match: TeamMatchKeys = payload.new as TeamMatchKeys;
             completed_team_matches.push(team_match)
             console.log('New insert into TeamMatches: ', payload)
         })
         .subscribe()
     
     let socket: any //: Socket<ServerToClientEvents, ClientToServerEvents>
-    let current_team_matches: {team_match: TeamMatch, scout_name: string }[]  = [] // not working
-    let completed_team_matches: TeamMatch[] = []
+    let current_team_matches: {keys: TeamMatchKeys, scout_name: string }[]  = [] // not working
+    let completed_team_matches: TeamMatchKeys[] = []
     let activeScouts: Scout[] = []
     let current_match: MatchKey
 
@@ -76,7 +77,7 @@
             // exists so the admin knows what robot is currently assigned to the robot 
             socket.on('team_match_assigned_admin', (robot: TeamKey, scout_name: string) => {
                 console.log('team match assigned admin')
-                let searchable_team_matches = current_team_matches.map(value => value.team_match.team_key)
+                let searchable_team_matches = current_team_matches.map(value => value.keys.team_key)
                 searchable_team_matches.forEach(value => {
                     if (value == robot) {
                         return; // returns if the team is already being scouted; this should remove the doubling-up bug because I don't know what is causing it(probably async hell stuff)
@@ -84,10 +85,9 @@
                 })
                 current_team_matches.push(
                     {
-                        team_match: {
+                        keys: {
                             team_key: robot,
                             match_key: current_match,
-                            data: null
                         }, 
                         scout_name: scout_name ?? ""
                     }
@@ -104,12 +104,6 @@
         let red_robots: TeamMatch[] = event.detail.red_robots
         let blue_robots: TeamMatch[] = event.detail.blue_robots
         socket.emit('admin_create_match', { red_robots, blue_robots })
-        // red_robots.forEach(team_match => {
-        //     queued_team_matches.push(team_match)
-        // });
-        // blue_robots.forEach(team_match => {
-        //     queued_team_matches.push(team_match)
-        // });
     }
 
 </script>

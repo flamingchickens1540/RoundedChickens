@@ -1,6 +1,8 @@
 <script lang="ts">
     import Login from "$lib/components/Login.svelte";
-    import Mainhomepage from "$lib/components/homepage/mainhomepage.svelte";
+	import RoundedButton from "$lib/components/homepage/RoundedButton.svelte";
+    import GradientButton from "$lib/components/homepage/GradientButton.svelte";
+    import { redirect } from "@sveltejs/kit";
 	
 	export let data;
 
@@ -16,9 +18,6 @@
 			provider: "google",
 		});
 	}
-	import RoundedButton from "$lib/components/homepage/RoundedButton.svelte";
-    import GradientButton from "$lib/components/homepage/GradientButton.svelte";
-    import { redirect } from "@sveltejs/kit";
 </script>
 <center>
 	{#if session}
@@ -31,12 +30,12 @@
 						</svg>
 						
 				</button>
-				<h1 class="text-white text-4xl m-1 center"><strong>HOME</strong></h1>            
+				<h1 class="dark:text-white text text-4xl m-1 center"><strong>HOME</strong></h1>            
 				
 			<div>
 		</nav>
 	</header>
-	<div class="grid items-center justify-center">
+	<div class="grid items-center justify-center dark:text-white">
 		<div class="leaderstatHolder">
 			<button class="homeWidget bg-primaryLight dark:bg-primaryDark">
 				<h1 class="standoutText color-black dark:color-white">

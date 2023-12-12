@@ -100,9 +100,13 @@ export const defaultTeleData: TeleData = {
     times_disabled: 0
 }
 
-export type TeamMatch = {
+export type TeamMatchKeys = {
     team_key: TeamKey, // frc1540
     match_key: MatchKey,
+}
+
+export type TeamMatch = {
+    keys: TeamMatchKeys,
     data: {
         hybrid: HybridData,
         tele: TeleData,
@@ -112,7 +116,7 @@ export type TeamMatch = {
         died: boolean,
         notes: string,
         parked: boolean,
-    } | null
+    }
 }
 
 export type PitscoutTodo = {
@@ -121,9 +125,20 @@ export type PitscoutTodo = {
 }
 
 export const defaultTeamMatch: TeamMatch = {
-    team_key: "frc0", // frc1540
-    match_key: "2023orbb_qm0",
-    data: null
+    keys: {
+        team_key: "frc0", // frc1540
+        match_key: "2023orbb_qm0",
+    },
+    data: {
+        hybrid: defaultHybridData,
+        tele: defaultTeleData,
+        fielded: true,
+        skill: 0,
+        broke: false,
+        died: false,
+        notes: "",
+        parked: false
+    }
 }
 
 // Pit scouting types

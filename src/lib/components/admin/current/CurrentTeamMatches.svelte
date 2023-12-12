@@ -1,13 +1,12 @@
 <script lang="ts">
-    import type { TeamMatch } from "$lib/types";
+    import type { TeamMatch, TeamMatchKeys } from "$lib/types";
     import CurrentTeamMatch from "./CurrentTeamMatch.svelte";
-    export let teamMatches: {team_match: TeamMatch, scout_name: string}[]; // think about where this data should really come from
-    import Button from "$lib/components/utils/Button.svelte";
+    export let teamMatches: { keys: TeamMatchKeys, scout_name: string }[]; // think about where this data should really come from
 </script>
 <div class="grid dark:bg-[#2C2C2C] bg-[#D9D9D9] rounded-lg h-full">
     <div class="grid grid-rows-3 grid-cols-2 gap-2 overflow-scroll queuedMatches">
         {#each teamMatches as teamMatch}
-                <CurrentTeamMatch match_key={teamMatch.team_match.match_key} team_key={teamMatch.team_match.team_key} scout_name={teamMatch.scout_name}/>
+                <CurrentTeamMatch match_key={teamMatch.keys.match_key} team_key={teamMatch.keys.team_key} scout_name={teamMatch.scout_name}/>
         {/each}
     
     </div>
