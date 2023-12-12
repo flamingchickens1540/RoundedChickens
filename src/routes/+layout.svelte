@@ -39,14 +39,5 @@
 	:global(h1, h2, h3, h4, h5, h6) {
 		font-family: teko, sans-serif;
 	}
-	/* .boundingBox {
-		display: grid;
-		align-items: center;
-		justify-content: center;
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		right: 0;
-		left: 0;
-	}
-</style> */
+
+</style>

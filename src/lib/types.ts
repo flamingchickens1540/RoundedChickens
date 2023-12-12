@@ -21,8 +21,9 @@ export type Scoutbunny = {
 export type Scout = {
     id: `${string}-${string}-${string}-${string}-${string}`,
     name: string,
-    password: string, // hashed
-    coins: number,
+    // commented handled by supabase
+    // password: string, // hashed
+    // coins: number,
     is_assigned: boolean
 }
 
@@ -33,8 +34,8 @@ export type ScoutConfig = {
 export const defaultScout: Scout = {
     id: " - - - - ",
     name: "Pesto",
-    password: "",
-    coins: 0,
+    // password: "",
+    // coins: 0,
     is_assigned: false
 }
 
