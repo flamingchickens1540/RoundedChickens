@@ -19,7 +19,6 @@
   }
 </script>
 
-<div style="background-color: #2C2C2C;"><img src="60fpsparrot.gif" alt="party parrot!" id="parrot"></div>
 <h1 id="head">PREGAME</h1>
 
 <div id="maindiv">

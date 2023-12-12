@@ -73,25 +73,48 @@
         formData.append("notes", `${$match.data?.notes}`);
         location.reload()
     }
+    import { CatlystCarousel } from "flock-ui";
+    import HybridLocation from "$lib/components/HybridLocation.svelte";
+    import HybridShots from "$lib/components/HybridShots.svelte";
+    import Teleop from "$lib/components/Teleop.svelte";
+    import Endgame from "$lib/components/scouting/match/endgame/Endgame.svelte";
 </script>
 
-<h1 class="text-white">Match Scout</h1>
-<div class="grid place-items-center border text-white">
-    {#if $match.team_key == "frc0"}
+<!-- <h1 class="text-white">Match Scout</h1> -->
+<!-- <div class="grid place-items-center border text-white"> -->
+    <!-- {#if $match.team_key == "frc0"}
         <div class="grid place-items-center border">
             Match Not Avaliable
         </div>
-    {:else}
-        <!-- TODO: add components here -->
-    {/if}
+    {:else} -->
 
-    <form
+    <style>
+        div {
+            font-size:x-large;
+            min-width: 500px;
+            max-width: 500px;
+            color: white;
+        }
+    </style>
+    <center>
+        <CatlystCarousel style="width:95%; height:100%">
+            <div>
+                <HybridLocation></HybridLocation>
+                <HybridShots></HybridShots>
+            </div>
+            <Teleop></Teleop>
+            <Endgame></Endgame>
+        </CatlystCarousel>
+    </center>
+
+    <!-- {/if} -->
+
+    <!-- <form
         method="post"
         use:enhance={({ formData }) => {
             handleSubmit(formData);
         }}
     >
-        <button class="border" type="submit">Submit</button>
-    </form>
-</div>
-
+        <button class="border" type="submit">Submit</button> -->
+    <!-- </form> -->
+<!-- </div> -->

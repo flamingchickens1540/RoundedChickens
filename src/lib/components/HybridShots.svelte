@@ -49,7 +49,6 @@ import Switch from "./ui-components/switch.svelte";
             <button class="grid col-start-3 row-start-2" id="bunnyrightbtn" on:click={bunnyadd}><div>+1</div></button>
         </div>
     </div>     
-    <img src="aussieparrot.gif" alt="pretent this is a parrot" id="parrot1">
 </div>
   
 <style lang="postcss">
