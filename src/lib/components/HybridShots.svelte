@@ -20,10 +20,10 @@ import Switch from "./ui-components/switch.svelte";
 
     <div class="grid grid-cols-2 grid-rows-1 place-content-center">
         <button>
-            <center><img src="figmacheck.png" alt="" id="buttonimg"></center>
+            <center><img src="$lib/assets/figmacheck.png" alt="" id="buttonimg"></center>
         </button>
         <button>
-            <center><img src="figmax.png" alt="" id="buttonimg"></center>
+            <center><img src="$lib/assets/figmax.png" alt="" id="buttonimg"></center>
         </button>
     </div>
     <br>

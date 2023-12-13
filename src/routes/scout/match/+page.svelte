@@ -9,7 +9,6 @@
     import { PUBLIC_WS_URL } from "$env/static/public";
     import { match } from "$lib/stores/stores";
     import type { DefaultEventsMap } from "socket.io/dist/typed-events.js";
-    import { CatlystCarousel } from "flock-ui";
     
     let socket: Socket<DefaultEventsMap, DefaultEventsMap>
 
@@ -98,8 +97,8 @@
         }
     </style>
     <center>
-        <CatlystCarousel style="width:95%; height:100%">
-            <div>
+        <CatlystCarousel style="width:100%; height:100%">
+            <div style="height: 100%; width:100%;">
                 <HybridLocation></HybridLocation>
                 <HybridShots></HybridShots>
             </div>
