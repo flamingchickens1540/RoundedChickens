@@ -1,21 +1,12 @@
 <script lang="ts">
     
-    import Switch from "$lib/components/ui-components/Switch.svelte";
-    export let team = "1540 A";
-<<<<<<< HEAD:src/lib/components/Endgame.svelte
     import Switch from "$lib/components/switch.svelte";
-    let selected = 0;
-    let parked = false;
-    let broken = false;
-    let dead = false;
-    let notes = "";
-=======
+    export let team = "1540 A";
     export let rating = 0;
     export let parked = false;
     export let broken = false;
     export let dead = false;
     export let notes = "";
->>>>>>> f6ba2158ea86986650dc2fe1e84d4c2ea9ba2a9d:src/lib/components/scouting/match/endgame/Endgame.svelte
 
     function handlestar(i: number) {
         rating = i;

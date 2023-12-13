@@ -73,6 +73,11 @@
         formData.append("notes", `${$match.data?.notes}`);
         location.reload()
     }
+    import { CatlystCarousel } from "flock-ui";
+    import HybridLocation from "$lib/components/HybridLocation.svelte";
+    import HybridShots from "$lib/components/HybridShots.svelte";
+    import Teleop from "$lib/components/Teleop.svelte";
+    import Endgame from "$lib/components/scouting/match/endgame/Endgame.svelte";
 </script>
 
 <h1 class="text-white">Match Scout</h1>
@@ -82,15 +87,39 @@
             Match Not Avaliable
         </div>
     {:else}
-        <!-- TODO: add carousel here -->
-    {/if}
-</div> 
 
-<form
-    method="post"
-    use:enhance={({ formData }) => {
-        handleSubmit(formData);
-    }}
->
-    <button class="border" type="submit">Submit</button>
-</form>
+    <style>
+        div {
+            font-size:x-large;
+            /* min-width: 500px;
+            max-width: 500px; */
+            color: white;
+        }
+    </style>
+    
+        <CatlystCarousel style="width:100%; height:100%;min-width:100vw; max-width:100vw;min-height:100%; max-height:100%;" speed={2} snapSeconds={0.2} shouldSnap>
+            <div style="min-width:100vw; max-width:100vw;min-height:100vw; max-height:100%;">
+                <HybridLocation />
+                <HybridShots />
+            </div>
+            <div style="min-width:100vw; max-width:100vw; min-height:100vw; max-height:100vw;">
+                <Teleop />
+            </div>
+            
+            <div style="min-width:100vw; max-width:100vw;min-height:100vw; max-height:100vw;">
+                <Endgame />
+            </div>
+            
+        </CatlystCarousel>
+
+    {/if}
+
+    <form
+        method="post"
+        use:enhance={({ formData }) => {
+            handleSubmit(formData);
+        }}
+    >
+        <button class="border" type="submit">Submit</button>
+    </form>
+</div>
