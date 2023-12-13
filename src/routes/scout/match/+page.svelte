@@ -91,21 +91,27 @@
     <style>
         div {
             font-size:x-large;
-            min-width: 500px;
-            max-width: 500px;
+            /* min-width: 500px;
+            max-width: 500px; */
             color: white;
         }
     </style>
-    <center>
-        <CatlystCarousel style="width:100%; height:100%">
-            <div style="height: 100%; width:100%;">
-                <HybridLocation></HybridLocation>
-                <HybridShots></HybridShots>
+    
+        <CatlystCarousel style="width:100%; height:100%;min-width:100vw; max-width:100vw;min-height:100%; max-height:100%;" speed={2} snapSeconds={0.2} shouldSnap>
+            <div style="min-width:100vw; max-width:100vw;min-height:100vw; max-height:100%;">
+                <HybridLocation />
+                <HybridShots />
             </div>
-            <Teleop></Teleop>
-            <Endgame></Endgame>
+            <div style="min-width:100vw; max-width:100vw; min-height:100vw; max-height:100vw;">
+                <Teleop />
+            </div>
+            
+            <div style="min-width:100vw; max-width:100vw;min-height:100vw; max-height:100vw;">
+                <Endgame />
+            </div>
+            
         </CatlystCarousel>
-    </center>
+
 
     <!-- {/if} -->
 
