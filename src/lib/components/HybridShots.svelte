@@ -1,14 +1,11 @@
 <script lang="ts">
 import Switch from "./ui-components/switch.svelte";
+import figmacheck from "$lib/assets/figmacheck.png"
+import figmax from "$lib/assets/figmax.png"
     var taxied:boolean = false
     var disabled:boolean = false
     var bunnycount:number = 0
-    function bunnyadd() {
-        bunnycount += 1
-    }
-    function bunnyremove() {
-        bunnycount -= 1
-    }
+
 </script>
 <h1 id="heading">HYBRID - 1540A</h1>
 
@@ -20,21 +17,25 @@ import Switch from "./ui-components/switch.svelte";
 
     <div class="grid grid-cols-2 grid-rows-1 place-content-center">
         <button>
-            <center><img src="$lib/assets/figmacheck.png" alt="" id="buttonimg"></center>
+            <center><img src={figmacheck} alt="" id="buttonimg"></center>
         </button>
         <button>
-            <center><img src="$lib/assets/figmax.png" alt="" id="buttonimg"></center>
+            <center><img src={figmax} alt="" id="buttonimg"></center>
         </button>
     </div>
     <br>
     <div class="grid grid-cols-6 grid-rows-5 place-content-center">
         <button id="bg" class="grid col-end-7 col-start-1 content-center row-span-2">
             <p class="buttontext" style="padding: 5%;">Disabled</p>
-            <div class="grid col-start-7"><Switch bind:checked={disabled}></Switch></div>
+            <div class="grid col-start-7">
+                <Switch bind:checked={disabled}></Switch>
+            </div>
         </button>
         <button id="bg" class="col-start-1 row-start-4 row-span-2 grid col-end-7 content-center">
             <p class="buttontext" style="padding: 5%;">Taxied</p>
-            <div class="grid col-start-7"><Switch bind:checked={taxied}></Switch></div>
+            <div class="grid col-start-7">
+                <Switch bind:checked={taxied}></Switch>
+            </div>
             
         </button>
     </div>
@@ -45,8 +46,8 @@ import Switch from "./ui-components/switch.svelte";
     <div id="bunnybg">
         <div style="padding: 3%" class="grid grid-cols-3 grid-rows-1 content-center">
             <center class="grid col-start-2 row-start-2"><p>{bunnycount}</p></center>
-            <button class="grid col-start-1 row-start-2" id="bunnyleftbtn" on:click={bunnyremove}><div>-1</div></button>
-            <button class="grid col-start-3 row-start-2" id="bunnyrightbtn" on:click={bunnyadd}><div>+1</div></button>
+            <button class="grid col-start-1 row-start-2" id="bunnyleftbtn" on:click={() => bunnycount++}><div>-1</div></button>
+            <button class="grid col-start-3 row-start-2" id="bunnyrightbtn" on:click={() => bunnycount--}><div>+1</div></button>
         </div>
     </div>     
 </div>
