@@ -13,7 +13,7 @@
 <header>
     <nav>
         <div
-            style="background-color: #D9D9D9;"
+            style="background-color: #1C1C1C;"
             class="header-background p-3 flex justify-center items-center"
         >
             <h1 style="color: #1C1C1C;" class="text-6xl center">
@@ -23,7 +23,7 @@
         </div>
     </nav>
 </header>
-<div style="background-color: #C2C2C2; margin-top: 0rem">
+<div style="background-color: #1C1C1C; margin-top: 0rem">
     <br />
     <h2 style="margin: 1rem; margin-top: 0rem">Shots</h2>
     <div class="grid grid-rows-1 grid-cols-2">
@@ -181,6 +181,7 @@
         /* or 32px */
         display: flex;
 
-        color: #1c1c1c;
+        color: #D9D9D9;
+;
     }
 </style>

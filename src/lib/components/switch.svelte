@@ -31,7 +31,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    background-color: #3C3C3C;
     -webkit-transition: 0.4s;
     transition: 0.4s;
     border-radius: 34px;

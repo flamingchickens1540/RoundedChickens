@@ -94,7 +94,6 @@
     }
 </script>
 
-<h1 class="text-white">Match Scout</h1>
 <div class="grid place-items-center border text-white">
     {#if $match.keys.team_key == "frc0"}
         <div class="grid place-items-center border">
@@ -102,18 +101,26 @@
         </div>
         <div class="siema"></div> <!--Scuffed but nessesary-->
     {:else}
-    
+        <div class="grid place-items-center">Team: {$match.keys.team_key}</div>
         <div class="siema">
-            <Hybrid />
-            <Teleop />
-            <Endgame />
+            <div style="padding-left:3vh;padding-right:3vh;">
+                <Hybrid />
+            </div>
+            <div style="padding-left:3vh;padding-right:3vh;">
+                <Teleop />
+            </div>
+            <div style="padding-left:3vh;padding-right:3vh;">
+                <Endgame />
+            </div>
+            
             <form
+                style="padding-left:3vh;padding-right:3vh;"
                 method="post"
                 use:enhance={({ formData }) => {
                     handleSubmit(formData);
                 }}
             >
-                <button class="border" type="submit">Submit</button>
+                <button class="grid place-items-center rounded-md border" type="submit">Submit</button>
             </form>
         </div>
     {/if}

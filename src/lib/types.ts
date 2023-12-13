@@ -69,9 +69,9 @@ export type HybridData = {
     shots_missed: number,
     disabled: boolean,
     bunnies_scored: number,
-    bunies_stolen: number,
+    bunnies_stolen: number,
     taxi: boolean,
-    hybrid_location: HybridLocation,
+    location: HybridLocation,
 }
 
 export const defaultHybridData: HybridData = {
@@ -79,9 +79,9 @@ export const defaultHybridData: HybridData = {
     shots_missed: 0,
     disabled: false,
     bunnies_scored: 0,
-    bunies_stolen: 0,
+    bunnies_stolen: 0,
     taxi: false,
-    hybrid_location: HybridLocation.CLOSE
+    location: HybridLocation.CLOSE
 }
 
 export type TeleData = {

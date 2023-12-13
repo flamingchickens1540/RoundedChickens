@@ -17,17 +17,17 @@
 <header>
     <nav>
         <div
-            style="background-color: #D9D9D9;"
+            style="background-color: #1C1C1C;"
             class="header-background p-3 flex justify-center items-center"
         >
-            <h1 style="color: #1C1C1C;" class="text-6xl center">
+            <h1 style="color: #D9D9D9;" class="text-6xl center">
                 <strong>ENDGAME-{team}</strong>
             </h1>
             <div />
         </div>
     </nav>
 </header>
-<div style="background-color: #C2C2C2; margin-top: 0rem">
+<div style="background-color: #1C1C1C; margin-top: 0rem">
     <br />
     <h3 style="margin: 1rem;"><strong>Driver Skill</strong></h3>
     <div class="grid grid-cols-5 gap-4 background">
@@ -62,7 +62,7 @@
                         />
                         <path
                             d="M53.9129 19.9478H33.3362L26.9565 0L20.5768 19.9478H0L16.6232 32.2579L10.3333 52.1158L26.9565 39.8057L43.5796 52.1158L37.1999 32.1681L53.9129 19.9478Z"
-                            fill="#EDEDED"
+                            fill="#1C1C1C"
                         />
                     </svg>
                 </button>
@@ -87,7 +87,7 @@
             placeholder="Write Here"
             bind:value={notes}
             rows="3"
-            style="background-color: #D9D9D9; width:100%;"
+            style="background-color: #1C1C1C; width:100%;"
         />
     </div>
     <br />
@@ -103,7 +103,7 @@
         /* or 32px */
         display: flex;
 
-        color: #1c1c1c;
+        color: #D9D9D9;
     }
     h5 {
         font-family: "Poppins";
@@ -114,11 +114,11 @@
         /* or 32px */
         display: flex;
 
-        color: #1c1c1c;
+        color: #D9D9D9;
     }
     .background {
         /* Rectangle 7 */
-        background: #d9d9d9;
+        background: #1C1C1C;
         mix-blend-mode: normal;
         box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
         border-radius: 20px;
