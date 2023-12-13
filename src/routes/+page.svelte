@@ -10,7 +10,9 @@
 	$: ({ supabase, session } = data);
 
 	async function logout() {
+		console.log("here")
 		await supabase.auth.signOut();
+		console.log("here2")
 	}
 
 	async function login() {

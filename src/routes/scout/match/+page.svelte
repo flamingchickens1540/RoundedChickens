@@ -9,7 +9,6 @@
     import { PUBLIC_WS_URL } from "$env/static/public";
     import { match } from "$lib/stores/stores";
     import type { DefaultEventsMap } from "socket.io/dist/typed-events.js";
-    import { CatlystCarousel } from "flock-ui";
     
     let socket: Socket<DefaultEventsMap, DefaultEventsMap>
 
@@ -83,16 +82,9 @@
             Match Not Avaliable
         </div>
     {:else}
-        <!-- TODO: add components here -->
-        <CatlystCarousel style="height:200px" speed={2} snapSeconds={0.2} shouldSnap={true}>
-            <div>test 1</div>
-            <div>test 2</div>
-        </CatlystCarousel>
+        <!-- TODO: add carousel here -->
     {/if}
 </div> 
-
-<!-- TODO: add components here -->
-
 
 <form
     method="post"
