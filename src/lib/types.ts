@@ -21,8 +21,9 @@ export type Scoutbunny = {
 export type Scout = {
     id: `${string}-${string}-${string}-${string}-${string}`,
     name: string,
-    password: string, // hashed
-    coins: number,
+    // commented handled by supabase
+    // password: string, // hashed
+    // coins: number,
     is_assigned: boolean
 }
 
@@ -33,8 +34,8 @@ export type ScoutConfig = {
 export const defaultScout: Scout = {
     id: " - - - - ",
     name: "Pesto",
-    password: "",
-    coins: 0,
+    // password: "",
+    // coins: 0,
     is_assigned: false
 }
 
@@ -99,9 +100,13 @@ export const defaultTeleData: TeleData = {
     times_disabled: 0
 }
 
-export type TeamMatch = {
+export type TeamMatchKeys = {
     team_key: TeamKey, // frc1540
     match_key: MatchKey,
+}
+
+export type TeamMatch = {
+    keys: TeamMatchKeys,
     data: {
         hybrid: HybridData,
         tele: TeleData,
@@ -111,13 +116,29 @@ export type TeamMatch = {
         died: boolean,
         notes: string,
         parked: boolean,
-    } | null
+    }
+}
+
+export type PitscoutTodo = {
+    teamname: string
+    done: boolean
 }
 
 export const defaultTeamMatch: TeamMatch = {
-    team_key: "frc0", // frc1540
-    match_key: "2023orbb_qm0",
-    data: null
+    keys: {
+        team_key: "frc0", // frc1540
+        match_key: "2023orbb_qm0",
+    },
+    data: {
+        hybrid: defaultHybridData,
+        tele: defaultTeleData,
+        fielded: true,
+        skill: 0,
+        broke: false,
+        died: false,
+        notes: "",
+        parked: false
+    }
 }
 
 // Pit scouting types

@@ -2,7 +2,8 @@
 
 <script lang="ts">
   import { enhance } from "$app/forms";
-
+  import ImgUpload from "$lib/components/scouting/image/ImgUpload.svelte";
+  
   function handleSubmit(formData: FormData) {
     formData.append("team_key", "frc1540");
     formData.append("isRobot", "true");
@@ -11,15 +12,11 @@
   }
 </script>
 
-<h1>Image Scout</h1>
-
-<!-- TODO: add components here -->
-
 <form
   method="post"
   use:enhance={({ formData }) => {
     handleSubmit(formData);
   }}
 >
-  <button type="submit">Submit</button>
+ <!-- <ImgUpload options={}/> -->
 </form>

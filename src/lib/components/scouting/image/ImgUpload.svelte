@@ -1,7 +1,7 @@
 <script lang="ts">
-    import { ImgType } from "$lib/types"
+    import type { ImgType } from "$lib/types"
     let team = "";
-    export let options: ImgType;
+    export let options: ImgType[];
     let robot = "";
     let imgsrcs = [];
     let length = 0;
@@ -64,7 +64,7 @@
                     name="amount"
                     {value}
                 />
-                {value.value}
+                {value}
             </label>
         {/each}
     </div>

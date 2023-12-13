@@ -1,7 +1,22 @@
-<script lang="ts">
-  import { Positions } from "$lib/types";
-
-  export let position: Positions;
+<script>
+  var far = false
+  var mid = false
+  var close = false
+  function setfar() {
+    far = true
+    mid = false
+    close = false
+  }
+  function setmid() {
+    far = false
+    mid = true
+    close = false
+  }
+  function setclose() {
+    far = false
+    mid = false
+    close = true
+  }
 </script>
 
 <h1 id="head">PREGAME</h1>
@@ -12,9 +27,9 @@
     </svg>
 
   <div class="grid grid-cols-1 grid-rows-3 content-center">
-    <button id="farbtn" class="grid row-start-1 text-center" on:click={() => position = Positions.Far}>FAR</button>
-    <button id="midbtn" class="grid row-start-2 text-center" on:click={() => position = Positions.Mid}>MID</button>
-    <button id="closebtn" class="grid row-start-3 text-center" on:click={() => position = Positions.Close}>CLOSE</button>
+    <button id="farbtn" class="grid row-start-1 text-center" on:click={setfar}>FAR</button>
+    <button id="midbtn" class="grid row-start-2 text-center" on:click={setmid}>MID</button>
+    <button id="closebtn" class="grid row-start-3 text-center" on:click={setclose}>CLOSE</button>
   </div>
 </div>
 
