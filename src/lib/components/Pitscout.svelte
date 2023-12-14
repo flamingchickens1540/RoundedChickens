@@ -43,6 +43,10 @@
         bunnies = bunnies;
         length += 1;
     }
+    function test() {
+        console.log("NEW LINE HERE")
+        console.log($pit)
+    }
 </script>
 
 <header>
@@ -73,6 +77,7 @@
     </nav>
 </header>
 
+<button on:click={test} style="color: white; border:1px solid white;">UPDATE</button>
 <div style="background-color: #1C1C1C; margin-top: 0rem">
     <br />
     <h3 style="margin-top: 0rem">Team Key</h3>
@@ -131,14 +136,14 @@
         {/each}
     </div>
     <br />
-    <h3>Bunnies</h3>
+    <!-- <h3>Bunnies</h3>
     {#each bunnies as bunny, i}
         <BunnyScout
-            bind:notes={bunny.notes}
+            bind:notes={$pit.notes}
             bind:mechstring={bunny.type}
             number={i + 1}
         /><br />
-    {/each}
+    {/each} -->
     <div class="grid grid-rows-2 grid-cols-1 justify-items-center">
         <button on:click={() => handleclick()}>
             <div style="width: 100%; height: 100%">
