@@ -4,7 +4,7 @@
 
 <button on:click={onclick} class="btn" unselectable="on">
     <div class="bg text bg-primaryLight dark:bg-primaryDark">
-        <h1 class="text-black dark:text-white"><slot /></h1>
+        <h1 class="text-black dark:text-white"><slot class="text-black dark:text-white"/></h1>
     </div>
 </button>
 

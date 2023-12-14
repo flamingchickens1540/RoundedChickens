@@ -32,7 +32,7 @@
 
 
 <style>
-	:global(html) {
+	:global(html, a) {
 		font-family: poppins, sans-serif;
 	}
 

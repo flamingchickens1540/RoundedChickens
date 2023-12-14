@@ -37,7 +37,7 @@
 			<div>
 		</nav>
 	</header>
-	<div class="grid items-center justify-center dark:text-white">
+	<div class="grid items-center justify-center dark:text-white w-full h-full">
 		<div class="leaderstatHolder">
 			<button class="homeWidget bg-primaryLight dark:bg-primaryDark">
 				<h1 class="standoutText color-black dark:color-white">
@@ -94,9 +94,9 @@
 			</button>
 		</div>
 	
-		<RoundedButton onclick={() => {redirect(300, "/scout/image")}}> <a href="/scout/image"> IMAGE UPLOAD</RoundedButton>
-		<RoundedButton onclick={() => {redirect(300, "/scout/pit")}}><a href="/scout/pit">PIT SCOUT</RoundedButton>
-		<GradientButton onclick={() => {redirect(300, "/scout/match")}}><a href="/scout/match">MATCH SCOUT</GradientButton>
+		<RoundedButton onclick={() => {redirect(300, "/scout/image")}}> <a href="/scout/image" class="font-black dark:text-white">IMAGE UPLOAD</RoundedButton>
+		<RoundedButton onclick={() => {redirect(300, "/scout/pit")}}><a href="/scout/pit" class="font-black dark:text-white">PIT SCOUT</RoundedButton>
+		<GradientButton onclick={() => {redirect(300, "/scout/match")}}><a href="/scout/match" class="dark:text-white font-black">MATCH SCOUT</GradientButton>
 	</div>
 	{:else}
 		<Login {login}></Login>

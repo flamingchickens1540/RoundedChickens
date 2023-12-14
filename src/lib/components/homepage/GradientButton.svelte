@@ -3,12 +3,15 @@
 </script>
 
 <button on:click={onclick} class="btn" unselectable="on">
-    <div class="bg text">
-        <h1 class="text-black dark:text-white"><slot /></h1>
+    <div class="bg text-white">
+        <h1 class="dark:text-white"><slot class="dark:text-white"/></h1>
     </div>
 </button>
 
 <style>
+    div {
+        color: white;
+    }
     .bg {
         background: linear-gradient(145deg, #ffd42a 0%, #FF1616 100%);
         padding: 1.25rem;
