@@ -74,7 +74,7 @@
         formData.append("team_key", $match.keys.team_key);
         formData.append("match_key", $match.keys.match_key);
         formData.append("fielded", `${($match.data?.fielded)}`); //must be string due to formdata limitations
-        formData.append("hybrid_start_location", `${$match.data?.hybrid.hybrid_location}`); //must be string due to formdata limitations
+        formData.append("hybrid_start_location", `${$match.data?.hybrid.location}`); //must be string due to formdata limitations
         formData.append("hybrid_shots_hit", `${$match.data?.hybrid.shots_hit}`); //must be string due to formdata limitations
         formData.append("hybrid_shots_missed", `${$match.data?.hybrid.shots_missed}`); //must be string due to formdata limitations
         formData.append("hybrid_disabled", `${$match.data?.hybrid.disabled}`); //must be string due to formdata limitations
@@ -94,7 +94,7 @@
     }
 </script>
 
-<div class="grid place-items-center border text-white">
+<div class="grid place-items-center text-white" style="height:fit-content;">
     {#if $match.keys.team_key == "frc0"}
         <div class="grid place-items-center border">
             Match Not Avaliable
