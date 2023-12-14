@@ -4,10 +4,9 @@
 	throw redirect(307, '/homepage')
 }
     export let team = "";
-    let drivetrain = "";
-    let hybridtype = "";
-    let hybridplace = "";
-    let length = 1;
+    import { pit } from "$lib/stores/stores";
+    let hybridtype = ["$pit.hybrid_type_auto","$pit.hybrid_type_combo","$pit.hybrid_type_none"]
+    let hybridlocation = ["$pit.hybrid_location_far","$pit.hybrid_type_mid","$pit.hybrid_type_close"]
     import Submit from "$lib/components/Submit.svelte";
     import BunnyScout from "$lib/components/BunnyScout.svelte";
     import type { Scoutbunny } from "$lib/types";
@@ -76,11 +75,11 @@
 
 <div style="background-color: #1C1C1C; margin-top: 0rem">
     <br />
-    <h3 style="margin-top: 0rem">Team Number</h3>
+    <h3 style="margin-top: 0rem">Team Key</h3>
     <label class="textareaContainer">
         <textarea
             placeholder="e.g. 1540"
-            bind:value={team}
+            bind:value={$pit.team_key}
             class="background grid justify-center"
         />
     </label>
@@ -92,7 +91,7 @@
                 <input
                     class="accent-purple-500"
                     type="radio"
-                    bind:group={drivetrain}
+                    bind:group={$pit.drivetrain}
                     name="amount"
                     {value}
                 />
@@ -123,7 +122,7 @@
             <label>
                 <input
                     type="radio"
-                    bind:group={hybridplace}
+                    bind:group={hybridlocation}
                     name="amount"
                     {value}
                 />
