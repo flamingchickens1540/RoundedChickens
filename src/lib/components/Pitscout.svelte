@@ -5,6 +5,7 @@
 }
     // export let team = "";
     import { pit } from "$lib/stores/stores";
+    import { DriveTrain } from '$lib/types';
     // let hybridtype = [$pit.hybrid_type_auto,$pit.hybrid_type_combo,$pit.hybrid_type_none]
     // let hybridlocation = [$pit.hybrid_location_far,$pit.hybrid_location_mid,$pit.hybrid_location_close]
     // import Submit from "$lib/components/Submit.svelte";
@@ -17,12 +18,6 @@
     //     type: "Mech",
     //     notes: "",
     // });
-
-    const Drivetrain = [
-        { label: "Swerve" },
-        { label: "Tank" },
-        { label: "Other" },
-    ];
     // function handleclick() {
     //     bunnies.push({
     //         teamname: team,
@@ -37,6 +32,11 @@
     //     console.log("NEW LINE HERE")
     //     console.log($pit)
     // }
+        const drivetrains = [
+            "Tank",
+            "Swerve",
+            "Other"
+        ]
 </script>
 
 <header>
@@ -81,16 +81,16 @@
     <br />
     <h3>Drivetrain</h3>
     <div class="background grid grid-cols-2 gap-4 grid-rows-2">
-        {#each Drivetrain as value}
+        {#each drivetrains as value}
             <label>
+                {value}
                 <input
                     class="accent-purple-500"
                     type="radio"
                     bind:group={$pit.drivetrain}
-                    name="amount"
+                    name=""
                     {value}
                 />
-                {value.label}
             </label>
         {/each}
     </div>
@@ -151,6 +151,14 @@
         </label>
     </div>
     <br />
+    <div style="margin: 1rem" class="background">
+        <textarea class="grid text-center rounded-md"
+            placeholder="Graciously Professional Notes"
+            bind:value={$pit.notes}
+            rows="3"
+            style="background-color: #1C1C1C; width:100%;"
+        />
+    </div>
     <!-- <h3>Bunnies</h3>
     {#each bunnies as bunny, i}
         <BunnyScout
