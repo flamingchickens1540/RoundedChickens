@@ -1,12 +1,6 @@
 // Helper Types
 
 // This array type is safe, since you can't index out of bounds
-type ArrayLengthMutationKeys = 'splice' | 'push' | 'pop' | 'shift' | 'unshift' | number
-type ArrayItems<T extends Array<any>> = T extends Array<infer TItems> ? TItems : never
-export type FixedLengthArray<T extends any[]> =
-    Pick<T, Exclude<keyof T, ArrayLengthMutationKeys>>
-    & { [Symbol.iterator]: () => IterableIterator<ArrayItems<T>> }
-
 export type TeamKey = `${number | ''}${'A' | 'B' | 'C' | ''}`
 
 export type MatchKey = `2023orbb_${'qm' | 'qf' | 'sf' | 'f'}${number}`
@@ -39,10 +33,6 @@ export const defaultScout: Scout = {
     is_assigned: false
 }
 
-export type Match = {
-    key: MatchKey,
-    matches: FixedLengthArray<[TeamMatch, TeamMatch, TeamMatch, TeamMatch, TeamMatch, TeamMatch]>, // the first 3 are red
-}
 
 export type Team = {
     team_key: TeamKey,
@@ -59,9 +49,9 @@ export type Bunny = {
 }
 
 export enum HybridLocation {
-    FAR,
-    MID,
-    CLOSE
+    FAR = "far",
+    MID = "mid",
+    CLOSE = "close"
 }
 
 export type HybridData = {
@@ -144,9 +134,9 @@ export const defaultTeamMatch: TeamMatch = {
 // Pit scouting types
 
 export enum DriveTrain {
-    OTHER,
-    SWERVE,
-    TANK
+    OTHER = "other",
+    SWERVE = "swerve",
+    TANK = "tank"
 }
 
 export type PitData = {
@@ -175,12 +165,6 @@ export const defaultPitData: PitData = {
     bunnies: null
 
 }
-
-export enum Positions {
-    Far,
-    Mid,
-    Close
-};
 
 export enum ImgType {
     Bunny,

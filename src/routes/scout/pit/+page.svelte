@@ -4,17 +4,8 @@
   import { pit } from "$lib/stores/stores"
     import { DriveTrain } from "$lib/types";
   function handleSubmit(formData: FormData) {
-    let drivetrain;
-    if ($pit.drivetrain == DriveTrain.TANK) {
-      drivetrain = "tank"
-    } else if ($pit.drivetrain == DriveTrain.SWERVE) {
-      drivetrain = "swerve"
-    } else {
-      drivetrain = "other"
-    }
-
     formData.append("team_key", $pit.team_key);
-    formData.append("drivetrain", drivetrain);
+    formData.append("drivetrain", `${$pit.drivetrain.toString().toLowerCase()}`);
     formData.append("hybrid_type_auto", `${$pit.hybrid_type_auto}`); //must be string due to formdata limitations
     formData.append("hybrid_type_combo", `${$pit.hybrid_type_combo}`); //must be string due to formdata limitations
     formData.append("hybrid_type_none", `${$pit.hybrid_type_none}`); //must be string due to formdata limitations
@@ -22,6 +13,9 @@
     formData.append("hybrid_location_mid", `${$pit.hybrid_location_mid}`); //must be string due to formdata limitations
     formData.append("hybrid_location_close", `${$pit.hybrid_location_close}`); //must be string due to formdata limitations
     formData.append("notes", `${$pit.notes}`);
+    $pit.team_key = ""
+    $pit.notes = ""
+    location.reload()
     // formData.append('bunny_id', ""); //must be string due to formdata limitations
     //TODO: proper bunny logging
   }
