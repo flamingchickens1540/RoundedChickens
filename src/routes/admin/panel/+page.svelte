@@ -23,14 +23,14 @@
 
 
 
-    supabase // might need to remove the variable
-        .channel('room_1')
-        .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'TeamMatches', }, payload => {
-            let team_match: TeamMatchKeys = payload.new as TeamMatchKeys;
-            completed_team_matches.push(team_match)
-            console.log('New insert into TeamMatches: ', payload)
-        })
-        .subscribe()
+    // supabase // might need to remove the variable
+    //     .channel('room_1')
+    //     .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'TeamMatches', }, payload => {
+    //         let team_match: TeamMatchKeys = payload.new as TeamMatchKeys;
+    //         completed_team_matches.push(team_match)
+    //         console.log('New insert into TeamMatches: ', payload)
+    //     })
+    //     .subscribe()
     
     let socket: any //: Socket<ServerToClientEvents, ClientToServerEvents>
     let current_team_matches: {keys: TeamMatchKeys, scout_name: string }[]  = [] // not working
@@ -104,9 +104,10 @@
     async function handleNewMatch(event: any) {
         console.log("handle new match called")
         current_match = event.detail.key
-        let red_robots: TeamMatch[] = event.detail.red_robots
-        let blue_robots: TeamMatch[] = event.detail.blue_robots
-        socket.emit('admin_create_match', { red_robots, blue_robots })
+        let red_robots: TeamKey[] = event.detail.red_robots
+        let blue_robots: TeamKey[] = event.detail.blue_robots
+        console.log("handle match key: " + current_match)
+        socket.emit('admin_create_match', { red_robots, blue_robots, match_key: current_match })
     }
 
 </script>

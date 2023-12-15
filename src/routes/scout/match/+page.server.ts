@@ -3,7 +3,7 @@ import type { Actions } from './$types';
 export const actions = {
   default: async ({ request, locals: { supabase, getSession } }) => {
     const formData = await request.formData()
-
+    console.log(formData.get('notes')?.toString())
     const { error } = await supabase.from('TeamMatches').insert({
       team_key: formData.get('team_key'),
       match_key: formData.get('match_key'),
@@ -27,7 +27,7 @@ export const actions = {
       scout_id: await getSession().then(session => session?.user.id),
     })
 
-    if (error) console.error(error, formData);
+    console.error("Submission Results: ", error, formData);
 
   },
 } satisfies Actions;

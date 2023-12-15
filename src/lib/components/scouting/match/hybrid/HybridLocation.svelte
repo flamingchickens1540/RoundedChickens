@@ -23,20 +23,20 @@
   <div class="grid grid-cols-1 grid-rows-3 content-center">
     <button
       id="farbtn"
-      class="grid row-start-1 text-center"
+      class="grid row-start-1 text-center {$match.data.hybrid.location == HybridLocation.FAR ? 'selected' : ''}"
       on:click={() => ($match.data.hybrid.location = HybridLocation.FAR)}
       >FAR</button
     >
     <button
       id="midbtn"
-      class="grid row-start-2 text-center"
+      class="grid row-start-2 text-center {$match.data.hybrid.location == HybridLocation.MID ? 'selected' : ''}"
       on:click={() => ($match.data.hybrid.location = HybridLocation.MID)}
       >MID</button
     >
     <button
       id="closebtn"
-      class="grid row-start-3 text-center"
-      on:click={() => ($match.data.hybrid.location = HybridLocation.MID)}
+      class="grid row-start-3 text-center {$match.data.hybrid.location == HybridLocation.CLOSE ? 'selected' : ''}"
+      on:click={() => ($match.data.hybrid.location = HybridLocation.CLOSE)}
       >CLOSE</button
     >
   </div>
@@ -83,7 +83,13 @@
     padding: 10%;
     margin: 5%;
   }
-  #farbtn:hover {
+
+  .selected {
+    border: 3px solid #9747ff;
+    color: #9747ff;
+  }
+
+  /* #farbtn:hover {
     border: 3px solid #9747ff;
     color: #9747ff;
   }
@@ -94,7 +100,7 @@
   #closebtn:hover {
     border: 3px solid #9747ff;
     color: #9747ff;
-  }
+  } */
 
   #parrot {
     height: 5%;
