@@ -1,8 +1,8 @@
 <script lang="ts">
-    import type { TeamMatch } from "$lib/types";
+    import type { TeamMatchKeys } from "$lib/types";
     import TeamMachLogged from "./TeamMatchLogged.svelte";
 
-    export let team_match_backlog: TeamMatch[];
+    export let team_match_backlog: TeamMatchKeys[];
 
 </script>
 <div class="grid grid-col-1 dark:bg-[rgb(44,44,44)] bg-[#D9D9D9] rounded-lg h-full">

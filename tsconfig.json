@@ -10,7 +10,7 @@
 		"sourceMap": true,
 		"strict": true,
 	},
-	"include": ["src/**/*", "src/node_modules", ".svelte-kit/ambient.d.ts", ".svelte-kit/types/**/$types.d.ts", "wsServer.ts"], // see last element
+	"include": ["src/**/*", "src/node_modules", ".svelte-kit/ambient.d.ts", ".svelte-kit/types/**/$types.d.ts", "wsHandler.ts"], // see last element
 
 	// Path aliases are handled by https://kit.svelte.dev/docs/configuration#alias
 	//

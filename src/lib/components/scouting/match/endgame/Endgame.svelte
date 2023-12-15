@@ -1,38 +1,38 @@
 <script lang="ts">
     
-    import Switch from "$lib/components/ui-components/Switch.svelte";
-    export let team = "1540 A";
-    export let rating = 0;
-    export let parked = false;
-    export let broken = false;
-    export let dead = false;
-    export let notes = "";
+    import Switch from "$lib/components/switch.svelte";
+    import { match } from "$lib/stores/stores";
+    // export let team = "1540 A";
+    // export let rating = 0;
+    // export let parked = false;
+    // export let broken = false;
+    // export let dead = false;
+    // export let notes = "";
 
     function handlestar(i: number) {
-        rating = i;
-        rating = rating;
+        $match.data.skill = i;
     }
 </script>
 
 <header>
     <nav>
         <div
-            style="background-color: #D9D9D9;"
+            style="background-color: #1C1C1C;"
             class="header-background p-3 flex justify-center items-center"
         >
-            <h1 style="color: #1C1C1C;" class="text-6xl center">
-                <strong>ENDGAME-{team}</strong>
+            <h1 style="color: #D9D9D9;" class="text-6xl center">
+                <strong>ENDGAME</strong>
             </h1>
             <div />
         </div>
     </nav>
 </header>
-<div style="background-color: #C2C2C2; margin-top: 0rem">
+<div style="background-color: #1C1C1C; margin-top: 0rem">
     <br />
     <h3 style="margin: 1rem;"><strong>Driver Skill</strong></h3>
     <div class="grid grid-cols-5 gap-4 background">
         {#each { length: 5 } as _, i}
-            {#if rating >= i + 1}
+            {#if $match.data.skill >= i + 1}
                 <button on:click={() => handlestar(i + 1)}
                     ><svg style="transition: 500ms;"
                         width="54"
@@ -62,7 +62,7 @@
                         />
                         <path
                             d="M53.9129 19.9478H33.3362L26.9565 0L20.5768 19.9478H0L16.6232 32.2579L10.3333 52.1158L26.9565 39.8057L43.5796 52.1158L37.1999 32.1681L53.9129 19.9478Z"
-                            fill="#EDEDED"
+                            fill="#1C1C1C"
                         />
                     </svg>
                 </button>
@@ -71,23 +71,23 @@
     </div>
     <div class="grid grid-cols-5 background">
         <h5 class="col-span-4"><strong>Parked?</strong></h5>
-        <Switch bind:checked={parked} style="float: right;" />
+        <Switch bind:checked={$match.data.parked} style="float: right;" />
     </div>
     <div class="grid grid-cols-5 background">
         <h5 class="col-span-4"><strong>Broken?</strong></h5>
-        <Switch bind:checked={broken} style="float: right;" />
+        <Switch bind:checked={$match.data.broke} style="float: right;" />
     </div>
     <div class="grid grid-cols-5 background">
         <h5 class="col-span-4"><strong>Died on field?</strong></h5>
-        <Switch bind:checked={dead} style="float: right;" />
+        <Switch bind:checked={$match.data.died} style="float: right;" />
     </div>
     <h3 style="margin: 1rem;" class="col-span-2"><strong>Notes</strong></h3>
     <div style="margin: 1rem" class="background">
         <textarea
             placeholder="Write Here"
-            bind:value={notes}
+            bind:value={$match.data.notes}
             rows="3"
-            style="background-color: #D9D9D9; width:100%;"
+            style="background-color: #1C1C1C; width:100%;"
         />
     </div>
     <br />
@@ -103,7 +103,7 @@
         /* or 32px */
         display: flex;
 
-        color: #1c1c1c;
+        color: #D9D9D9;
     }
     h5 {
         font-family: "Poppins";
@@ -114,11 +114,11 @@
         /* or 32px */
         display: flex;
 
-        color: #1c1c1c;
+        color: #D9D9D9;
     }
     .background {
         /* Rectangle 7 */
-        background: #d9d9d9;
+        background: #1C1C1C;
         mix-blend-mode: normal;
         box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
         border-radius: 20px;

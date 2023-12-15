@@ -3,17 +3,13 @@
     import success from "$lib/Images/figmacheck.png";
     import faliure from "$lib/Images/figmax.png";
     import ScoreCounter from "$lib/components/ScoreCounter.svelte";
-    let shotsmade = 0;
-    let shotsfailed = 0;
-    let disables = 0;
-    let bunstole = 0;
-    let bunscore = 0;
+    import { match } from "$lib/stores/stores";
 </script>
 
 <header>
     <nav>
         <div
-            style="background-color: #D9D9D9;"
+            style="background-color: #1C1C1C;"
             class="header-background p-3 flex justify-center items-center"
         >
             <h1 style="color: #1C1C1C;" class="text-6xl center">
@@ -23,15 +19,13 @@
         </div>
     </nav>
 </header>
-<div style="background-color: #C2C2C2; margin-top: 0rem">
+<div style="background-color: #1C1C1C; margin-top: 0rem">
     <br />
     <h2 style="margin: 1rem; margin-top: 0rem">Shots</h2>
     <div class="grid grid-rows-1 grid-cols-2">
     <button
         style="margin: 5px;"
-        on:click={() => {
-            shotsfailed += 1;
-        }}
+        on:click={() => $match.data.tele.shots_missed++}
         ><svg
             width="100%"
             height="100%"
@@ -99,9 +93,7 @@
     >
     <button
         style="margin: 5px; float: right"
-        on:click={() => {
-            shotsmade += 1;
-        }}
+        on:click={() => $match.data.tele.shots_hit++}
         ><svg
             width="100%"
             height="100%"
@@ -164,11 +156,11 @@
         ></button
     ></div>
     <h2 style="margin: 1rem;">Disables</h2>
-    <ScoreCounter counterValue={disables} />
+    <ScoreCounter counterValue={$match.data.tele.times_disabled} />
     <h2 style="margin: 1rem;">Bunnies Stolen</h2>
-    <ScoreCounter counterValue={bunstole} />
+    <ScoreCounter counterValue={$match.data.tele.bunnies_stolen} />
     <h2 style="margin: 1rem;">Bunnies Scored</h2>
-    <ScoreCounter counterValue={bunscore} /><br />
+    <ScoreCounter counterValue={$match.data.tele.bunnies_scored} /><br />
 </div>
 
 <style>
@@ -180,7 +172,7 @@
         line-height: 91.5%;
         /* or 32px */
         display: flex;
-
-        color: #1c1c1c;
+        color: #D9D9D9;
+;
     }
 </style>

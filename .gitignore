@@ -12,3 +12,4 @@ vite.config.ts.timestamp-*
 /backend/.env.example
 /backend/node_modules
 src/app.html
+/elysia

@@ -1,7 +1,7 @@
 <script lang="ts">
-    import type { TeamMatch } from "$lib/types";
+    import type { TeamMatchKeys } from "$lib/types";
 
-    export let team_match: TeamMatch;
+    export let team_match: TeamMatchKeys;
 </script>
 
 <div class="grid grid-cols-3 grid-rows-1 place-items-center p-2 dark:bg-[#1C1C1C] bg-[#C2C2C2] dark:text-white Poppins text-black rounded-3xl shadow-lg">

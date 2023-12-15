@@ -7,7 +7,7 @@ export type FixedLengthArray<T extends any[]> =
     Pick<T, Exclude<keyof T, ArrayLengthMutationKeys>>
     & { [Symbol.iterator]: () => IterableIterator<ArrayItems<T>> }
 
-export type TeamKey = `frc${number}`
+export type TeamKey = `${number | ''}${'A' | 'B' | 'C' | ''}`
 
 export type MatchKey = `2023orbb_${'qm' | 'qf' | 'sf' | 'f'}${number}`
 
@@ -69,9 +69,9 @@ export type HybridData = {
     shots_missed: number,
     disabled: boolean,
     bunnies_scored: number,
-    bunies_stolen: number,
+    bunnies_stolen: number,
     taxi: boolean,
-    hybrid_location: HybridLocation,
+    location: HybridLocation,
 }
 
 export const defaultHybridData: HybridData = {
@@ -79,9 +79,9 @@ export const defaultHybridData: HybridData = {
     shots_missed: 0,
     disabled: false,
     bunnies_scored: 0,
-    bunies_stolen: 0,
+    bunnies_stolen: 0,
     taxi: false,
-    hybrid_location: HybridLocation.CLOSE
+    location: HybridLocation.CLOSE
 }
 
 export type TeleData = {
@@ -100,9 +100,13 @@ export const defaultTeleData: TeleData = {
     times_disabled: 0
 }
 
-export type TeamMatch = {
+export type TeamMatchKeys = {
     team_key: TeamKey, // frc1540
     match_key: MatchKey,
+}
+
+export type TeamMatch = {
+    keys: TeamMatchKeys,
     data: {
         hybrid: HybridData,
         tele: TeleData,
@@ -112,19 +116,35 @@ export type TeamMatch = {
         died: boolean,
         notes: string,
         parked: boolean,
-    } | null
+    }
+}
+
+export type PitscoutTodo = {
+    teamname: string
+    done: boolean
 }
 
 export const defaultTeamMatch: TeamMatch = {
-    team_key: "frc0", // frc1540
-    match_key: "2023orbb_qm0",
-    data: null
+    keys: {
+        team_key: "0", // frc1540
+        match_key: "2023orbb_qm0",
+    },
+    data: {
+        hybrid: defaultHybridData,
+        tele: defaultTeleData,
+        fielded: true,
+        skill: 0,
+        broke: false,
+        died: false,
+        notes: "",
+        parked: false
+    }
 }
 
 // Pit scouting types
 
 export enum DriveTrain {
-    MECHANUM,
+    OTHER,
     SWERVE,
     TANK
 }
@@ -143,7 +163,7 @@ export type PitData = {
 }
 
 export const defaultPitData: PitData = {
-    team_key: "frc0",
+    team_key: "",
     drivetrain: DriveTrain.TANK,
     hybrid_type_auto: false,
     hybrid_type_combo: false,
