@@ -28,30 +28,28 @@
     }
 </script>
 
-<form
-    method="post"
-    use:enhance={({ formData }) => {
-        handleSubmit(formData);
-    }}
->
-    <button class="grid place-items-center rounded-md border" type="submit">Submit</button>
+<div class="grid place-items-center gap-2 dark:text-backgroundLight">
+    <form
+        method="post"
+        use:enhance={({ formData }) => {
+            handleSubmit(formData);
+        }}
+    >
+        <button class="grid place-items-center rounded-md border" type="submit">Submit</button>
+    </form>
 
-    <!-- <ImgUpload options={}/> -->
-</form>
-
-<input type="text" name="" id="" bind:value={team_key}>
-<div class="makeUpload">
-    <input type="file" multiple accept="image/*" bind:files={photos} />
-    <div class="photoRight">
-        {#if photos}
-            <Switch bind:checked={is_robot}></Switch>
-            {#each photos as photo}
-                <!-- svelte-ignore a11y-click-events-have-key-events -->
-                <!-- <h2>Selected</h2> -->
-                <button on:click={() => removeFile(photo)}>
-                    <img src={URL.createObjectURL(photo)} alt={photo.name} />
-                </button>
-            {/each}
-        {/if}
+    <input type="text" bind:value={team_key} class="dark:text-backgroundDark">
+    <div class="makeUpload grid">
+        <input type="file" multiple accept="image/*" bind:files={photos} />
+        <div class="photoRight">
+            {#if photos}
+                <Switch bind:checked={is_robot}></Switch>
+                {#each photos as photo}
+                    <button on:click={() => removeFile(photo)}>
+                        <img src={URL.createObjectURL(photo)} alt={photo.name} />
+                    </button>
+                {/each}
+            {/if}
+        </div>
     </div>
 </div>
