@@ -5,7 +5,7 @@ import figmacheck from "$lib/assets/figmacheck.png"
 import figmax from "$lib/assets/figmax.png"
     import ScoreCounter from "$lib/components/ScoreCounter.svelte";
 </script>
-<h1 id="heading">HYBRID - 1540A</h1>
+<!-- <h1 id="heading">HYBRID - 1540A</h1> -->
 
 
 <div id="maindiv" class="justify-center">

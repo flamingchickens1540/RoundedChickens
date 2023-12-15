@@ -7,7 +7,7 @@ import figmax from "$lib/assets/figmax.png"
     var bunnycount:number = 0
 
 </script>
-<h1 id="heading">HYBRID - 1540A</h1>
+<!-- <h1 id="heading">HYBRID - 1540A</h1> -->
 
 
 <div id="maindiv" class="justify-center">
