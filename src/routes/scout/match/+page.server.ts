@@ -27,7 +27,7 @@ export const actions = {
       scout_id: await getSession().then(session => session?.user.id),
     })
 
-    if (error) console.error("ERROR: ", error, formData);
+    console.error("Submission Results: ", error, formData);
 
   },
 } satisfies Actions;

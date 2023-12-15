@@ -8,7 +8,7 @@
     import { enhance } from "$app/forms";
     import { onMount, onDestroy } from 'svelte'
     import { Socket, io } from "socket.io-client"
-    import type { Scout, TeamKey } from "$lib/types";
+    import { type Scout, type TeamKey, type MatchKey, HybridLocation } from "$lib/types";
     import { PUBLIC_WS_URL } from "$env/static/public";
     import { match } from "$lib/stores/stores";
     import type { DefaultEventsMap } from "socket.io/dist/typed-events.js";
@@ -47,9 +47,10 @@
             console.log("Client connected to ws server")
         })
 
-        socket.on('assign_team', (team: TeamKey) => {
-            $match.keys.team_key = team
-            console.log("Assigned to team: " + team)
+        socket.on('assign_team', (data: {team_key: TeamKey, match_key: MatchKey}) => {
+            $match.keys.team_key = data.team_key
+            $match.keys.match_key = data.match_key
+            console.log("Assigned to team: " + data.team_key)
         })
         
         // supabase id
@@ -69,43 +70,23 @@
             socket.disconnect();
         }
     });
-<<<<<<< HEAD
-    var delayInMilliseconds = 1700; //1 second
-    // function handleSubmit(formData: FormData) {
-    //     $match.keys.team_key = "frc0" // this is the default nothing value ig
-    //     console.log("submit data")
-    //     socket.emit('scout_submitted_match')
-    //     formData.append("team_key", $match.keys.team_key);
-    //     formData.append("match_key", $match.keys.match_key);
-    //     formData.append("fielded", `${($match.data?.fielded)}`); //must be string due to formdata limitations
-    //     formData.append("hybrid_start_location", `${$match.data?.hybrid.hybrid_location}`); //must be string due to formdata limitations
-    //     formData.append("hybrid_shots_hit", `${$match.data?.hybrid.shots_hit}`); //must be string due to formdata limitations
-    //     formData.append("hybrid_shots_missed", `${$match.data?.hybrid.shots_missed}`); //must be string due to formdata limitations
-    //     formData.append("hybrid_disabled", `${$match.data?.hybrid.disabled}`); //must be string due to formdata limitations
-    //     formData.append("hybrid_bunnies_scored", `${$match.data?.hybrid.bunnies_scored}`); //must be string due to formdata limitations
-    //     formData.append("hybrid_taxi", `${$match.data?.hybrid.taxi}`); //must be string due to formdata limitations
-    //     formData.append("tele_shots_hit", `${$match.data?.tele.shots_hit}`); //must be string due to formdata limitations
-    //     formData.append("tele_shots_missed", `${$match.data?.tele.shots_missed}`); //must be string due to formdata limitations
-    //     formData.append("tele_bunnies_scored", `${$match.data?.tele.bunnies_scored}`); //must be string due to formdata limitations
-    //     formData.append("tele_bunnies_stolen", `${$match.data?.tele.bunnies_stolen}`); //must be string due to formdata limitations
-    //     formData.append("tele_times_disabled", `${$match.data?.tele.times_disabled}`); //must be string due to formdata limitations
-    //     formData.append("skill", `${$match.data?.skill}`); //must be string due to formdata limitations
-    //     formData.append("parked", `${$match.data?.parked}`); //must be string due to formdata limitations
-    //     formData.append("broke", `${$match.data?.broke}`); //must be string due to formdata limitations
-    //     formData.append("died", `${$match.data?.died}`); //must be string due to formdata limitations
-    //     formData.append("notes", `${$match.data?.notes}`);
-    //     location.reload()
-    // }
-=======
 
     function handleSubmit(formData: FormData) {
         console.log("submit data")
         // socket.emit('scout_submitted_match')
         console.log()
+        let h_location;
+        if ($match.data?.hybrid.location == HybridLocation.CLOSE) {
+            h_location = "close"
+        } else if ($match.data?.hybrid.location == HybridLocation.MID) {
+            h_location = "mid"
+        } else {
+            h_location = "far"
+        }
         formData.append("team_key", $match.keys.team_key);
         formData.append("match_key", $match.keys.match_key);
         formData.append("fielded", `${($match.data?.fielded)}`); //must be string due to formdata limitations
-        formData.append("hybrid_start_location", `${$match.data?.hybrid.location}`); //must be string due to formdata limitations
+        formData.append("hybrid_start_location", h_location); //must be string due to formdata limitations
         formData.append("hybrid_shots_hit", `${$match.data?.hybrid.shots_hit}`); //must be string due to formdata limitations
         formData.append("hybrid_shots_missed", `${$match.data?.hybrid.shots_missed}`); //must be string due to formdata limitations
         formData.append("hybrid_disabled", `${$match.data?.hybrid.disabled}`); //must be string due to formdata limitations
@@ -120,11 +101,10 @@
         formData.append("parked", `${$match.data?.parked}`); //must be string due to formdata limitations
         formData.append("broke", `${$match.data?.broke}`); //must be string due to formdata limitations
         formData.append("died", `${$match.data?.died}`); //must be string due to formdata limitations
-        formData.append("notes", `${$match.data?.notes}`);
+        formData.append("notes", $match.data?.notes);
         $match.keys.team_key = "frc0"
         location.reload()
     }
->>>>>>> 74faa3c57be67065280e3e4b373e3259054090ba
 </script>
 
 <div class="grid place-items-center text-white" style="height:fit-content;">
@@ -150,31 +130,7 @@
                 style="padding-left:3vh;padding-right:3vh;"
                 method="post"
                 use:enhance={(formData) => {
-                    setTimeout(function handleSubmit(formData) {
-        $match.keys.team_key = "frc0" // this is the default nothing value ig
-        console.log("submit data")
-        socket.emit('scout_submitted_match')
-        formData.append("team_key", $match.keys.team_key);
-        formData.append("match_key", $match.keys.match_key);
-        formData.append("fielded", `${($match.data?.fielded)}`); //must be string due to formdata limitations
-        formData.append("hybrid_start_location", `${$match.data?.hybrid.location}`); //must be string due to formdata limitations
-        formData.append("hybrid_shots_hit", `${$match.data?.hybrid.shots_hit}`); //must be string due to formdata limitations
-        formData.append("hybrid_shots_missed", `${$match.data?.hybrid.shots_missed}`); //must be string due to formdata limitations
-        formData.append("hybrid_disabled", `${$match.data?.hybrid.disabled}`); //must be string due to formdata limitations
-        formData.append("hybrid_bunnies_scored", `${$match.data?.hybrid.bunnies_scored}`); //must be string due to formdata limitations
-        formData.append("hybrid_taxi", `${$match.data?.hybrid.taxi}`); //must be string due to formdata limitations
-        formData.append("tele_shots_hit", `${$match.data?.tele.shots_hit}`); //must be string due to formdata limitations
-        formData.append("tele_shots_missed", `${$match.data?.tele.shots_missed}`); //must be string due to formdata limitations
-        formData.append("tele_bunnies_scored", `${$match.data?.tele.bunnies_scored}`); //must be string due to formdata limitations
-        formData.append("tele_bunnies_stolen", `${$match.data?.tele.bunnies_stolen}`); //must be string due to formdata limitations
-        formData.append("tele_times_disabled", `${$match.data?.tele.times_disabled}`); //must be string due to formdata limitations
-        formData.append("skill", `${$match.data?.skill}`); //must be string due to formdata limitations
-        formData.append("parked", `${$match.data?.parked}`); //must be string due to formdata limitations
-        formData.append("broke", `${$match.data?.broke}`); //must be string due to formdata limitations
-        formData.append("died", `${$match.data?.died}`); //must be string due to formdata limitations
-        formData.append("notes", `${$match.data?.notes}`);
-        location.reload()
-    }, delayInMilliseconds);
+                    handleSubmit(formData.formData);
                }}
             >
             <center>

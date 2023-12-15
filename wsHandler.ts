@@ -1,6 +1,6 @@
 // import express, { type Express } from 'express';
 import { Server } from "socket.io"
-import type { Scout, TeamKey } from "./src/lib/types"
+import type { MatchKey, Scout, TeamKey } from "./src/lib/types"
 
 // let ws_port = process.env.PUBLIC_WS_PORT || 8001;
 
@@ -29,13 +29,14 @@ export default function injectSocketIo(server: any) {
 class ScoutManager {
     /// A list of robots to be scouted
     robot_queue: TeamKey[]
-
+    match_key: MatchKey
     // This is used to send which scouts are avalible or not back to the admin panel
     // socket_id: scout.id
     scout_map: Map<string, Scout>
     constructor() {
         this.robot_queue = []
         this.scout_map = new Map<string, Scout>
+        this.match_key = "2023orbb_qm1"
     }
 
     scout_in_map(scout: Scout): boolean {
@@ -63,7 +64,7 @@ class ScoutManager {
 
     /// Returns a corresponding team and scout for each currently avaliable scout
     /// Puts the remaining teams in the robot queue
-    async create_match(robots: { red_robots: TeamKey[], blue_robots: TeamKey[] }): Promise<{ team: TeamKey, clientId: string }[]> {
+    async create_match(red_robots: TeamKey[], blue_robots: TeamKey[]): Promise<{ team: TeamKey, clientId: string }[]> {
         let ret: { team: TeamKey, clientId: string }[] = []
         console.log("Rooms: " + io.sockets.adapter.rooms)
 
@@ -73,7 +74,7 @@ class ScoutManager {
         console.log(scouts.length)
 
         // if (scouts.length > 0) {
-        robots.red_robots.forEach(async (team) => {
+        red_robots.forEach(async (team) => {
             let scout_id = scouts.pop()
             if (scout_id === undefined)
                 this.robot_queue.push(team)
@@ -84,7 +85,7 @@ class ScoutManager {
             }
         })
 
-        robots.blue_robots.forEach(async (team) => {
+        blue_robots.forEach(async (team) => {
             let scout = scouts.pop()
             if (scout == undefined)
                 this.robot_queue.push(team)
@@ -142,7 +143,8 @@ io.on('connect', (socket) => { // io refers to the ws server, socket refers to t
                 
                 socket.leave('pending_scouts')
                 socket.join('assigned_scouts')
-                socket.emit('assign_team', robot)
+                console.log("match key: ", manager.match_key)
+                socket.emit('assign_team', { team_key: robot, match_key: manager.match_key })
                
                 io.emit('team_match_assigned_admin', robot, server_scout.name)
 
@@ -161,9 +163,10 @@ io.on('connect', (socket) => { // io refers to the ws server, socket refers to t
         }
     });
 
-    socket.on('admin_create_match', async (robots: { red_robots: TeamKey[], blue_robots: TeamKey[] }) => {
+    socket.on('admin_create_match', async (robots: { red_robots: TeamKey[], blue_robots: TeamKey[], match_key: MatchKey }) => { // pased in as undefined
+        console.log("admin create match key 1: " + robots.match_key)
         console.log("match being created")
-        let scout_matches = await manager.create_match(robots)
+        let scout_matches = await manager.create_match(robots.red_robots, robots.blue_robots)
         console.log("number of scout_matches: " + scout_matches.length)
         scout_matches.forEach((scout_match) => {
             console.log(scout_match.team)
@@ -173,11 +176,14 @@ io.on('connect', (socket) => { // io refers to the ws server, socket refers to t
             let id: string = scout_match.clientId
             // server_scout will never be undefined because then scout_matches would be empty, because create_match would be running before any scouts have logged in   
             let server_scout = manager.scout_map.get(id)!;
+            console.log("robots admin match key: " + robots.match_key)
+            manager.match_key = robots.match_key
             server_scout.is_assigned = true
-
+            console.log("admin match key: " + manager.match_key)
             socket.broadcast.to(id).socketsLeave('pending_scouts')
             socket.broadcast.to(id).socketsJoin('assigned_scouts')
-            socket.broadcast.to(id).emit('assign_team', scout_match.team) 
+            socket.broadcast.to(id).emit('assign_team', { team_key: scout_match.team, match_key: manager.match_key }) 
+
             
             socket.emit('team_match_assigned_admin', scout_match.team, server_scout.name)
             socket.emit('scout_update', server_scout) // this could be change to pass back a union containing the specific type change, since it's just a string, I don't care though

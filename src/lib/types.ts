@@ -7,7 +7,7 @@ export type FixedLengthArray<T extends any[]> =
     Pick<T, Exclude<keyof T, ArrayLengthMutationKeys>>
     & { [Symbol.iterator]: () => IterableIterator<ArrayItems<T>> }
 
-export type TeamKey = `frc${number}`
+export type TeamKey = `${number | ''}${'A' | 'B' | 'C' | ''}`
 
 export type MatchKey = `2023orbb_${'qm' | 'qf' | 'sf' | 'f'}${number}`
 
@@ -126,7 +126,7 @@ export type PitscoutTodo = {
 
 export const defaultTeamMatch: TeamMatch = {
     keys: {
-        team_key: "frc0", // frc1540
+        team_key: "0", // frc1540
         match_key: "2023orbb_qm0",
     },
     data: {
@@ -144,7 +144,7 @@ export const defaultTeamMatch: TeamMatch = {
 // Pit scouting types
 
 export enum DriveTrain {
-    MECHANUM,
+    OTHER,
     SWERVE,
     TANK
 }
@@ -163,7 +163,7 @@ export type PitData = {
 }
 
 export const defaultPitData: PitData = {
-    team_key: "frc0",
+    team_key: "",
     drivetrain: DriveTrain.TANK,
     hybrid_type_auto: false,
     hybrid_type_combo: false,

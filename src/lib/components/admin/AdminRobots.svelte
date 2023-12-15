@@ -3,8 +3,8 @@
     import { createEventDispatcher } from "svelte";
     import Button from "$lib/components/utils/Button.svelte";
     
-    let red_robots: TeamKey[] = []
-    let blue_robots: TeamKey[] = []
+    let red_robots: string[] = []
+    let blue_robots: string[] = []
     let match_key: MatchKey
 
     const dispatch = createEventDispatcher()
