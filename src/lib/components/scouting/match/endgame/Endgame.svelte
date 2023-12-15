@@ -1,16 +1,16 @@
 <script lang="ts">
     
     import Switch from "$lib/components/switch.svelte";
-    export let team = "1540 A";
-    export let rating = 0;
-    export let parked = false;
-    export let broken = false;
-    export let dead = false;
-    export let notes = "";
+    import { match } from "$lib/stores/stores";
+    // export let team = "1540 A";
+    // export let rating = 0;
+    // export let parked = false;
+    // export let broken = false;
+    // export let dead = false;
+    // export let notes = "";
 
     function handlestar(i: number) {
-        rating = i;
-        rating = rating;
+        $match.data.skill = i;
     }
 </script>
 
@@ -21,7 +21,7 @@
             class="header-background p-3 flex justify-center items-center"
         >
             <h1 style="color: #D9D9D9;" class="text-6xl center">
-                <strong>ENDGAME-{team}</strong>
+                <strong>ENDGAME</strong>
             </h1>
             <div />
         </div>
@@ -32,7 +32,7 @@
     <h3 style="margin: 1rem;"><strong>Driver Skill</strong></h3>
     <div class="grid grid-cols-5 gap-4 background">
         {#each { length: 5 } as _, i}
-            {#if rating >= i + 1}
+            {#if $match.data.skill >= i + 1}
                 <button on:click={() => handlestar(i + 1)}
                     ><svg style="transition: 500ms;"
                         width="54"
@@ -71,21 +71,21 @@
     </div>
     <div class="grid grid-cols-5 background">
         <h5 class="col-span-4"><strong>Parked?</strong></h5>
-        <Switch bind:checked={parked} style="float: right;" />
+        <Switch bind:checked={$match.data.parked} style="float: right;" />
     </div>
     <div class="grid grid-cols-5 background">
         <h5 class="col-span-4"><strong>Broken?</strong></h5>
-        <Switch bind:checked={broken} style="float: right;" />
+        <Switch bind:checked={$match.data.broke} style="float: right;" />
     </div>
     <div class="grid grid-cols-5 background">
         <h5 class="col-span-4"><strong>Died on field?</strong></h5>
-        <Switch bind:checked={dead} style="float: right;" />
+        <Switch bind:checked={$match.data.died} style="float: right;" />
     </div>
     <h3 style="margin: 1rem;" class="col-span-2"><strong>Notes</strong></h3>
     <div style="margin: 1rem" class="background">
         <textarea
             placeholder="Write Here"
-            bind:value={notes}
+            bind:value={$match.data.notes}
             rows="3"
             style="background-color: #1C1C1C; width:100%;"
         />

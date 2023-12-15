@@ -68,9 +68,9 @@
     });
 
     function handleSubmit(formData: FormData) {
-        $match.keys.team_key = "frc0" // this is the default nothing value ig
         console.log("submit data")
-        socket.emit('scout_submitted_match')
+        // socket.emit('scout_submitted_match')
+        console.log()
         formData.append("team_key", $match.keys.team_key);
         formData.append("match_key", $match.keys.match_key);
         formData.append("fielded", `${($match.data?.fielded)}`); //must be string due to formdata limitations
@@ -90,6 +90,7 @@
         formData.append("broke", `${$match.data?.broke}`); //must be string due to formdata limitations
         formData.append("died", `${$match.data?.died}`); //must be string due to formdata limitations
         formData.append("notes", `${$match.data?.notes}`);
+        $match.keys.team_key = "frc0"
         location.reload()
     }
 </script>
