@@ -1,5 +1,6 @@
 //INCOMPLETE
 
+import { randomUUID } from 'crypto';
 import type { Actions } from './$types';
 
 export const actions = {
@@ -16,41 +17,43 @@ export const actions = {
         // let req_data = await request.json()
         if (isRobot == "true") {
             Array.from(photos).forEach(async (photo, i) => {
-                let url = `public/${team_key?.toString()}_${i}`
-                let { data, error } = await supabase
-                .storage
-                .from('avatars')
-                .upload(url, photo, {
-                    cacheControl: '3600',
-                    upsert: false
-                })
-                if (error) console.error(error, formData);
+                let url = `public/${team_key?.toString()}_${i}_${randomUUID()}`
+                console.log("url: " + url)
+                let result1 = await supabase
+                    .storage
+                    .from('RobotImages')
+                    .upload(url, photo, {
+                        cacheControl: '3600',
+                        upsert: false
+                    })
+                if (result1.error) console.error("ERROR: ", result1.error, formData);
                 let new_error = await supabase.from("RobotImages").insert({
                     team_key,
                     url,
                     scout_id
                 });        
         
-                if (new_error.error) console.error(new_error.error, formData);
+                if (new_error.error) console.error("ERROR: ", new_error.error, formData);
             })
         } else if (isRobot == "false") {
             Array.from(photos).forEach(async (photo, i) => {
-                let url = `public/${team_key?.toString()}_bunny_${i}`
+                let url = `public/${team_key?.toString()}_bunny_${i}_${randomUUID()}`
+                console.log("url: " + url)
                 let { data, error } = await supabase
-                .storage
-                .from('avatars')
-                .upload(url, photo, {
-                    cacheControl: '3600',
-                    upsert: false
-                })
-                if (error) console.error(error, formData);
+                    .storage
+                    .from('BunnyImages')
+                    .upload(url, photo, {
+                        cacheControl: '3600',
+                        upsert: false
+                    })
+                if (error) console.error("ERROR: ", error, formData);
                 let new_error = await supabase.from("BunnyImages").insert({
                     team_key,
                     url,
                     scout_id
                 });        
         
-                if (new_error.error) console.error(new_error.error, formData);
+                if (new_error.error) console.error("ERROR: ", new_error.error, formData);
             })
         }
     }
