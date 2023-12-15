@@ -3,10 +3,18 @@
     export function load() {
 	throw redirect(307, '/homepage')
 }
+<<<<<<< HEAD
     // export let team = "";
     import { pit } from "$lib/stores/stores";
     let hybridtype = [$pit.hybrid_type_auto,$pit.hybrid_type_combo,$pit.hybrid_type_none]
     let hybridlocation = [$pit.hybrid_location_far,$pit.hybrid_location_mid,$pit.hybrid_location_close]
+=======
+    export let team = "";
+    let drivetrain = ""; // $match.data.
+    let hybridtype = "";
+    let hybridplace = "";
+    let length = 1;
+>>>>>>> 74faa3c57be67065280e3e4b373e3259054090ba
     import Submit from "$lib/components/Submit.svelte";
     import BunnyScout from "$lib/components/BunnyScout.svelte";
     import type { Scoutbunny } from "$lib/types";

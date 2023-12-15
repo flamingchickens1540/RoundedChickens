@@ -20,9 +20,12 @@
 
     let { supabase, session  } = data;
     $: ({ supabase, session } = data);
+
+
+
     supabase // might need to remove the variable
-        .channel('admin_panel')
-        .on('postgres_changes',{ event: 'INSERT', schema: 'public', table: 'TeamMatches', }, payload => {
+        .channel('room_1')
+        .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'TeamMatches', }, payload => {
             let team_match: TeamMatchKeys = payload.new as TeamMatchKeys;
             completed_team_matches.push(team_match)
             console.log('New insert into TeamMatches: ', payload)
