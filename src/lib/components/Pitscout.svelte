@@ -3,24 +3,24 @@
     export function load() {
 	throw redirect(307, '/homepage')
 }
-    export let team = "";
+    // export let team = "";
     import { pit } from "$lib/stores/stores";
-    let hybridtype = ["$pit.hybrid_type_auto","$pit.hybrid_type_combo","$pit.hybrid_type_none"]
-    let hybridlocation = ["$pit.hybrid_location_far","$pit.hybrid_type_mid","$pit.hybrid_type_close"]
+    let hybridtype = [$pit.hybrid_type_auto,$pit.hybrid_type_combo,$pit.hybrid_type_none]
+    let hybridlocation = [$pit.hybrid_location_far,$pit.hybrid_location_mid,$pit.hybrid_location_close]
     import Submit from "$lib/components/Submit.svelte";
     import BunnyScout from "$lib/components/BunnyScout.svelte";
     import type { Scoutbunny } from "$lib/types";
-    let bunnies: Scoutbunny[] = [];
-    bunnies.push({
-        teamname: "1540",
-        number: 1,
-        type: "Mech",
-        notes: "",
-    });
+    // let bunnies: Scoutbunny[] = [];
+    // bunnies.push({
+    //     teamname: "1540",
+    //     number: 1,
+    //     type: "Mech",
+    //     notes: "",
+    // });
     const Hybridtype = [
         { label: "Full Auto" },
-        { label: "Hybrid" },
-        { label: "No Hybrid" },
+        { label: "Combo" },
+        { label: "No Auto" },
     ];
 
     const Drivetrain = [
@@ -33,20 +33,20 @@
         { label: "Mid" },
         { label: "Close" },
     ];
-    function handleclick() {
-        bunnies.push({
-            teamname: team,
-            number: bunnies.length + 1,
-            type: "Mech",
-            notes: "",
-        });
-        bunnies = bunnies;
-        length += 1;
-    }
-    function test() {
-        console.log("NEW LINE HERE")
-        console.log($pit)
-    }
+    // function handleclick() {
+    //     bunnies.push({
+    //         teamname: team,
+    //         number: bunnies.length + 1,
+    //         type: "Mech",
+    //         notes: "",
+    //     });
+    //     bunnies = bunnies;
+    //     length += 1;
+    // }
+    // function test() {
+    //     console.log("NEW LINE HERE")
+    //     console.log($pit)
+    // }
 </script>
 
 <header>
@@ -77,7 +77,7 @@
     </nav>
 </header>
 
-<button on:click={test} style="color: white; border:1px solid white;">UPDATE</button>
+<!-- <button on:click={test} style="color: white; border:1px solid white;">UPDATE</button> -->
 <div style="background-color: #1C1C1C; margin-top: 0rem">
     <br />
     <h3 style="margin-top: 0rem">Team Key</h3>
@@ -107,33 +107,58 @@
     <br />
     <h3>Hybrid Type</h3>
     <div class="background grid grid-cols-2 gap-4 grid-rows-2">
-        {#each Hybridtype as value}
-            <label>
-                <input
-                    class="accent-purple-500"
-                    type="radio"
-                    bind:group={hybridtype}
-                    name="amount"
-                    {value}
-                />
-                {value.label}
-            </label>
-        {/each}
+        <label>
+            <input 
+                type="checkbox"
+                class="accent-purple-500"
+                bind:checked={$pit.hybrid_type_auto}
+            />
+            Full Auto
+        </label>
+        <label>
+            <input
+                type="checkbox"
+                class="accent-purple-500"
+                bind:checked={$pit.hybrid_type_combo}
+            />
+            Combo
+        </label>
+        <label>
+            <input 
+                type="checkbox"
+                class="accent-purple-500"
+                bind:checked={$pit.hybrid_type_none}
+            />
+            None
+        </label>
     </div>
     <br />
     <h3>Hybrid Location</h3>
     <div class="background grid grid-cols-2 gap-4 grid-rows-2">
-        {#each Hybridplace as value}
-            <label>
-                <input
-                    type="radio"
-                    bind:group={hybridlocation}
-                    name="amount"
-                    {value}
-                />
-                {value.label}
-            </label>
-        {/each}
+        <label>
+            <input 
+                type="checkbox"
+                class="accent-purple-500"
+                bind:checked={$pit.hybrid_location_far}
+            />
+            Far
+        </label>
+        <label>
+            <input
+                type="checkbox"
+                class="accent-purple-500"
+                bind:checked={$pit.hybrid_location_mid}
+            />
+            Mid
+        </label>
+        <label>
+            <input 
+                type="checkbox"
+                class="accent-purple-500"
+                bind:checked={$pit.hybrid_location_close}
+            />
+            Close
+        </label>
     </div>
     <br />
     <!-- <h3>Bunnies</h3>
@@ -145,7 +170,7 @@
         /><br />
     {/each} -->
     <div class="grid grid-rows-2 grid-cols-1 justify-items-center">
-        <button on:click={() => handleclick()}>
+        <!-- <button on:click={() => handleclick()}> -->
             <div style="width: 100%; height: 100%">
                 <svg
                     width="100%"
@@ -250,7 +275,7 @@
                     </defs>
                 </svg>
             </div>
-        </button>
+        <!-- </button> -->
         <button>
             <svg
                 width="100%"
