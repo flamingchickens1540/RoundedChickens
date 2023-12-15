@@ -136,4 +136,7 @@
         width: auto;
         place-content: center;
     }
+    div {
+        color: white;
+    }
 </style>
