@@ -102,13 +102,13 @@
         formData.append("broke", `${$match.data?.broke}`); //must be string due to formdata limitations
         formData.append("died", `${$match.data?.died}`); //must be string due to formdata limitations
         formData.append("notes", $match.data?.notes);
-        $match.keys.team_key = "frc0"
+        $match.keys.team_key = ""
         location.reload()
     }
 </script>
 
 <div class="grid place-items-center text-white" style="height:fit-content;">
-    {#if $match.keys.team_key == "frc0"}
+    {#if $match.keys.team_key == ""}
         <div class="grid place-items-center border">
             Match Not Avaliable
         </div>
